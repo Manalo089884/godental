@@ -11,7 +11,6 @@ class BrandController extends Controller
 {
   //Show Brand Page
   public function index(){
-
     abort_if(Gate::denies('brand_access'),403);
     return view('admin.page.product.brand');
   }

@@ -42,7 +42,7 @@ class RoleAndPermissionsSeeder extends Seeder
             'category_create',
             'category_edit',
             'category_delete',
-            'category_show',
+            'category_export',
             'category_access',
 
         ];
@@ -58,20 +58,18 @@ class RoleAndPermissionsSeeder extends Seeder
         //admin
         $admin = Role::create(['name' => 'Super Admin']);
         $admin->givePermissionTo(Permission::all());
+
+
         $manager = Role::create(['name' => 'manager']);
 
         $managerpermissions = [
-
-
-
             'brand_access',
+            'category_access',
         ];
 
         foreach($managerpermissions as $permission){
             $manager->givePermissionTo($permission);
         }
-
-
 
         Role::create(['name' => 'inventory']);
 
