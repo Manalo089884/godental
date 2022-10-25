@@ -30,12 +30,7 @@
                         <div class="menu__title"> Category </div>
                     </a>
                 </li>
-                <li>
-                    <a href="{{Route('supplier.index')}}" class="menu">
-                        <div class="menu__icon"> <i class="fa-solid fa-boxes-packing p-1 fa-lg"></i> </div>
-                        <div class="menu__title"> Supplier </div>
-                    </a>
-                </li>
+
             </ul>
         </li>
         <li>
@@ -59,12 +54,18 @@
                     <li>
                     <a href="{{Route('product.create')}}" class="menu">
                         <div class="menu__icon"> <i class="fa-solid fa-plus mr-1 fa-lg p-1"></i> </div>
-                        <div class="menu__title"> Add Product </div>
+                        <div class="menu__title"> Add New Product </div>
                     </a>
                 </li>
             </ul>
         </li>
 
+        <li>
+            <a href="{{ route('supplier.index') }}" class="menu">
+                <div class="menu__icon"> <i class="fa-solid fa-boxes-packing p-1 fa-lg"></i></div>
+                <div class="menu__title"> Supplier </div>
+            </a>
+        </li>
         <li>
             <a href="{{Route('orders.index')}}" class="menu">
                 <div class="menu__icon"> <i class="fa-solid fa-cart-plus fa-lg p-1"></i></div>
@@ -91,18 +92,19 @@
                 <div class="menu__title"> Customers </div>
             </a>
         </li>
-        <li>
-            <a href="{{Route('user.index')}}" class="menu">
-                <div class="menu__icon"><i class="fa-solid fa-user fa-lg p-1"></i></div>
-                <div class="menu__title"> Users </div>
-            </a>
-        </li>
+
         <li>
             <a href="javascript:;" class="menu">
                 <div class="menu__icon"> <i class="fa-solid fa-users-gear fa-lg p-1"></i> </div>
-                <div class="menu__title"> Roles <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
+                <div class="menu__title"> Users <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
             </a>
             <ul class="">
+                <li>
+                    <a href="{{Route('user.index')}}" class="menu">
+                        <div class="menu__icon"> <i class="fa-solid fa-user fa-lg p-1"></i></div>
+                        <div class="menu__title"> Users </div>
+                    </a>
+                </li>
                 <li>
                     <a href="{{Route('role.index')}}" class="menu">
                         <div class="menu__icon">  <i class="fa-solid fa-r fa-lg p-1"></i> </div>
@@ -110,25 +112,34 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{Route('permission.index')}}" class="menu">
-                        <div class="menu__icon"> <i class="fa-solid fa-p fa-lg p-1"></i> </div>
-                        <div class="menu__title"> Permission </div>
+                    <a href="{{Route('user.create')}}" class="menu">
+                        <div class="menu__icon"> <i class="fa-solid fa-plus mr-1 fa-lg p-1"></i> </div>
+                        <div class="menu__title"> Add New User </div>
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="menu__devider my-6"></li>
+        @if (Auth::guard('web')->user()->can('report_access') || Auth::guard('web')->user()->can('analytics_access'))
+            <!--Divider-->
+            <li class="menu__devider my-6"></li>
+        @endif
+        @can('report_access')
+         <!--Reports-->
         <li>
             <a href="{{Route('report.index')}}" class="menu">
                 <div class="menu__icon"> <i class="fa-solid fa-chart-pie fa-lg p-1"></i> </div>
                 <div class="menu__title"> Reports </div>
             </a>
         </li>
+        @endcan
+        @can('analytics_access')
+        <!--Analytics-->
         <li>
             <a href="{{Route('analytics.index')}}" class="menu">
                 <div class="menu__icon">  <i class="fa-solid fa-chart-simple fa-lg p-1"></i></div>
                 <div class="menu__title"> Analytics </div>
             </a>
         </li>
+        @endcan
     </ul>
 </div>

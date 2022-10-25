@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Modal;
 
 use Livewire\Component;
 use App\Models\Product;
+use Illuminate\Support\Facades\Gate;
 class DeleteProduct extends Component
 {
     public $modelId;
@@ -11,7 +12,7 @@ class DeleteProduct extends Component
     {
         return view('livewire.modal.delete-product');
     }
- 
+
     protected $listeners = [
         'getModelDeleteModalId',
         'forceCloseModal',
@@ -25,11 +26,11 @@ class DeleteProduct extends Component
 
     private function cleanVars(){
         $this->modelId = null;
-     
+
     }
 
     public function getModelDeleteModalId($modelId){
-        $this->modelId = $modelId;   
+        $this->modelId = $modelId;
     }
     public function closeModal(){
         $this->cleanVars();
@@ -37,15 +38,16 @@ class DeleteProduct extends Component
     }
 
     public function delete(){
+        abort_if(Gate::denies('product_archive'),403);
         $product = Product::find($this->modelId);
             $product->delete();
             $this->dispatchBrowserEvent('SuccessAlert',[
                 'name' => $product->name.' was successfully deleted!',
                 'title' => 'Record Deleted',
             ]);
-        
+
         $this->emit('refreshParent');
         $this->cleanVars();
-        $this->dispatchBrowserEvent('CloseDeleteModal');  
+        $this->dispatchBrowserEvent('CloseDeleteModal');
     }
 }

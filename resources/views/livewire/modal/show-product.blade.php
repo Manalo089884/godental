@@ -45,8 +45,8 @@
                     <label class="form-label">{{ $stock }}pcs</label>
                 </div>
                 <div class="col-span-12 sm:col-span-6">
-                    <label for="modal-form-1" class="form-label font-medium">Stock:</label>
-                    <label class="form-label">{{ $stock }}</label>
+                    <label for="modal-form-1" class="form-label font-medium">Supplier Name:</label>
+                    <label class="form-label">{{ $supplier }}</label>
                 </div>
                 <div class="col-span-12">
                     <label for="modal-form-1" class="form-label font-medium">Description:</label>

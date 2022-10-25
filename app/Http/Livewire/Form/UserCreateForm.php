@@ -3,10 +3,15 @@
 namespace App\Http\Livewire\Form;
 
 use Livewire\Component;
-use App\Models\Role;
+use Illuminate\Support\Str;
+
 use App\Models\User;
 use Livewire\WithFileUploads;
 use Carbon\Carbon;
+use Spatie\Permission\Models\Role;
+use Laravolt\Avatar\Facade as Avatar;
+
+
 class UserCreateForm extends Component
 {
     use WithFileUploads;
@@ -21,7 +26,7 @@ class UserCreateForm extends Component
             'phone' => 'required',
             'age' => 'required|numeric',
             'role' => 'required',
-            'picture' => 'required|image',
+
             'password' => 'required'
 
         ];
@@ -36,35 +41,37 @@ class UserCreateForm extends Component
             'phone' => 'required',
             'age' => 'required|numeric',
             'role' => 'required',
-            'picture' => 'required|image',
+
             'password' => 'required'
         ]);
     }
 
     public function StoreUserData(){
         $this->validate();
+        $imagename = $this->email.Str::random(10);
+
+
+
 
         $data = [
             'name' => $this->name,
             'email' => $this->email,
-            'roles_id' => $this->role,
             'phone_number' => $this->phone,
             'address' => $this->address,
             'password' => $this->password,
-            'photo' => $this->picture->hashName(),
+            'photo' => $imagename,
             'gender' => $this->gender,
             'age' => $this->age,
 
         ];
-        if(!empty($this->picture)){
-            $this->picture->store('public/photos');
-        }
-        User::create($data);
+
+
+
+
+        $user = User::create($data);
+        $avatar = Avatar::create($this->name)->save(storage_path('app/public/photos/'.$imagename.'.png'));
+        $user->assignRole($this->role);
         return redirect()->route('user.index')->with('success', $this->name .' was successfully inserted');
-
-
-
-
     }
 
     public function render()

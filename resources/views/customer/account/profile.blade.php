@@ -18,6 +18,14 @@
                     <h2 class="font-medium text-base mr-auto">
                         Personal Information
                     </h2>
+                    @if(!Auth::guard('customer')->user()->email_verified_at)
+                        <div class="dropdown">
+                            <a href="{{ Route('customer.verify') }}" class="text-slate-500 leading-none">
+                                Verify Account!
+                            </a>
+                        </div>
+                    @endif
+
                 </div>
                 <div class="p-5">
                     @if(session('fail'))

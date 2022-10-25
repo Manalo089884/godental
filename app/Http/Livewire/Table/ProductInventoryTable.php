@@ -26,7 +26,7 @@ class ProductInventoryTable extends Component
 
     public function mount(){
         $this->sorting = "nameaz";
-        $this->perPage = 5;
+        $this->perPage = 10;
     }
 
     public function selectItem($itemId,$action){

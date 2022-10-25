@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Form;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Gate;
 class CategoryForm extends Component
 {
     public $name;
@@ -21,7 +22,7 @@ class CategoryForm extends Component
     {
         return view('livewire.form.category-form');
     }
-    
+
     protected function rules(){
         return [
             'name'=> ['required', Rule::unique('category')->ignore($this->modelId)],
@@ -37,7 +38,7 @@ class CategoryForm extends Component
         $category = Category::findorFail($this->modelId);
         $this->name = $category->name;
     }
-    
+
     public function updated($fields){
         $this->validateOnly($fields,[
             'name' => 'required|unique:category,name,'.$this->modelId.'',
@@ -51,16 +52,18 @@ class CategoryForm extends Component
     public function StoreCategoryData(){
         $model = Category::find($this->modelId);
         if($this->modelId){
+            abort_if(Gate::denies('category_edit'),403);
             $this->validate();
             $this->oldname = $model->name;
            $model->name = $this->name;
            $model->update();
 
             $this->dispatchBrowserEvent('SuccessAlert',[
-                'name' => $this->oldname.' was sucessfully changed to '.$this->name, 
+                'name' => $this->oldname.' was sucessfully changed to '.$this->name,
                 'title' => 'Record Successfully Edit',
             ]);
         }else{
+            abort_if(Gate::denies('category_create'),403);
             Category::create($this->validate());
             $this->dispatchBrowserEvent('SuccessAlert',[
                 'name' => $this->name.' was successfully saved!',

@@ -14,7 +14,6 @@
                         <label for="pos-form-1" class="form-label">Name</label>
                         <input type="text" id="name" wire:model.lazy="name" class="form-control flex-1 @error('name') border-danger @enderror" placeholder="Role name" >
                         <div class="text-danger mt-2">@error('name'){{$message}}@enderror</div>
-                      
                     </div>
                 </div>
                 <div class="modal-footer text-right">
@@ -23,10 +22,10 @@
                 </div>
             </form>
         </div>
-    </div>    
+    </div>
 </div>
 
- 
-    
+
+
 
 

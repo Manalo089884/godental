@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Table;
 use Livewire\Component;
 use App\Models\Supplier;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Gate;
 class SupplierTable extends Component
 {
     use WithPagination;
@@ -29,7 +30,7 @@ class SupplierTable extends Component
 
     public function render()
     {
-
+        abort_if(Gate::denies('supplier_access'),403);
         if($this->sorting == 'nameaz'){
             $suppliers = Supplier::search($this->search)->orderBy('name','asc')->paginate($this->perPage);
         }elseif($this->sorting == 'nameza'){

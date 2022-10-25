@@ -33,12 +33,7 @@
                         <div class="side-menu__icon"> <i class="fa-solid fa-c p-1 fa-lg"></i> </div>
                         <div class="side-menu__title"> Category </div>
                     </a>
-                    <li>
-                        <a href="{{ route('supplier.index') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i class="fa-solid fa-boxes-packing p-1 fa-lg"></i> </div>
-                            <div class="side-menu__title"> Supplier </div>
-                        </a>
-                    </li>
+
                 </li>
             </ul>
         </li>
@@ -67,11 +62,19 @@
                 <li>
                     <a href="{{Route('product.create')}}" class="side-menu">
                         <div class="side-menu__icon"> <i class="fa-solid fa-plus mr-1 fa-lg p-1"></i> </div>
-                        <div class="side-menu__title"> Add Product </div>
+                        <div class="side-menu__title"> Add New Product </div>
                     </a>
                 </li>
             </ul>
         </li>
+
+        <li>
+            <a href="{{ route('supplier.index') }}" class="side-menu {{ (request()->is('admin/supplier')) ? 'side-menu--active' : '' }}">
+                <div class="side-menu__icon"> <i class="fa-solid fa-boxes-packing p-1 fa-lg"></i></div>
+                <div class="side-menu__title"> Supplier </div>
+            </a>
+        </li>
+
         <!--Orders-->
         <li>
             <a href="{{Route('orders.index')}}" class="side-menu {{ (request()->is('admin/orders')) ? 'side-menu--active' : '' }}">
@@ -103,22 +106,23 @@
             </a>
         </li>
         <!--Users-->
-        <li>
-            <a href="{{Route('user.index')}}" class="side-menu {{ (request()->is('admin/user')) ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i class="fa-solid fa-user fa-lg p-1"></i></div>
-                <div class="side-menu__title"> Users </div>
-            </a>
-        </li>
+
         <!--Roles-->
         <li>
-            <a href="javascript:;" class="side-menu {{ (request()->is('admin/role')) || (request()->is('admin/permission')) ?  'side-menu--active ' : '' }}">
+            <a href="javascript:;" class="side-menu {{ (request()->is('admin/role')) || (request()->is('admin/permission')) || (request()->is('admin/user')) ?  'side-menu--active ' : '' }}">
                 <div class="side-menu__icon"> <i class="fa-solid fa-users-gear fa-lg p-1"></i> </div>
                 <div class="side-menu__title">
-                    Roles
+                    Users
                     <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                 </div>
             </a>
             <ul class="">
+                <li>
+                    <a href="{{Route('user.index')}}" class="side-menu">
+                        <div class="side-menu__icon"> <i class="fa-solid fa-user fa-lg p-1"></i> </div>
+                        <div class="side-menu__title">Users</div>
+                    </a>
+                </li>
                 <li>
                     <a href="{{Route('role.index')}}" class="side-menu">
                         <div class="side-menu__icon"> <i class="fa-solid fa-r fa-lg p-1"></i> </div>
@@ -126,28 +130,36 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{Route('permission.index')}}" class="side-menu">
-                        <div class="side-menu__icon"> <i class="fa-solid fa-p fa-lg p-1"></i> </div>
-                        <div class="side-menu__title">Permission</div>
+                    <a href="{{Route('user.create')}}" class="side-menu">
+                        <div class="side-menu__icon">  <i class="fa-solid fa-plus mr-1 fa-lg p-1"></i>  </div>
+                        <div class="side-menu__title">Add New User</div>
                     </a>
                 </li>
             </ul>
         </li>
+        @if (Auth::guard('web')->user()->can('report_access') || Auth::guard('web')->user()->can('analytics_access'))
         <!--Divider-->
         <li class="side-nav__devider my-6"></li>
-        <!--Reports-->
-        <li>
-            <a href="{{Route('report.index')}}" class="side-menu {{ (request()->is('admin/report')) ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i class="fa-solid fa-chart-pie fa-lg p-1"></i> </div>
-                <div class="side-menu__title"> Reports </div>
-            </a>
-        </li>
-        <!--Analytics-->
-        <li>
-            <a href="{{Route('analytics.index')}}" class="side-menu {{ (request()->is('admin/analytics')) ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i class="fa-solid fa-chart-simple fa-lg p-1"></i> </div>
-                <div class="side-menu__title"> Analytics </div>
-            </a>
-        </li>
+        @endif
+        @can('report_access')
+            <!--Reports-->
+            <li>
+                <a href="{{Route('report.index')}}" class="side-menu {{ (request()->is('admin/report')) ? 'side-menu--active' : '' }}">
+                    <div class="side-menu__icon"> <i class="fa-solid fa-chart-pie fa-lg p-1"></i> </div>
+                    <div class="side-menu__title"> Reports </div>
+                </a>
+            </li>
+        @endcan
+
+        @can('analytics_access')
+            <!--Analytics-->
+            <li>
+                <a href="{{Route('analytics.index')}}" class="side-menu {{ (request()->is('admin/analytics')) ? 'side-menu--active' : '' }}">
+                    <div class="side-menu__icon"> <i class="fa-solid fa-chart-simple fa-lg p-1"></i> </div>
+                    <div class="side-menu__title"> Analytics </div>
+                </a>
+            </li>
+        @endcan
+
     </ul>
 </nav>

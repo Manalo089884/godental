@@ -70,6 +70,8 @@ Route::middleware(['PreventBackHistory'])->group(function () {
 
         Route::group(['prefix' => 'user'],function(){
             Route::get('/profile', [CustomerProfileController::class,'index'])->name('customer.profile');
+            Route::get('/verifyemail', [CustomerProfileController::class,'VerifyAccount'])->name('customer.verify');
+
             Route::get('/address', [CustomerProfileController::class,'address'])->name('customer.address');
             Route::get('/address/create', [CustomerProfileController::class,'createaddress'])->name('customer.address.create');
             Route::post('address/create',[CustomerProfileController::class,'saveaddress']);
@@ -78,6 +80,7 @@ Route::middleware(['PreventBackHistory'])->group(function () {
             Route::delete('/address/{id}', [CustomerProfileController::class, 'destroyaddress']);
             Route::get('/changepassword',[CustomerProfileController::class,'changepassword'])->name('customer.change.pass');
             Route::post('changepassword',[CustomerProfileController::class,'resetpass']);
+
         });
 
         Route::group(['prefix' => 'customer'],function(){

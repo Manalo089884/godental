@@ -50,8 +50,8 @@ class ProductArchiveTable extends Component
             ->orderBy('created_at','asc')
             ->paginate($this->perPage);
         }elseif($this->sorting == 'creatednew'){
-            $products = Product::onlyTrashed()
-            ->search($this->search)
+            $products = Product::where('name','like','%'.$this->search.'%')
+            ->onlyTrashed()
             ->with('category','brand','images')
             ->orderBy('created_at','desc')
             ->paginate($this->perPage);

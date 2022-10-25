@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Modal;
 
 use Livewire\Component;
 use App\Models\Category;
+use Illuminate\Support\Facades\Gate;
 class DeleteCategory extends Component
 {
     public $modelId;
@@ -25,10 +26,10 @@ class DeleteCategory extends Component
     }
     private function cleanVars(){
         $this->modelId = null;
-    
+
     }
     public function getModelDeleteModalId($modelId){
-        $this->modelId = $modelId;   
+        $this->modelId = $modelId;
     }
     public function closeModal(){
         $this->cleanVars();
@@ -36,6 +37,7 @@ class DeleteCategory extends Component
     }
 
     public function delete(){
+        abort_if(Gate::denies('category_delete'),403);
         $category = Category::find($this->modelId);
 
         if($category->categoryTransactions()->count()){
@@ -43,7 +45,7 @@ class DeleteCategory extends Component
                 'name' => $category->name.' has a product records!',
                 'title' => 'Delete Failed!',
             ]);
-        }else{            
+        }else{
             $category->delete();
             $this->dispatchBrowserEvent('SuccessAlert',[
                 'name' => $category->name.' was successfully deleted!',
@@ -52,6 +54,6 @@ class DeleteCategory extends Component
         }
         $this->emit('refreshParent');
         $this->cleanVars();
-        $this->dispatchBrowserEvent('CloseDeleteModal');  
+        $this->dispatchBrowserEvent('CloseDeleteModal');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Modal;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\ProductImage;
-
+use Illuminate\Support\Facades\Gate;
 class ForceDeleteProduct extends Component
 {
     public $modelId;
@@ -37,6 +37,7 @@ class ForceDeleteProduct extends Component
     }
 
     public function delete(){
+        abort_if(Gate::denies('product_forcedelete'),403);
         $product = Product::onlyTrashed()->find($this->modelId);
         $image = ProductImage::where('product_id', '=' , $product->id )->get();
 

@@ -10,7 +10,7 @@
                                 Are you sure?
                             </div>
                             <div class="text-slate-500 mt-2">
-                                Do you really want to permanently delete this product?
+                                Do you really want to permanently delete this supplier?
                             </div>
                         </div>
                         <div class="px-5 pb-8 text-center">

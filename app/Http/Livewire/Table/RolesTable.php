@@ -24,7 +24,7 @@ class RolesTable extends Component
 
     public function render()
     {
-        $roles = Role::whereNotIn('name', ['admin'])->where('name','like','%'.$this->search.'%')->paginate($this->perPage);
+        $roles = Role::whereNotIn('name', ['Super Admin'])->where('name','like','%'.$this->search.'%')->paginate($this->perPage);
         return view('livewire.table.roles-table' , compact('roles'));
     }
 

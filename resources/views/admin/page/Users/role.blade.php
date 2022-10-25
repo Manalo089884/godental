@@ -4,7 +4,7 @@
 <h2 class="intro-y text-lg font-medium mt-10">Role</h2>
 
 <livewire:table.roles-table/>
-
+<livewire:form.role-form/>
 <livewire:modal.delete-role/>
 
 <div id="success-notification-content" class="toastify-content hidden flex non-sticky-notification-content">
@@ -22,6 +22,8 @@
         <div class="text-slate-500 mt-1" id="message"></div>
      </div>
 </div>
+
+
 
 @endsection
 @push('scripts')
@@ -87,7 +89,6 @@
     //Hide Modal and Refresh its value
     const DeleteModal = document.getElementById('delete-confirmation-modal')
     DeleteModal.addEventListener('hidden.tw.modal', function(event) {
-        console.log('Working');
         livewire.emit('forceCloseModal');
     })
 </script>

@@ -28,34 +28,42 @@
            <div class="overflow-x-auto scrollbar-hidden">
                @if($suppliers->count())
                <div class="overflow-x-auto">
-                   <table class="table table-striped mt-5" id="datatable">
+                   <table class="table table-striped mt-5 table-hover">
                        <thead>
                            <tr>
                                <th class="whitespace-nowrap ">Supplier Name</th>
                                <th class="whitespace-nowrap text-center">Deleted At</th>
-                               <th class="whitespace-nowrap text-center">Actions</th>
+
+                                <th class="whitespace-nowrap text-center">Actions</th>
+
                            </tr>
                        </thead>
                        <tbody>
                        @foreach($suppliers as $supplier)
                            <tr class="intro-x">
-                                <td class="whitespace-nowrap font-medium"><a href="">{{$supplier->name}}</td>
+                                <td class="whitespace-nowrap"><a href="">{{$supplier->name}}</td>
                                 <td class="whitespace-nowrap text-center">{{ $supplier->deleted_at->diffForHumans()}}</td>
-                                <td class="table-report__action w-56">
-                                   <div class="flex justify-center items-center">
-                                       <div class="flex justify-center items-center">
+                                @if (Auth::guard('web')->user()->can('supplier_restore') || Auth::guard('web')->user()->can('supplier_forcedelete'))
+                                    <td class="table-report__action w-56">
+                                    <div class="flex justify-center items-center">
+                                        <div class="flex justify-center items-center">
                                             <button wire:click="selectItem({{$supplier->id}},'show')" class="flex items-center  w-full mr-2">
                                                 <i class="fa-solid fa-eye w-4 h-4 mr-1"></i>Show
                                             </button>
-                                            <button wire:click="selectItem({{$supplier->id}},'restore')" class="flex items-center text-success mr-2">
-                                                <i class="fa-regular fa-window-restore w-4 h-4 mr-1"></i>Restore
-                                            </button>
-                                            <button wire:click="selectItem({{$supplier->id}},'delete')" class="flex items-center text-danger">
-                                                <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Delete
-                                            </button>
-                                       </div>
-                                   </div>
-                               </td>
+                                            @can('supplier_restore')
+                                                <button wire:click="selectItem({{$supplier->id}},'restore')" class="flex items-center text-success mr-2">
+                                                    <i class="fa-regular fa-window-restore w-4 h-4 mr-1"></i>Restore
+                                                </button>
+                                            @endcan
+                                            @can('supplier_forcedelete')
+                                                <button wire:click="selectItem({{$supplier->id}},'delete')" class="flex items-center text-danger">
+                                                    <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Delete
+                                                </button>
+                                            @endcan
+                                        </div>
+                                    </div>
+                                </td>
+                               @endif
                            </tr>
                        @endforeach
                        </tbody>

@@ -39,14 +39,18 @@
                     <div class="w-full flex flex-col lg:flex-row items-center">
                         <div class="w-16 h-16 image-fit">
                             @if(!empty($user->photo))
-                                <img src="{{ url('storage/photos/'.$user->photo) }}" data-action="zoom" class="" alt="">
+                                <img src="{{ url('storage/photos/'.$user->photo.'.png') }}" data-action="zoom" class="" alt="">
                             @else
                                 <img alt="Missing Image" class="rounded-full" data-action="zoom" src="{{asset('dist/images/undraw_pic.svg')}}">
                             @endif
                         </div>
                         <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
                             <a href="" class="font-medium">{{ $user->name }}</a>
-                            <div class="text-slate-500 text-xs mt-0.5"></div>
+                            <div class="text-slate-500 text-xs mt-0.5">
+                               @foreach($user->getRoleNames() as $name)
+                                 {{ $name }}
+                               @endforeach
+                            </div>
                         </div>
                     </div>
                     <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">

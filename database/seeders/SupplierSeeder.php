@@ -61,13 +61,6 @@ class SupplierSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Colgate',
-                'email' => 'supplier7@gmail.com',
-                'contact' => '09358747858',
-                'address' => '289 Ramos Compound Baesa Quezon City',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],[
                 'name' => 'Dove',
                 'email' => 'supplier8@gmail.com',
                 'contact' => '09789825587',

@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-span-12 xl:col-span-6">
                     <label for="prole" class="form-label">Profile Picture</label>
-                    <input type="file" wire:model.lazy="picture" class="form-control w-full">
+                    <input type="file" wire:model.lazy="picture" class="form-control w-full p-2">
                     @if($picture)
                         <img src="{{ $picture->temporaryUrl() }}" data-action="zoom" class="mt-2" width="200"  alt="">
                     @endif

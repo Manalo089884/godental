@@ -4,7 +4,7 @@
             <div class="xl:flex sm:mr-auto" >
                 <div class="sm:flex items-center sm:mr-4">
                     <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Field</label>
-                    <select wire:model="sorting"  class="form-select w-full sm:w-32 2xl:w-full mt-2 sm:mt-0 sm:w-auto">
+                    <select wire:model.lazy="sorting"  class="form-select w-full sm:w-32 2xl:w-full mt-2 sm:mt-0 sm:w-auto">
                         <option value="nameaz" >Product Title A-Z</option>
                         <option value="nameza">Product Title Z-A</option>
                         <option value="createdold">Created (oldest first)</option>
@@ -20,7 +20,7 @@
 
                 <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
                     <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
-                    <input wire:model="search" type="text" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
+                    <input wire:model.lazy="search" type="text" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
                 </div>
                 <div class="mt-2 xl:mt-0">
                     <a href="{{Route('product.index')}}">
@@ -56,12 +56,18 @@
                                         <button wire:click="selectItem({{$product->id}},'show')" class="flex items-center  w-full mr-2">
                                             <i class="fa-solid fa-eye w-4 h-4 mr-1"></i>Show
                                         </button>
-                                        <button wire:click="selectItem({{$product->id}},'restore')" class="flex items-center text-success mr-2">
-                                            <i class="fa-regular fa-window-restore w-4 h-4 mr-1"></i>Restore
-                                        </button>
-                                        <button wire:click="selectItem({{$product->id}},'delete')" class="flex items-center text-danger">
-                                            <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Delete
-                                        </button>
+                                        @can('product_restore')
+                                            <button wire:click="selectItem({{$product->id}},'restore')" class="flex items-center text-success mr-2">
+                                                <i class="fa-regular fa-window-restore w-4 h-4 mr-1"></i>Restore
+                                            </button>
+                                        @endcan
+
+                                        @can('product_forcedelete')
+                                            <button wire:click="selectItem({{$product->id}},'delete')" class="flex items-center text-danger">
+                                                <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Delete
+                                            </button>
+                                        @endcan
+
                                     </div>
                                 </div>
                             </td>

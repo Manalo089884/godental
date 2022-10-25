@@ -8,45 +8,22 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\RoleExport;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
+use Illuminate\Support\Facades\Gate;
 class RoleController extends Controller
 {
     //Show Role Page
     public function index(){
+        abort_if(Gate::denies('role_access'),403);
         return view('admin.page.Users.role');
     }
-    //Show Create Role Page
-    public function create(){
-        return view('admin.page.Users.rolecreate');
-    }
-    //Store a new role
-    public function store(Request $request){
-        $validated = $request->validate([
-            'name' => 'required|min:3',
-        ]);
 
-        Role::create($validated);
-        return redirect()->route('role.index')->with('success', $request->name .' was successfully inserted');
-    }
     //Edit Role Name
     public function edit(Role $role ){
+        abort_if(Gate::denies('role_edit'),403);
         $permissions = Permission::all();
         return view('admin.page.Users.roleedit',compact('role','permissions'));
     }
-    //Update Role Name
-    public function update(Request $request, Role $role){
-        $validated = $request->validate([
-            'name' => 'required|min:3',
-        ]);
-        $role->update($validated);
-        return redirect()->route('role.index')->with('success', $request->name .' was successfully edited');
 
-    }
-
-    public function destroy(Role $role){
-        $role->delete();
-        return redirect()->route('role.index')->with('success','role was successfully deleted');
-    }
 
     public function givePermission(Request $request, Role $role){
         if($role->hasPermissionTo($request->permission)){
@@ -64,19 +41,19 @@ class RoleController extends Controller
         return back()->with('message', 'Permission not exists');
     }
 
-    //Export Brand to Excel
-    public function exportroleexcel(){
+     //Export Role to Excel
+     public function exportroleexcel(){
         return Excel::download(new RoleExport,'roles.xlsx');
     }
-    //Export Brand to CSV
+    //Export Role to CSV
     public function exportrolecsv(){
         return Excel::download(new RoleExport,'roles.csv');
     }
-    //Export Brand to HTML
+    //Export Role to HTML
     public function exportrolehtml(){
         return Excel::download(new RoleExport,'roles.html');
     }
-    //Export Brand to PDF
+    //Export Role to PDF
     public function exportrolepdf(){
         return Excel::download(new RoleExport,'roles.pdf');
     }

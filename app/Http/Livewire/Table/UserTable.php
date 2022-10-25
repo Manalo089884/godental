@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Table;
 use App\Models\User;
 use Livewire\WithPagination;
 use Livewire\Component;
-
+use Spatie\Permission\Models\Role;
 class UserTable extends Component
 {
     use WithPagination;

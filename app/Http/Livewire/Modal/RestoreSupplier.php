@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Modal;
 
 use Livewire\Component;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Gate;
 class RestoreSupplier extends Component
 {
     public $modelId;
@@ -32,6 +33,7 @@ class RestoreSupplier extends Component
         $this->dispatchBrowserEvent('closeRestoreModal');
     }
     public function restore(){
+        abort_if(Gate::denies('supplier_restore'),403);
         $supplier = Supplier::onlyTrashed()->find($this->modelId);
         $supplier->restore();
         $this->dispatchBrowserEvent('SuccessAlert',[

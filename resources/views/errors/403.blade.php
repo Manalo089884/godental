@@ -25,7 +25,7 @@
                 <div class="text-white mt-10 lg:mt-0">
                     <div class="intro-x text-8xl font-medium">403</div>
                     <div class="intro-x text-xl lg:text-3xl font-medium mt-5">Forbidden</div>
-                    <div class="intro-x text-lg mt-3">Please contact the Administrator to gain access</div>
+                    <div class="intro-x text-lg mt-3">You do not have access to this action</div>
                         <a href="{{ url()->previous() }}" class="intro-x btn py-3 px-4 text-white border-white dark:border-darkmode-400 dark:text-slate-200 mt-10">Return</a>
                 </div>
             </div>

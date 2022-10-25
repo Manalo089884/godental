@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use App\Mail\CustomerVerifyMail;
 use App\Jobs\CustomerVerifyJob;
 use App\Http\Requests\StoreCustomerRegister;
+use Laravolt\Avatar\Facade as Avatar;
+use Illuminate\Support\Str;
 class CustomerRegisterController extends Controller
 {
     //Customer Register Page
@@ -22,14 +24,21 @@ class CustomerRegisterController extends Controller
         //Customer Validation
         $request->validated();
         //Store Customer Data in the database
+        $avatarname = $request->email.Str::random(10);
         $customer = Customer::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone_number'=>$request->phone,
             'birthday'=>$request->birthday,
             'gender'=>$request->gender,
+            'photo' => $avatarname,
             'password' => Hash::make($request->password)
         ]);
+
+        $avatar = Avatar::create($request->name)->save(storage_path('app/public/photos/'.$avatarname.'.png'));
+
+
+
         //Get the customer id that was inserted
         $last_id = $customer->id;
         //Genereting a unique token

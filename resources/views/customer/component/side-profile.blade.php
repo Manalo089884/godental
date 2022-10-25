@@ -2,7 +2,12 @@
     <div class="intro-y box mt-5">
         <div class="relative flex items-center p-5">
           <div class="w-12 h-12 image-fit">
-            <img alt="Profile Picture" class="rounded-full" data-action="zoom" src="{{asset('dist/images/undraw_pic.svg')}}">
+            @if(!empty(Auth::guard('customer')->user()->photo))
+                <img src="{{ url('storage/photos/'.Auth::guard('customer')->user()->photo.'.png') }}" class="rounded-full"  alt="Missing Image">
+            @else
+                <img alt="Missing Image" class="rounded-full" src="{{asset('dist/images/undraw_pic.svg')}}">
+            @endif
+
         </div>
             <div class="ml-4 mr-auto">
                 <div class="font-medium text-base">Hi! {{Auth::guard('customer')->user()->name}}</div>
@@ -12,6 +17,7 @@
                     <div class="text-success">  Verified User   </div>
                 @endif
             </div>
+
         </div>
         <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
             <a class="flex items-center {{ (request()->is('user/profile')) ? 'text-primary font-medium' : '' }} " href="{{ Route('customer.profile') }}" >

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exports;
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\FromCollection;

@@ -10,6 +10,9 @@ use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreCustomerAddress;
 use App\Http\Requests\UpdateCustomerAddress;
+use App\Mail\CustomerVerifyMail;
+use App\Jobs\CustomerVerifyJob;
+use App\Models\CustomerVerify;
 class CustomerProfileController extends Controller
 {
     //Profile
@@ -119,6 +122,35 @@ class CustomerProfileController extends Controller
             'password' => Hash::make($request->password)
         ]);
          return redirect()->back()->with("success","Password successfully changed!");
+    }
+
+    public function VerifyAccount(){
+         //Get the customer id that was inserted
+         $last_id = Auth::guard('customer')->user()->id;
+         //Genereting a unique token
+         $token = $last_id.hash('sha256', \Str::random(120));
+         $verifyURL = route('verify',['token'=>$token,'service'=>'Email_verification']);
+
+         CustomerVerify::create([
+            'customers_id'=>$last_id,
+            'token'=>$token,
+        ]);
+
+        $message = 'Dear <b>'.Auth::guard('customer')->user()->name.'</b>';
+        $message.= ' Thanks for signing up, we just need you to verify your email address to complete setting up your account.';
+
+        $details = [
+            'email'=>Auth::guard('customer')->user()->email,
+            'name'=>Auth::guard('customer')->user()->name,
+            'subject'=>'Go Dental Email Verification',
+            'body'=> $message,
+            'actionLink'=> $verifyURL,
+        ];
+          //dispatch the job for sending the email
+          dispatch(new CustomerVerifyJob($details));
+
+          return back()->with('success',"You account is now fully verified");
+
     }
 
 }

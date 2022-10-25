@@ -67,7 +67,11 @@
         <!-- BEGIN: Account Menu -->
         <div class="intro-x dropdown w-8 h-8">
             <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                <img alt="Go Dental Profile" src="{{ asset('dist/images/profile-2.jpg') }}">
+                @if(!empty(Auth::guard('customer')->user()->photo))
+                <img src="{{ url('storage/photos/'.Auth::guard('customer')->user()->photo.'.png') }}" class="rounded-full"  alt="Missing Image">
+            @else
+                <img alt="Missing Image" class="rounded-full" src="{{asset('dist/images/undraw_pic.svg')}}">
+            @endif
             </div>
             <div class="dropdown-menu w-56 nt0">
                 <ul class="dropdown-content bg-primary/70 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">

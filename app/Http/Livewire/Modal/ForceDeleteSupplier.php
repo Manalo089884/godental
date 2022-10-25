@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Modal;
 
 use Livewire\Component;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Gate;
 class ForceDeleteSupplier extends Component
 {
     public $modelId;
@@ -36,6 +37,7 @@ class ForceDeleteSupplier extends Component
     }
 
     public function delete(){
+        abort_if(Gate::denies('supplier_forcedelete'),403);
         $supplier = Supplier::onlyTrashed()->find($this->modelId);
             $supplier->forcedelete();
             $this->dispatchBrowserEvent('SuccessAlert',[

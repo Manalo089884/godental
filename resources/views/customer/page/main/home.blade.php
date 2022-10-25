@@ -4,7 +4,7 @@
 
 <!-- Hero -->
     {{-- <section class="relative"> --}}
-        <div class="container flex flex-col flex-col-reverse lg:flex-row items-center gap-16 mt-10 mb-10 ml:14 px-10 py-10">
+        <div class="container box flex flex-col flex-col-reverse lg:flex-row items-center gap-16 mt-10 mb-10 ml:14 px-10 py-10">
             <!-- Content -->
             <div class="flex flex-1 flex-col items-center lg:items-start lg:pt-10">
                 <h2 class="border-b-2 border-slate-400 text-5xl font-extrabold lg:text-5xl text-center lg:text-left mb-6">
@@ -25,7 +25,7 @@
             </div>
             <!-- Image -->
             <div class="box flex justify-center flex-1 mb-10 md:mb-16 lg:mb-0 z-10">
-                <img class=" h-5/6 sm:w-3/4 " src="dist/images/emptyCart.png" alt="" />
+                <img class=" h-5/6 sm:w-3/4 " src="{{ asset('dist/images/undraw_web_shopping.svg') }}" alt="" />
             </div>
         </div>
       <!-- Rounded Rectangle -->

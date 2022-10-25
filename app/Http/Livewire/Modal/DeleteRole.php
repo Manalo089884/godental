@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Modal;
 
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class DeleteRole extends Component
 {
@@ -33,20 +34,27 @@ class DeleteRole extends Component
 
     public function delete(){
         $role = Role::find($this->modelId);
-
-
-        if($role->roleTransaction()->count()){
-            $this->dispatchBrowserEvent('InvalidAlert',[
-                'name' => $role->name.' has a User records!',
-                'title' => 'Delete Failed!',
-            ]);
-        }else{
+        $users = User::all();
+        $count = 0;
+        foreach($users as $user){
+           $result =  $user->hasExactRoles($role->name);
+            if($result){
+                $count++;
+            }
+        }
+        if($count == 0){
             $role->delete();
             $this->dispatchBrowserEvent('SuccessAlert',[
                 'name' => $role->name.' was successfully deleted!',
                 'title' => 'Record Deleted',
             ]);
+        }else{
+            $this->dispatchBrowserEvent('InvalidAlert',[
+                'name' => $role->name.' has a user records!',
+                'title' => 'Delete Failed!',
+            ]);
         }
+
         $this->emit('refreshParent');
         $this->cleanVars();
         $this->dispatchBrowserEvent('CloseDeleteModal');

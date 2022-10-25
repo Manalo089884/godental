@@ -23,35 +23,41 @@
                     <input wire:model.lazy="search" type="search" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
                 </div>
                 <div class="mt-2 xl:mt-0">
-                    <a href="{{Route('product.create')}}">
-                        <button  type="button" class="btn btn-primary w-full sm:w-32" > </i> Add Product</button>
-                    </a>
-                    <a href="{{Route('ProductArchiveIndex')}}">
-                        <button  type="button" class="btn btn-secondary w-full sm:w-32 mt-2 sm:mt-0 sm:ml-1" >  <i class="fa-solid fa-file-zipper w-4 h-4 mr-2"></i>Archive</button>
-                    </a>
+                    @can('product_create')
+                        <a href="{{Route('product.create')}}">
+                            <button  type="button" class="btn btn-primary w-full sm:w-32" > </i> Add Product</button>
+                        </a>
+                    @endcan
+                    @can('product_archive_access')
+                        <a href="{{Route('ProductArchiveIndex')}}">
+                            <button  type="button" class="btn btn-secondary w-full sm:w-32 mt-2 sm:mt-0 sm:ml-1" >  <i class="fa-solid fa-file-zipper w-4 h-4 mr-2"></i>Archive</button>
+                        </a>
+                    @endcan
                 </div>
             </div>
-            <div class="flex mt-5 sm:mt-0">
-                <div class="dropdown w-1/2 sm:w-auto">
-                    <button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false" data-tw-toggle="dropdown"> <i class="fa-regular fa-newspaper w-4 h-4 mr-2"></i> Export <i class="fa-solid fa-chevron-down w-4 h-4 ml-auto sm:ml-2"></i> </button>
-                    <div class="dropdown-menu w-40">
-                        <ul class="dropdown-content">
-                            <li>
-                                <a href="{{Route('exportproductexcel')}}" class="dropdown-item"> <i class="fa-solid fa-file-excel mr-1"></i> Export Excel </a>
-                            </li>
-                            <li>
-                                <a  href="{{Route('exportproductcsv')}}" class="dropdown-item"> <i class="fa-solid fa-file-csv mr-1"></i>  Export CSV </a>
-                            </li>
-                            <li>
-                                <a href="{{Route('exportproductpdf')}}" class="dropdown-item">  <i class="fa-solid fa-file-pdf mr-1"></i> Export PDF </a>
-                            </li>
-                            <li>
-                                <a  href="{{Route('exportproducthtml')}}" class="dropdown-item"> <i class="fa-brands fa-html5 mr-1"></i> Export HTML </a>
-                            </li>
-                        </ul>
+            @can('product_export')
+                <div class="flex mt-5 sm:mt-0">
+                    <div class="dropdown w-1/2 sm:w-auto">
+                        <button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false" data-tw-toggle="dropdown"> <i class="fa-regular fa-newspaper w-4 h-4 mr-2"></i> Export <i class="fa-solid fa-chevron-down w-4 h-4 ml-auto sm:ml-2"></i> </button>
+                        <div class="dropdown-menu w-40">
+                            <ul class="dropdown-content">
+                                <li>
+                                    <a href="{{Route('exportproductexcel')}}" class="dropdown-item"> <i class="fa-solid fa-file-excel mr-1"></i> Export Excel </a>
+                                </li>
+                                <li>
+                                    <a  href="{{Route('exportproductcsv')}}" class="dropdown-item"> <i class="fa-solid fa-file-csv mr-1"></i>  Export CSV </a>
+                                </li>
+                                <li>
+                                    <a href="{{Route('exportproductpdf')}}" class="dropdown-item">  <i class="fa-solid fa-file-pdf mr-1"></i> Export PDF </a>
+                                </li>
+                                <li>
+                                    <a  href="{{Route('exportproducthtml')}}" class="dropdown-item"> <i class="fa-brands fa-html5 mr-1"></i> Export HTML </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endcan
         </div>
        <div class="overflow-x-auto scrollbar-hidden">
            @if($products->count())
@@ -63,7 +69,9 @@
                            <th class="whitespace-nowrap text-center">Category</th>
                            <th class="whitespace-nowrap text-center">Inventory</th>
                            <th class="whitespace-nowrap text-center">Status</th>
-                           <th class="whitespace-nowrap text-center">Actions</th>
+                           @if (Auth::guard('web')->user()->can('product_show') || Auth::guard('web')->user()->can('product_edit') || Auth::guard('web')->user()->can('product_archive'))
+                            <th class="whitespace-nowrap text-center">Actions</th>
+                           @endif
                        </tr>
                    </thead>
                    <tbody>
@@ -87,17 +95,26 @@
                                    <div class="flex items-center justify-center text-danger"> <i class="fa-regular fa-circle-xmark w-4 h-4 mr-1"></i> Draft </div>
                                @endif
                            </td>
+                           @if (Auth::guard('web')->user()->can('product_show') || Auth::guard('web')->user()->can('product_edit') || Auth::guard('web')->user()->can('product_archive'))
                            <td class="table-report__action w-56">
                                <div class="flex justify-center items-center">
                                    <div class="flex justify-center items-center">
-                                        <a class="flex items-center mr-3" href="{{Route('product.show',$product)}}"> <i class="fa-solid fa-eye w-4 h-4 mr-1"></i> Show </a>
-                                        <a class="flex items-center mr-3" href="{{Route('product.edit',$product)}}"> <i class="fa-regular fa-pen-to-square w-4 h-4 mr-1"></i> Edit </a>
-                                        <button wire:click="selectItem({{$product->id}},'delete')" class="flex items-center ">
-                                            <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Archive
-                                        </button>
+                                        @can('product_show')
+                                            <a class="flex items-center mr-3" href="{{Route('product.show',$product)}}"> <i class="fa-solid fa-eye w-4 h-4 mr-1"></i> Show </a>
+                                        @endcan
+                                        @can('product_edit')
+                                            <a class="flex items-center mr-3" href="{{Route('product.edit',$product)}}"> <i class="fa-regular fa-pen-to-square w-4 h-4 mr-1"></i> Edit </a>
+                                        @endcan
+                                        @can('product_archive')
+                                            <button wire:click="selectItem({{$product->id}},'delete')" class="flex items-center ">
+                                                <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Archive
+                                            </button>
+                                        @endcan
+
                                    </div>
                                </div>
                            </td>
+                           @endif
                        </tr>
                    @endforeach
                    </tbody>
