@@ -13,6 +13,8 @@ use App\Jobs\CustomerVerifyJob;
 use App\Http\Requests\StoreCustomerRegister;
 use Laravolt\Avatar\Facade as Avatar;
 use Illuminate\Support\Str;
+Use Alert;
+
 class CustomerRegisterController extends Controller
 {
     //Customer Register Page
@@ -36,8 +38,6 @@ class CustomerRegisterController extends Controller
         ]);
 
         $avatar = Avatar::create($request->name)->save(storage_path('app/public/photos/'.$avatarname.'.png'));
-
-
 
         //Get the customer id that was inserted
         $last_id = $customer->id;
@@ -64,9 +64,11 @@ class CustomerRegisterController extends Controller
         dispatch(new CustomerVerifyJob($details));
         //Redirect if successful
         if( $customer ){
-            return back()->with('success',"You are now registered successfully");
+            Alert::success('Registered Successfully','You can now Login. Email verification has been sent into your email account.');
+            return redirect()->route('CLogin.index');
         }else{
-            return back()->with('fail',"Something went wrong!, failed to register");
+            Alert::success('Failed To Register','Something went wrong!, Failed to register');
+            return back();
         }
 
 

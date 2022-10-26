@@ -12,8 +12,12 @@ import { tns } from "tiny-slider/src/tiny-slider";
                 mouseDrag: true,
                 autoplay: true,
                 controls: false,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
                 nav: false,
                 speed: 500,
+
             });
         });
     }
@@ -39,6 +43,9 @@ import { tns } from "tiny-slider/src/tiny-slider";
                 mouseDrag: true,
                 autoplay: false,
                 controls: true,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
                 nav: false,
                 speed: 500,
             });
@@ -56,6 +63,9 @@ import { tns } from "tiny-slider/src/tiny-slider";
                 items: 1,
                 nav: false,
                 speed: 500,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
                 responsive: {
                     600: {
                         items: 3,
@@ -76,6 +86,9 @@ import { tns } from "tiny-slider/src/tiny-slider";
                 mouseDrag: true,
                 autoplay: false,
                 controls: true,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
                 items: 1,
                 nav: true,
                 speed: 500,
@@ -99,6 +112,9 @@ import { tns } from "tiny-slider/src/tiny-slider";
                 autoplay: false,
                 controls: true,
                 center: true,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
                 items: 1,
                 nav: false,
                 speed: 500,
@@ -120,6 +136,28 @@ import { tns } from "tiny-slider/src/tiny-slider";
                 mouseDrag: true,
                 autoplay: true,
                 controls: true,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
+                controlsContainer : false,
+                nav: false,
+                speed: 500,
+            });
+        });
+    }
+    if ($(".home-mode").length) {
+        $(".home-mode").each(function () {
+            tns({
+                mode: "gallery",
+                container: this,
+                slideBy: "page",
+                mouseDrag: true,
+                autoplay: true,
+                controls: false,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
+                controlsContainer : false,
                 nav: true,
                 speed: 500,
             });

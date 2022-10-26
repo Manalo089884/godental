@@ -76,7 +76,7 @@ class UserCreateForm extends Component
 
     public function render()
     {
-        $roles = Role::get();
+        $roles = Role::whereNotIn('name', ['Super Admin'])->get();
 
         return view('livewire.form.user-create-form',[
             'roles' => $roles

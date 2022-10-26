@@ -6,10 +6,23 @@
     <div class="bg-white my-10" style="width: 30rem">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                 <h2 class="font-medium text-base mr-auto">
-                   Forgot your password?
+                   Reset Password
                 </h2>
         </div>
-        <div id="vertical-form" class="p-5">
+
+        @if (session('success'))
+            <div class="p-5" >
+                <div class="flex justify-center">
+                    <i class="fa-regular fa-paper-plane fa-5x "></i>
+                </div>
+                <center>
+                    <div >{{ session('success') }}</div>
+                </center>
+                <a href="{{ Route('CLogin.index') }}" class="btn btn-primary w-full mt-2 mb-2">Ok</a>
+            </div>
+        @endif
+
+        <div id="vertical-form" class="p-5 @if(session('success'))hidden @endif">
             <form action="{{Route('resetcustomer.store')}}" method="POST">
                 @csrf
                 @if(session('success'))

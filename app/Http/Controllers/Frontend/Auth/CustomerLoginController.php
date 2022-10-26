@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Http\Requests\StoreLoginRequest;
 use Illuminate\Support\Facades\Auth;
+Use Alert;
 class CustomerLoginController extends Controller
 {
     //Login Customer Controller
@@ -16,12 +17,12 @@ class CustomerLoginController extends Controller
     //Login Function
     public function store(StoreLoginRequest $request){
         $request->validated();
-
         $creds = $request->only('email','password');
         if(Auth::guard('customer')->attempt($request->only('email','password'),$request->remember)){
-            return redirect()->route('cart.index');
+            Alert::success('Login Successfully ','Welcome to Go Dental' );
+            return redirect()->route('home');
         }else{
-            return back()->with('fail', 'Incorrect credentials');
+            return back()->with('fail', 'Your Account and/or password is incorrect, please try again');
         }
     }
 }

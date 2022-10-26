@@ -13,6 +13,8 @@ use App\Http\Requests\UpdateCustomerAddress;
 use App\Mail\CustomerVerifyMail;
 use App\Jobs\CustomerVerifyJob;
 use App\Models\CustomerVerify;
+Use Alert;
+
 class CustomerProfileController extends Controller
 {
     //Profile
@@ -146,10 +148,12 @@ class CustomerProfileController extends Controller
             'body'=> $message,
             'actionLink'=> $verifyURL,
         ];
-          //dispatch the job for sending the email
-          dispatch(new CustomerVerifyJob($details));
+        //dispatch the job for sending the email
+        dispatch(new CustomerVerifyJob($details));
 
-          return back()->with('success',"You account is now fully verified");
+        Alert::success('Email Verification Sent','The email verification has successfully been sent into your email account');
+
+        return back()->with('success',"You account is now fully verified");
 
     }
 

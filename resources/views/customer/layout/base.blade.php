@@ -50,6 +50,7 @@
         <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
 
         @stack('scripts')
+        @include('sweetalert::alert')
 
     </body>
 </html>

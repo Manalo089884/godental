@@ -15,6 +15,7 @@
         <div class="text-slate-500 mt-1">{{session('success')}}</div>
     </div>
 </div>
+
 <script>
 Toastify({
     node: $("#success-notification-content") .clone() .removeClass("hidden")[0],

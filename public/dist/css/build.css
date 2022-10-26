@@ -711,6 +711,9 @@ select {
 .visible {
   visibility: visible;
 }
+.invisible {
+  visibility: hidden;
+}
 .static {
   position: static;
 }
@@ -1224,6 +1227,9 @@ select {
 .place-items-center {
   place-items: center;
 }
+.content-center {
+  align-content: center;
+}
 .items-start {
   align-items: flex-start;
 }
@@ -1502,6 +1508,10 @@ select {
   -o-object-fit: contain;
      object-fit: contain;
 }
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .object-fill {
   -o-object-fit: fill;
      object-fit: fill;
@@ -1711,11 +1721,11 @@ select {
 .leading-tight {
   line-height: 1.25;
 }
-.leading-loose {
-  line-height: 2;
-}
 .leading-none {
   line-height: 1;
+}
+.leading-loose {
+  line-height: 2;
 }
 .leading-5 {
   line-height: 1.25rem;

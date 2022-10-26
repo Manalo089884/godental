@@ -6,12 +6,12 @@
                 <div class="col-span-12 xl:col-span-6">
                     <div>
                         <label for="name" class="form-label">Display Name</label>
-                        <input id="name" wire:model.lazy="name" type="text" class="form-control  @error('name') border-danger @enderror" placeholder="Input text">
+                        <input id="name" wire:model.lazy="name" type="text" class="form-control  @error('name') border-danger @enderror" placeholder="Please Enter User Name">
                         <div class="text-danger mt-2">@error('name'){{$message}}@enderror</div>
                     </div>
                     <div class="mt-3">
                         <label for="email" class="form-label">Email</label>
-                        <input id="email" wire:model.lazy="email" type="email" class="form-control  @error('email') border-danger @enderror" placeholder="Input text" >
+                        <input id="email" wire:model.lazy="email" type="email" class="form-control  @error('email') border-danger @enderror" placeholder="Please Enter User Email" >
                         <div class="text-danger mt-2">@error('email'){{$message}}@enderror</div>
                     </div>
                     <div class="mt-3">
@@ -27,7 +27,7 @@
                     <div class="mt-3">
                         <label for="gender" class="form-label">Gender</label>
                         <select  id="gender" wire:model.lazy="gender" class="form-select @error('gender') border-danger @enderror">
-                            <option value="">Select Role</option>
+                            <option value="">Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -37,17 +37,17 @@
                 <div class="col-span-12 xl:col-span-6">
                     <div class="mt-3 xl:mt-0">
                         <label for="age" class="form-label">Age</label>
-                        <input id="age" wire:model.lazy="age" type="number" class="form-control @error('age') border-danger @enderror" placeholder="Input text">
+                        <input id="age" wire:model.lazy="age" type="number" class="form-control @error('age') border-danger @enderror" placeholder="Please Enter User Age">
                         <div class="text-danger mt-2">@error('age'){{$message}}@enderror</div>
                     </div>
                     <div class="mt-3">
                         <label for="phone" class="form-label">Phone Number</label>
-                        <input id="phone" wire:model.lazy="phone" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Input text" >
+                        <input id="phone" wire:model.lazy="phone" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Please Enter User Mobile Number" >
                         <div class="text-danger mt-2">@error('phone'){{$message}}@enderror</div>
                     </div>
                     <div class="mt-3">
                         <label for="address" class="form-label">Address</label>
-                        <input id="address" wire:model.lazy="address" type="text" class="form-control @error('address') border-danger @enderror" placeholder="Input text" >
+                        <input id="address" wire:model.lazy="address" type="text" class="form-control @error('address') border-danger @enderror" placeholder="Please Enter User Address" >
                         <div class="text-danger mt-2">@error('address'){{$message}}@enderror</div>
                     </div>
                     <div class="mt-3">
@@ -55,17 +55,6 @@
                         <input id="password" wire:model.lazy="password" type="text" class="form-control @error('password') border-danger @enderror" placeholder="Input text" >
                         <div class="text-danger mt-2">@error('password'){{$message}}@enderror</div>
                     </div>
-
-
-                </div>
-                <div class="col-span-12 xl:col-span-6">
-                    <label for="prole" class="form-label">Profile Picture</label>
-                    <input type="file" wire:model.lazy="picture" class="form-control w-full p-2">
-                    @if($picture)
-                        <img src="{{ $picture->temporaryUrl() }}" data-action="zoom" class="mt-2" width="200"  alt="">
-                    @endif
-                    <div class="text-danger mt-2">@error('picture'){{$message}}@enderror</div>
-                    <div wire:loading wire:target="picture" wire:key="picture">Uploading....</div>
                 </div>
             </div>
             <div class="text-right mt-5">

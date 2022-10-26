@@ -38,7 +38,7 @@ class CustomerResetController extends Controller
         ];
 
         dispatch(new CustomerResetPasswordJob($details));
-        return back()->with('success', 'We have emailed your password reset link!');
+        return back()->with('success', 'A Verification email has been sent to this email address '.$request->email . ' Please verify it.');
     }
     public function ShowResetForm(Request $request, $token = null){
         return view('customer.auth.forgot')->with(['token' => $token,'email'=>$request->email]);
