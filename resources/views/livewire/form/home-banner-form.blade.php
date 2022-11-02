@@ -27,6 +27,7 @@
                     <div class="col-span-12">
                         <label for="pos-form-1" class="form-label">Image:</label>
                         <input type="file" wire:model.lazy="picture"  placeholder="text" class="form-control p-1 flex-1 @error('picture') border-danger @enderror">
+                        <div wire:loading wire:target="picture">Uploading...</div>
                         <div class="text-danger mt-2">@error('picture'){{$message}}@enderror</div>
                     </div>
                 </div>

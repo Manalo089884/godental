@@ -8,21 +8,21 @@
 </div>
 <div class="grid grid-cols-12 gap-6 mt-5">
     <!-- BEGIN: FAQ Menu -->
-    <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10 border-2 border-primary dark:border-primary">
+    <div  class="intro-y col-span-12 lg:col-span-4 box py-10 ">
         <i data-lucide="shield" class="block w-12 h-12 text-primary mx-auto"></i>
         <div class="font-medium text-center text-base mt-3">Mission</div>
         <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">Lorem Ipsum is simply dummy text of the printing</div>
-    </a>
-    <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
+    </div>
+    <div href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
         <i data-lucide="send" class="block w-12 h-12 text-primary mx-auto"></i>
         <div class="font-medium text-center text-base mt-3">Vision</div>
         <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">Lorem Ipsum is simply dummy text of the printing</div>
-    </a>
-    <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
+    </div>
+    <div href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
         <i data-lucide="trending-up" class="block w-12 h-12 text-primary mx-auto"></i>
         <div class="font-medium text-center text-base mt-3">Core Values</div>
         <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">Lorem Ipsum is simply dummy text of the printing</div>
-    </a>
+    </div>
     <!-- END: FAQ Menu -->
     <!-- BEGIN: FAQ Content -->
     <div class="intro-y col-span-12 lg:col-span-6">

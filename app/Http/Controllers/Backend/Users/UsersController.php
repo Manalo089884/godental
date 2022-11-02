@@ -19,4 +19,8 @@ class UsersController extends Controller
     public function create(){
         return view('admin.page.Users.usersadd');
     }
+
+    public function UserArchiveIndex(){
+        return view('admin.page.Users.userarchive');
+    }
 }

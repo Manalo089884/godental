@@ -8,7 +8,8 @@ class ShowSupplier extends Component
 {
     public $modelId;
     public $name;
-    public $contact;
+    public $contact_name;
+    public $contact_number;
     public $email;
     public $address;
 
@@ -34,7 +35,8 @@ class ShowSupplier extends Component
         $this->modelId = $modelId;
         $supplier = Supplier::onlyTrashed()->findorFail($this->modelId);
         $this->name = $supplier->name;
-        $this->contact = $supplier->contact;
+        $this->contact_name = $supplier->contact_name;
+        $this->contact_number = $supplier->contact_number;
         $this->email = $supplier->email;
         $this->address = $supplier->address;
     }
@@ -42,7 +44,8 @@ class ShowSupplier extends Component
     private function cleanVars(){
         $this->modelId = null;
         $this->name = null;
-        $this->contact = null;
+        $this->contact_name = null;
+        $this->contactcontact_number_name = null;
         $this->email = null;
         $this->address = null;
     }

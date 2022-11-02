@@ -23,11 +23,6 @@
                     <input wire:model.lazy="search" type="search" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
                 </div>
                 <div class="mt-2 xl:mt-0">
-                    @can('product_create')
-                        <a href="{{Route('product.create')}}">
-                            <button  type="button" class="btn btn-primary w-full sm:w-32" > </i> Add Product</button>
-                        </a>
-                    @endcan
                     @can('product_archive_access')
                         <a href="{{Route('ProductArchiveIndex')}}">
                             <button  type="button" class="btn btn-secondary w-full sm:w-32 mt-2 sm:mt-0 sm:ml-1" >  <i class="fa-solid fa-file-zipper w-4 h-4 mr-2"></i>Archive</button>
@@ -123,7 +118,7 @@
            @else
             <h2 class="intro-y text-lg font-medium mt-10">
                 <div class="flex justify-center flex-col">
-                    <img alt="Missing Image" class="object-fill  rounded-md h-48 w-96" src="{{ asset('dist/images/NoResultFound.svg') }}">
+                    <img alt="Missing Image" class="object-fill rounded-md h-48 " src="{{ asset('dist/images/NoResultFound.svg') }}">
                     <div class="flex justify-center">No Results found <strong class="ml-1"> {{ $search }}</strong>  </div>
                 </div>
             </h2>

@@ -32,6 +32,7 @@
                         <tr>
                             <th class="whitespace-nowrap ">Product Name</th>
                             <th class="whitespace-nowrap text-center">Category</th>
+                            <th class="whitespace-nowrap text-center">SKU</th>
                             <th class="whitespace-nowrap text-center">Inventory</th>
                             <th class="whitespace-nowrap text-center">Actions</th>
                         </tr>
@@ -39,10 +40,13 @@
                     <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td class="whitespace-nowrap font-medium"><a href="{{Route('product.show',$product)}}">{{$product->name}}
-                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{$product->brand->name}}</div></a>
-                             </td>
+                            <td class="whitespace-nowrap font-medium">
+                                <a href="{{Route('product.show',$product)}}">{{$product->name}}
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{$product->brand->name}}</div>
+                                </a>
+                            </td>
                             <td class="whitespace-nowrap text-center">{{$product->category->name}}</td>
+                            <td class="whitespace-nowrap text-center">{{ $product->SKU }} </td>
                             <td class="whitespace-nowrap text-center">
                              @if($product->stock <= 10)
                              <div class="text-danger">{{$product->stock}} in stock</div>
@@ -50,7 +54,6 @@
                                  {{$product->stock}} in stock
                              @endif
                          </td>
-
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <div class="flex justify-center items-center">
@@ -58,9 +61,13 @@
                                             <i class="fa-regular fa-pen-to-square w-4 h-4 mr-1"></i> Edit
                                         </button>
 
-                                        <button wire:click="selectItem({{$product->id}},'adjust')" class="flex items-center text-danger">
-                                            <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Adjust
+                                        <button wire:click="selectItem({{$product->id}},'adjust')" class="flex items-center mr-3">
+                                            <i class="fa-solid fa-sliders w-4 h-4 mr-1"></i> Adjust
                                         </button>
+
+                                        <a href="{{ Route('ProductInventoryHistory', $product) }}" class="flex items-center">
+                                            <i class="fa-solid fa-timeline w-4 h-4 mr-1"></i>Logs
+                                        </a>
                                     </div>
                                 </div>
                             </td>

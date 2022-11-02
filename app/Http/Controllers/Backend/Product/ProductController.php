@@ -36,39 +36,6 @@ class ProductController extends Controller
         ]);
     }
 
-    //Store Product in Database
-    public function store(StoreProductRequest $request){
-        abort_if(Gate::denies('product_create'),403);
-        $request->validated();
-        $archived = $request->boolean('status');
-        $new_product = Product::create([
-            'name' => $request->name,
-            'category_id' => $request->category,
-            'brand_id' => $request->brand,
-            'suppliers_id' => $request->supplier,
-            'stock' => $request->stock,
-            'SKU' => $request->SKU,
-            'cprice' => $request->cprice,
-            'sprice' => $request->sprice,
-            'weight' => $request->weight,
-            'status' => $archived,
-            'stock_warning' => $request->w_stock,
-            'description' => $request->description,
-
-        ]);
-
-        if($request->has('images')){
-            foreach($request->file('images') as $image){
-            $imageName = time().$image->getClientOriginalName();
-            $image->move(public_path('product_images'),$imageName);
-            ProductImage::create([
-                'product_id' => $new_product->id,
-                'images' =>  $imageName,
-            ]);
-            }
-        }
-        return redirect()->route('product.index')->with('success', $request->name .' was successfully inserted');
-    }
     //Show Edit Product Page
     public function edit(Product $product){
         abort_if(Gate::denies('product_edit'),403);
@@ -86,46 +53,6 @@ class ProductController extends Controller
         ]);
     }
 
-    //Update Product Info from database
-    public function update(Request $request,$id ){
-        abort_if(Gate::denies('product_edit'),403);
-        $this->validate($request, array(
-            'name'=> "required|unique:product,name,$id",
-            'category' => 'required',
-            'brand' => 'required',
-            'supplier' => 'required',
-            'stock' => 'required|numeric|min:0',
-            'w_stock' => 'required|numeric|min:0',
-            'SKU' => 'required',
-            'cprice' => 'required|numeric|min:0',
-            'sprice' => 'required|numeric|min:0',
-            'weight' => 'required|numeric',
-            'description' => 'required',
-
-        ));
-        //$request->validated();
-        $product = Product::findorFail($id);
-        $status = $request->boolean('status');
-
-        $product->name = $request->input('name');
-        $product->category_id = $request->input('category');
-        $product->brand_id = $request->input('brand');
-        $product->suppliers_id = $request->input('supplier');
-        $product->stock = $request->input('stock');
-        $product->stock_warning = $request->input('w_stock');
-        $product->SKU = $request->input('SKU');
-        $product->cprice = $request->input('cprice');
-        $product->sprice = $request->input('sprice');
-        $product->weight = $request->input('weight');
-        $product->status = $status;
-        $product->description = $request->input('description');
-        $product->update();
-
-        return redirect()->route('product.index')->with('ProductEditSuccess', $request->name .' was successfully Edit');
-
-    }
-
-
     //Show Product Page Info
     public function show(Product $product){
         abort_if(Gate::denies('product_show'),403);
@@ -139,6 +66,14 @@ class ProductController extends Controller
             'products' => $products
         ]);
       }
+
+    public function ProductInventoryHistory($id){
+        $product = Product::findorfail($id);
+
+        return view('admin.page.product.inventoryhistory',[
+            'product' => $product,
+        ]);
+    }
 
     //Export Product to Excel
     public function exportproductexcel(){

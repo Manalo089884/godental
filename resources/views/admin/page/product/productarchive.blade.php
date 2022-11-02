@@ -2,7 +2,9 @@
 @section('content')
 @section('title', 'Product')
 
-<h2 class="text-lg font-medium mr-auto intro-y mt-10">List of Archive Products</h2>
+<h2 class="text-lg font-medium mr-auto intro-y mt-10">
+    <a href="{{ url()->previous() }}" class="mr-2 btn">←</a> List of Archive Products
+</h2>
 
 <livewire:table.product-archive-table/>
 <livewire:modal.force-delete-product/>

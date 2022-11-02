@@ -27,6 +27,11 @@ class HomeBannerTable extends Component
         if($action == 'delete'){
             $this->emit('getModelDeleteModalId',$this->selectedItem);
             $this->dispatchBrowserEvent('openDeleteModal');
+        }else if($action == 'edit'){
+            $this->emit('getEditModalId',$this->selectedItem);
+            $this->dispatchBrowserEvent('openEditModal');
+        }else{
+
         }
             $this->action = $action;
     }

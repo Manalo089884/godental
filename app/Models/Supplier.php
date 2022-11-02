@@ -12,8 +12,9 @@ class Supplier extends Model
 
     protected $fillable = [
        'name',
+       'contact_name',
        'email',
-       'contact',
+       'contact_number',
        'address'
    ];
    public function getRouteKeyName()

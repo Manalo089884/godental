@@ -84,15 +84,7 @@ class ProductTable extends Component
 
     public function selectItem($itemId,$action){
         $this->selectedItem = $itemId;
-        /*
-        if($action == 'edit'){
-            $this->emit('getEditModalID',$this->selectedItem);
-            $this->dispatchBrowserEvent('openEditModal');
-        }else{
-            $this->emit('getModelDeleteModalId',$this->selectedItem);
-            $this->dispatchBrowserEvent('openDeleteModal');
-        }
-        */
+
         if($action == 'delete'){
             $this->emit('getModelDeleteModalId',$this->selectedItem);
             $this->dispatchBrowserEvent('openDeleteModal');

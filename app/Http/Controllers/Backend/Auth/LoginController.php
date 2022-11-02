@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+Use Alert;
+use App\Models\User;
 class LoginController extends Controller
 {
      public function __construct(){
@@ -20,13 +22,19 @@ class LoginController extends Controller
         ],[
             'email.exists' => 'Email does not exists'
         ]);
-
-        $creds = $request->only('email','password');
-        if(Auth::guard('web')->attempt($request->only('email','password'),$request->remember)){
-            return redirect()->route('dashboard.index');
+        $restricteduser = User::onlyTrashed()->where('email',$request->email)->get();
+        if(count($restricteduser) == 0){
+            $creds = $request->only('email','password');
+            if(Auth::guard('web')->attempt($request->only('email','password'),$request->remember)){
+                return redirect()->route('dashboard.index');
+            }else{
+                return back()->with('fail', 'Incorrect credentials');
+            }
         }else{
-            return back()->with('fail', 'Incorrect credentials');
+            Alert::error('Account Restricted','Contact the Administrator to unlift the restriction' );
+            return back();
         }
+
 
         /*
          if(!auth()->attempt($request->only('email','password'),$request->remember)){

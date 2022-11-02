@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->foreignId('category_id')->constrained('category');
             $table->foreignId('brand_id')->constrained('brand');
-            $table->foreignId('suppliers_id')->constrained('suppliers');
+
             $table->integer('stock');
-            $table->integer('stock_warning');
+            $table->integer('stock_warning')->nullable();
             $table->string('SKU')->unique();
-            $table->decimal('cprice',8,2);
+            $table->decimal('cprice',8,2)->nullable();
             $table->decimal('sprice',8,2);
             $table->decimal('weight',8,2);
             $table->string('status');

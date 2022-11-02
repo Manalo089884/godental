@@ -4,9 +4,8 @@ namespace App\Http\Livewire\Form;
 
 use Livewire\Component;
 use App\Models\Home;
-use Illuminate\Validation\Rule;
 use Livewire\WithFileUploads;
-use Carbon\Carbon;
+
 
 class HomeBannerForm extends Component
 {
@@ -15,7 +14,6 @@ class HomeBannerForm extends Component
     public $title,$status,$picture;
 
     protected $listeners = [
-
         'refreshChild' => '$refresh',
         'forceCloseModal',
     ];

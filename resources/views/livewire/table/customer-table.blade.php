@@ -44,7 +44,7 @@
                    <tbody>
                    @foreach($customers as $customer)
                        <tr>
-                           <td class="whitespace-nowrap ">{{$customer->name}} </td>
+                           <td class="whitespace-nowrap "><a href="{{ Route('customer.show',$customer) }}">{{$customer->name}}</a> </td>
                            <td class="whitespace-nowrap text-center">{{$customer->email}}</td>
                            <td class="whitespace-nowrap text-center">{{$customer->phone_number}}</td>
                            <td class="whitespace-nowrap text-center">0 orders</td>
@@ -52,11 +52,8 @@
                            <td class="table-report__action w-56">
                                <div class="flex justify-center items-center">
                                    <div class="flex justify-center items-center">
-                                        <button  class="flex items-center mr-3">
-                                            <i class="fa-regular fa-pen-to-square w-4 h-4 mr-1"></i> Edit
-                                        </button>
-                                        <button  class="flex items-center text-danger">
-                                            <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Delete
+                                        <button wire:click="selectItem({{$customer->id}},'restrict')" class="flex items-center">
+                                            <i class="fa-solid fa-user-slash w-4 h-4 mr-1"></i>Restrict Account
                                         </button>
                                    </div>
                                </div>
@@ -68,8 +65,11 @@
            </div>
            @else
            <h2 class="intro-y text-lg font-medium mt-10">
-               No Results found <strong>{{{request()->query('search')}}}</strong>
-           </h2>
+                <div class="flex justify-center flex-col">
+                    <img alt="Missing Image" class="object-fill rounded-md h-48 " src="{{ asset('dist/images/NoResultFound.svg') }}">
+                    <div class="flex justify-center">No Results found <strong class="ml-1"> {{ $search }}</strong>  </div>
+                </div>
+            </h2>
            @endif
        </div>
 

@@ -2,7 +2,7 @@
 @section('content')
 @section('title', 'Supplier')
 <h2 class="intro-y text-lg font-medium mt-10">
-    Supplier List
+    <a href="{{ url()->previous() }}" class="mr-2 btn">←</a>  Supplier Archive List
 </h2>
 
 <livewire:table.suppler-archive-table/>

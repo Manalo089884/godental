@@ -134,7 +134,7 @@
                                     <!-- Begin: Product Image if there is one image -->
                                     @foreach ($product->images as $model)
                                         <div>
-                                            <img alt="Missing Image" data-action="zoom" class="object-fill h-full w-full " src="/product_images/{{$model->images}}">
+                                            <img alt="Missing Image" data-action="zoom" class="object-fill h-full w-full " src="{{ url('storage/product_photos/'.$model->images) }}">
                                         </div>
                                     @endforeach
                                     <!-- END: Product Image if there is one image -->
@@ -145,7 +145,7 @@
                                             @foreach ($product->images as $model)
                                             <div class="h-64 px-2">
                                                 <div class="object-fill h-full w-full" style="height: 100%;">
-                                                    <img alt="" src="/product_images/{{$model->images}}" data-action="zoom" style="height: 100%;" class=""/>
+                                                    <img alt="" src="{{ url('storage/product_photos/'.$model->images) }}" data-action="zoom" style="height: 100%;" class=""/>
                                                 </div>
                                             </div>
                                             @endforeach

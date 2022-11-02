@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\Product\CategoryController;
 use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\Product\ProductImageController;
 use App\Http\Controllers\Backend\Product\InventoryController;
+use App\Http\Controllers\Backend\Product\InventoryTransferController;
 use App\Http\Controllers\Backend\Product\SupplierController;
 //Import Admin Transaction Stuff
 use App\Http\Controllers\Backend\Transaction\ChatController;
@@ -71,12 +72,18 @@ Route::group(['prefix' => 'admin'],function(){
             Route::resource('dashboard', DashboardController::class)->only(['index']);
             Route::resource('brand',  BrandController::class)->only(['index']);
             Route::resource('category',  CategoryController::class)->only('index');
+
             Route::resource('inventory',  InventoryController::class)->except(['edit','show','create']);
+            Route::resource('transfer', InventoryTransferController::class);
+            //This 2 Might Get deleted soon waiting for confirmation
             Route::post('addimage/{id}', [ProductImageController::class,'addImages'])->name('add');
             Route::delete('/productimage/{id}', [ProductImageController::class,'removeImage']);
+
             Route::get('/product/archive', [ProductController::class,'ProductArchiveIndex'])->name('ProductArchiveIndex');
             Route::put('/product/archive/{id}', [ProductController::class, 'ProductArchiveRestore']);
             Route::delete('/product/archive/{id}', [ProductController::class, 'ProductArchiveDestroy']);
+            Route::get('product/inventory_history/{id}',[ProductController::class, 'ProductInventoryHistory'])->name('ProductInventoryHistory');
+
             Route::resource('product',  ProductController::class);
             Route::resource('orders', OrderController::class)->only('index');
             Route::resource('chat', ChatController::class)->only('index');
@@ -89,7 +96,11 @@ Route::group(['prefix' => 'admin'],function(){
             Route::resource('changepassword', ChangePasswordController::class)->only('index');
             Route::resource('analytics', AnalyticsController::class)->only('index');
             Route::resource('report', ReportController::class);
-            Route::resource('customer', CustomerController::class)->only('index');
+
+            Route::get('/customer/archive',[CustomerController::class,'CustomerArchiveIndex'])->name('CustomerArchiveIndex');
+            Route::resource('customer', CustomerController::class)->only('index','show');
+
+            Route::get('/user/archive',[UsersController::class,'UserArchiveIndex'])->name('UserArchiveIndex');
             Route::resource('user', UsersController::class);
             Route::post('role/{role}/permissions',[RoleController::class, 'givePermission'])->name('roles.permissions');
             Route::delete('role/{role}/permissions/{permission}',[RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');

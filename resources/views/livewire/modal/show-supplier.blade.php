@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
                 <div class="col-span-12 sm:col-span-6">
-                    <label for="modal-form-1" class="form-label font-medium">Supplier Name:</label>
+                    <label for="modal-form-1" class="form-label font-medium">Company Name:</label>
                     <label class="form-label">{{ $name }}</label>
                 </div>
                 <div class="col-span-12 sm:col-span-6">
@@ -17,12 +17,16 @@
                     <label class="form-label">{{ $email }}</label>
                 </div>
                 <div class="col-span-12 sm:col-span-6">
-                    <label for="modal-form-1" class="form-label font-medium">Supplier Contact Number:</label>
-                    <label class="form-label">{{ $contact }}</label>
+                    <label for="modal-form-1" class="form-label font-medium">Supplier Contact Name:</label>
+                    <label class="form-label">{{ $contact_name }}</label>
                 </div>
                 <div class="col-span-12 sm:col-span-6">
+                    <label for="modal-form-1" class="form-label font-medium">Supplier Contact Number:</label>
+                    <label class="form-label">{{ $contact_number }}</label>
+                </div>
+                <div class="col-span-12 ">
                     <label for="modal-form-1" class="form-label font-medium">Supplier Address:</label>
-                    <label class="form-label">{{ $contact }}</label>
+                    <label class="form-label">{{ $address }}</label>
                 </div>
             </div>
             <div class="modal-footer text-right">

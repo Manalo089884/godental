@@ -9,10 +9,7 @@
                 <div class="dropdown-menu w-40">
                     <ul class="dropdown-content">
                         <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> Add Group </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Send Message </a>
+                            <a href="{{ Route('UserArchiveIndex') }}" class="dropdown-item"><i class="fa-solid fa-user-slash w-4 h-4 mr-2"></i> Deactivated Accounts </a>
                         </li>
                     </ul>
                 </div>
@@ -60,7 +57,9 @@
                         <div class="dropdown-menu w-40">
                             <div class="dropdown-content">
                                 <a href="" class="dropdown-item"> <i class="fa-solid fa-pen mr-1"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i class="fa-solid fa-trash mr-1"></i> Delete </a>
+                                <button wire:click="selectItem({{$user->id}},'restrict')" class="flex items-center dropdown-item w-full">
+                                    <i class="fa-solid fa-trash w-4 h-4 mr-1"></i>Deactivate
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -61,7 +61,7 @@
                                                 <img alt="Missing Image"  class="object-fill    h-48 rounded-md w-96" src="{{ asset('dist/images/logo.png') }}">
                                             @else
                                                 @foreach ($product->images->take(1)  as $model)
-                                                    <img alt="Missing Image"  class="object-fill    h-48 rounded-md w-96" src="/product_images/{{$model->images}}">
+                                                    <img alt="Missing Image"  class="object-fill    h-48 rounded-md w-96" src="{{ url('storage/product_photos/'.$model->images) }}">
                                                 @endforeach
                                             @endif
                                         </div>

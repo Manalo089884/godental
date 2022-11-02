@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\Form;
 use App\Models\Product;
+use App\Models\InventoryHistory;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+
 
 class InventoryEditForm extends Component
 {
@@ -19,9 +22,24 @@ class InventoryEditForm extends Component
 
     protected function rules(){
         return [
-            'inventoryedit' => 'required|numeric'
+            'inventoryedit' => 'required|numeric|min:0'
         ];
     }
+
+    public function updated($fields){
+        $this->validateOnly($fields,[
+            'inventoryedit' => 'required|numeric|min:0',
+        ]);
+    }
+
+    protected $messages = [
+        'inventoryedit.min' => 'Product Stock Cannot Be A Negative Value',
+        'inventoryedit.required' => 'Product Stock Cannot Be Empty',
+        'inventoryedit.numeric' => 'Product Stock Must Be A Number'
+    ];
+
+
+
     public function forceCloseModal(){
         $this->cleanVars();
         $this->resetErrorBag();
@@ -34,23 +52,38 @@ class InventoryEditForm extends Component
         $this->productname = $product->name;
     }
 
-    public function updated($fields){
-        $this->validateOnly($fields,[
-            'inventoryedit' => 'required|numeric',
-        ]);
-    }
-
-
     public function EditInventoryData(){
         $product = Product::findorFail($this->modelId);
+        $old = $product->stock;
         $this->validate();
         $product->stock = $this->inventoryedit;
         $product->update();
+        $total = $this->inventoryedit - $old;
+        if($total != 0){
+            if($total >= 1){
+                $value = "+".$total;
+            }else{
+                $value = $total;
+            }
+            $operationvalue = '('.$value.')';
+            $latestvalue = $product->stock;
+            //$available =   '('.$value.')'.$product->stock;
+            InventoryHistory::create([
+                'product_id' => $product->id,
+                'activity' => 'Inventory Correction',
+                'adjusted_by' => Auth::guard('web')->user()->name,
+                'operation_value' => $operationvalue,
+                'latest_value' => $latestvalue,
+            ]);
+            $this->dispatchBrowserEvent('SuccessAlert',[
+                'name' => $this->productname.' stock was successfully edited!',
+                'title' => 'Product Inventory Edited',
+            ]);
 
-        $this->dispatchBrowserEvent('SuccessAlert',[
-            'name' => $this->productname.' was successfully saved!',
-            'title' => 'Product Inventory Edited',
-        ]);
+        }
+
+
+
 
         $this->cleanVars();
         $this->dispatchBrowserEvent('CloseModal');

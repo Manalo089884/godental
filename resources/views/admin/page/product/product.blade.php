@@ -1,9 +1,18 @@
 @extends('admin.layout.admin')
 @section('content')
 @section('title', 'Product')
-<h2 class="intro-y text-lg font-medium mt-10">
-    Product List
-</h2>
+<div class="intro-y flex justify-between  items-center mt-8">
+    <div>
+        <h2 class="text-lg font-medium mr-auto">
+            Product List
+         </h2>
+    </div>
+    @can('product_create')
+    <div>
+        <a href="{{ Route('product.create') }}" class="btn btn-primary">Create Product</a>
+    </div>
+    @endcan
+</div>
 
 <livewire:table.product-table/>
 
@@ -120,8 +129,7 @@ Toastify({
     //Hide Modal and Refresh its value
     const DeleteModal = document.getElementById('delete-confirmation-modal')
     DeleteModal.addEventListener('hidden.tw.modal', function(event) {
-        console.log('Working');
         livewire.emit('forceCloseModal');
-    })
+    });
 </script>
 @endpush

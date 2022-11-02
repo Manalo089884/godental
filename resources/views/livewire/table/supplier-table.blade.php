@@ -63,7 +63,8 @@
                <table class="table table-striped mt-5 table-hover" >
                    <thead>
                        <tr>
-                           <th class="whitespace-nowrap ">Supplier Name</th>
+                           <th class="whitespace-nowrap ">Company Name</th>
+                           <th class="whitespace-nowrap text-center">Contact Name</th>
                            <th class="whitespace-nowrap text-center">Email</th>
                            <th class="whitespace-nowrap text-center">Contact Number</th>
                            <th class="whitespace-nowrap text-center">Address</th>
@@ -77,8 +78,9 @@
                         @foreach($suppliers as $supplier)
                             <tr class="intro-x">
                                 <td class="whitespace-nowrap font-medium"><a href="">{{$supplier->name}}</td>
+                                <td class="whitespace-nowrap text-center">{{$supplier->contact_name}}</td>
                                 <td class="whitespace-nowrap text-center">{{$supplier->email}}</td>
-                                <td class="whitespace-nowrap text-center">{{$supplier->contact}}</td>
+                                <td class="whitespace-nowrap text-center">{{$supplier->contact_number}}</td>
                                 <td class="whitespace-nowrap text-center">{{ $supplier->address }}</td>
                                 @if (Auth::guard('web')->user()->can('supplier_show') || Auth::guard('web')->user()->can('supplier_edit') || Auth::guard('web')->user()->can('supplier_archive'))
                                     <td class="table-report__action w-56">

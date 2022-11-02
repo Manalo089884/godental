@@ -11,13 +11,6 @@
             <h2 class="font-medium text-base mr-auto">
                 Product Information
             </h2>
-            <!-- BEGIN: Modal Toggle -->
-            <div class="text-center">
-                <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#ShowSupplierModal" class="btn btn-outline-primary w-32 mr-1">
-                    <i class="fa-solid fa-eye w-4 h-4 mr-1"></i>Supplier Info
-                </a>
-            </div>
-             <!-- END: Modal Toggle --> <!-- BEGIN: Modal Content -->
           </div>
         <div class="p-5">
             <div class="grid grid-cols-12 gap-x-5">
@@ -97,10 +90,10 @@
             @else
                 <div class="intro-y grid grid-cols-12 gap-6 mt-5" id="datatable">
                     @foreach ($product->images as $model)
-                        <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
+                        <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4">
                             <div class="p-5">
                                 <div class="flex items-center justify-center ">
-                                    <img class="object-contain h-48 " src="/product_images/{{$model->images}}"  data-action="zoom" alt="">
+                                    <img class="object-contain h-48 " src="{{ url('storage/product_photos/'.$model->images) }}"  data-action="zoom" alt="">
                                 </div>
                             </div>
                         </div>
@@ -115,42 +108,4 @@
     </div>
     <!-- END: Product Image  -->
 </div>
-
-<div id="ShowSupplierModal" class="modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="font-medium text-base mr-auto">
-                    Supplier Information
-                </h2>
-            </div>
-            <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
-                <div class="col-span-12 sm:col-span-6">
-                    <label for="modal-form-1" class="form-label font-medium">Supplier Name:</label>
-                    <label class="form-label">{{ $product->suppliers->name }}</label>
-                </div>
-                <div class="col-span-12 sm:col-span-6">
-                    <label for="modal-form-1" class="form-label font-medium">Supplier Email:</label>
-                    <label class="form-label">{{ $product->suppliers->email }}</label>
-                </div>
-                <div class="col-span-12 sm:col-span-6">
-                    <label for="modal-form-1" class="form-label font-medium">Supplier Contact Number:</label>
-                    <label class="form-label">{{ $product->suppliers->contact }}</label>
-                </div>
-                <div class="col-span-12 sm:col-span-6">
-                    <label for="modal-form-1" class="form-label font-medium">Supplier Address:</label>
-                    <label class="form-label">{{ $product->suppliers->address }}</label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">
-                    Dismiss
-                </button>
-            </div>
-            <!-- END: Modal Footer -->
-        </div>
-    </div>
-</div>
-
-
 @endsection

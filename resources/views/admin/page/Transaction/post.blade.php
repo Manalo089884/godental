@@ -1,11 +1,11 @@
 @extends('admin.layout.admin')
 @section('content')
-@section('title', 'Post')
+@section('title', 'Home Banner')
 <h2 class="intro-y text-lg font-medium mt-10">
     Home Banner
 </h2>
 <livewire:form.home-banner-form/>
-
+<livewire:form.home-banner-edit-form/>
 <livewire:table.home-banner-table/>
 
 <livewire:modal.delete-banner/>
@@ -44,9 +44,23 @@
      myModalEl.addEventListener('hidden.tw.modal', function(event) {
         livewire.emit('forceCloseModal');
     });
+    //Show Edit Form Modal
+    const BannerEditModal = tailwind.Modal.getOrCreateInstance(document.querySelector("#edit-item-modal"));
+    window.addEventListener('openEditModal',event => {
+        BannerEditModal.show();
+    });
+    //Hide Delete Modal
+    window.addEventListener('CloseEditModal',event => {
+        BannerEditModal.hide();
+    });
+    //Hide Modal and Refresh its value
+    const EditForceClose = document.getElementById('edit-item-modal')
+    EditForceClose.addEventListener('hidden.tw.modal', function(event) {
+        livewire.emit('forceCloseEditModal');
+    });
 
- //Delete Modal
- const BannerDeleteModal = tailwind.Modal.getOrCreateInstance(document.querySelector("#delete-confirmation-modal"));
+    //Delete Modal
+    const BannerDeleteModal = tailwind.Modal.getOrCreateInstance(document.querySelector("#delete-confirmation-modal"));
     //Show Delete Modal
     window.addEventListener('openDeleteModal',event => {
         BannerDeleteModal.show();
@@ -58,9 +72,10 @@
     //Hide Modal and Refresh its value
     const DeleteModal = document.getElementById('delete-confirmation-modal')
     DeleteModal.addEventListener('hidden.tw.modal', function(event) {
-        console.log('Working');
         livewire.emit('forceCloseModal');
     });
+
+
      //SuccessAlert
      window.addEventListener('SuccessAlert',event => {
         let id = (Math.random() + 1).toString(36).substring(7);

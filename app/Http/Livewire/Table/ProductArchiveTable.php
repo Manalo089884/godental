@@ -31,7 +31,6 @@ class ProductArchiveTable extends Component
     {
         if($this->sorting == 'nameaz'){
             $products = Product::where('name','like','%'.$this->search.'%')
-
             ->onlyTrashed()
             ->with('category','brand','images')
             ->orderBy('name','asc')

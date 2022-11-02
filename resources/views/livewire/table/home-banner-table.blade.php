@@ -38,7 +38,7 @@
                              </a>
                             <div class="dropdown-menu w-40">
                                 <div class="dropdown-content">
-                                    <button  class="dropdown-item w-full"> <i class="fa-solid fa-pen mr-1"></i></i> Edit </button>
+                                    <button wire:click="selectItem({{ $banner->id }},'edit')" class="dropdown-item w-full"> <i class="fa-solid fa-pen mr-1"></i></i> Edit </button>
                                     <button wire:click="selectItem({{$banner->id}},'delete')"  class="dropdown-item w-full"> <i class="fa-solid fa-trash mr-1"></i> Delete </button>
                                 </div>
                             </div>

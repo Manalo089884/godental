@@ -8,6 +8,7 @@ class Product extends Model
 {
     use HasFactory,SoftDeletes;
      protected $table = 'product';
+
      protected $fillable = [
         'name',
         'category_id',
@@ -29,10 +30,10 @@ class Product extends Model
       static::query()->where('name','like','%'.$search.'%')
       ->orWhere('stock','like','%'.$search.'%');
     }
-    public function getRouteKeyName()
-    {
-        return 'name';
-    }
+   // public function getRouteKeyName()
+    //{
+   //     return 'name';
+   // }
     public function brand(){
         return $this-> belongsTo(Brand::class);
     }
@@ -45,8 +46,13 @@ class Product extends Model
     public function images(){
        return $this->hasMany(ProductImage::class);
     }
+    /*
     public function productcart()
     {
         return $this-> belongsTo(CustomerCart::class);
+    }
+    */
+    public function ProductTransaction(){
+        return $this->hasMany(CustomerCart::class);
     }
 }

@@ -25,7 +25,7 @@ createApp({
                         cartItems.value.push(product)
                     })
              })
-            
+
         })
         return{
             cartItems,

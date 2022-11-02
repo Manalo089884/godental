@@ -64,6 +64,11 @@ class RoleAndPermissionsSeeder extends Seeder
             'order_access',
             'post_access',
             'chat_access',
+            'inventory_access',
+            'inventory_edit',
+            'inventory_logs',
+            'inventory_transfer_access',
+            'inventory_transfer_create',
 
         ];
         foreach($permissions as $permission){

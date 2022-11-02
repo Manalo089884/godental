@@ -8,13 +8,12 @@
                 </h2>
             </div>
             <form wire:submit.prevent="EditInventoryData">
+                @csrf
                 <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
                     <div class="col-span-12">
-                        @csrf
                         <label for="pos-form-1" class="form-label">Edit Stock</label>
-                        <input type="number" id="inventoryedit" wire:model.lazy="inventoryedit" class="form-control flex-1 @error('name') border-danger @enderror" placeholder="Number" >
+                        <input type="number" id="inventoryedit" wire:model.lazy="inventoryedit" min="0"  onkeypress="return event.charCode >= 48" class="form-control flex-1 @error('name') border-danger @enderror" placeholder="Number" >
                         <div class="text-danger mt-2">@error('inventoryedit'){{$message}}@enderror</div>
-
                     </div>
                 </div>
                 <div class="modal-footer text-right">

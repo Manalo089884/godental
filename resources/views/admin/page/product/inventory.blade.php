@@ -2,6 +2,7 @@
 @section('content')
 @section('title', 'Inventory')
 <h2 class="intro-y text-lg font-medium mt-10">Inventory</h2>
+
 <livewire:table.product-inventory-table/>
 <livewire:form.inventory-adjust-form/>
 <livewire:form.inventory-edit-form/>
@@ -73,6 +74,30 @@
             toast.querySelector("#title").innerText = event.detail.title
             toast.querySelector("#message").innerText = event.detail.name
         });
+
+
+    var inputBox = document.getElementById("inventoryedit");
+        var invalidChars = [
+          "e",
+        ];
+
+        inputBox.addEventListener("keydown", function(e) {
+          if (invalidChars.includes(e.key)) {
+            e.preventDefault();
+          }
+    });
+
+    var inputBox = document.getElementById("inventoryAdjust");
+        var invalidChars = [
+          "e",
+        ];
+
+        inputBox.addEventListener("keydown", function(e) {
+          if (invalidChars.includes(e.key)) {
+            e.preventDefault();
+          }
+    });
+
 
 </script>
 @endpush
