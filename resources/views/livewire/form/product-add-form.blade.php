@@ -217,7 +217,7 @@
                                             <div class="font-medium">SKU (Stock Keeping Unit)</div>
                                             <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
                                         </div>
-                                        <div class="leading-relaxed text-slate-500 text-xs mt-3"> Use a unique SKU code if you want to mark your product. </div>
+                                        <div class="leading-relaxed text-slate-500 text-xs mt-3"> Use a unique SKU code if you want to mark your product </div>
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
