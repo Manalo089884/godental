@@ -11,7 +11,7 @@
         </div>
     </div>
 </div>
-<!-- BEGIN: Wizard Layout -->
+<!-- BEGIN: Registration Layout -->
 <div class="items-center justify-center flex" >
     <div class="intro-y box py-10 sm:py-10 mt-5" style="width: 54rem">
         <div class="px-1 mt-0">
@@ -76,10 +76,16 @@
                             <input type="text" class="datepicker form-control pl-12" name="birthday" data-single-mode="true" value="{{ old('birthday') }}">
                         </div>
                     </div>
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <div class="w-full">
+                            {!! NoCaptcha::renderJs() !!}
+                            {!! NoCaptcha::display() !!}
+                        </div>
+                    </div>
                 </div>
                 <button class="intro-x btn btn-primary mt-5 w-full">Register</button>
-                <div class="text-slate-500 text-justify mt-4 intro-x">By proceeding to sign up,
-                    I acknowledge that I have read and consented to Go Dental <a href="{{ Route('terms') }}" class="text-success">Terms of Use</a> and <a href="{{ Route('privacy') }}" class="text-success">Privacy Policy</a>,
+                <div class="text-slate-500 text-justify mt-4 intro-x">
+                    By proceeding to sign up,I acknowledge that I have read and consented to Go Dental <a href="{{ Route('terms') }}" class="text-success">Terms of Use</a> and <a href="{{ Route('privacy') }}" class="text-success">Privacy Policy</a>,
                     which sets out how Go Dental collects, uses and discloses my personal data, and the rights that
                     I have under applicable law.
                 </div>

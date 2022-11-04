@@ -166,6 +166,8 @@ return [
         Laravolt\Avatar\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+
 
 
         /*
@@ -199,6 +201,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // ...
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ])->toArray(),
 
 ];

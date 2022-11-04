@@ -29,7 +29,15 @@ class StoreCustomerRegister extends FormRequest
             'phone'=>'required|numeric',
             'birthday' => 'required',
             'gender' => 'required|max:255',
-            'password' => 'required|min:8|max:255|confirmed'
+            'password' => 'required|min:8|max:255|confirmed',
+            'g-recaptcha-response' => 'required|captcha',
+        ];
+    }
+
+    public function messages(){
+        return [
+            'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+            'g-recaptcha-response.captcha' =>  'Captcha error! try again later or contact site admin.',
         ];
     }
 }
