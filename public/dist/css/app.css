@@ -9840,10 +9840,9 @@ html body {
   position: relative;
 }
 .search .search__input {
-  width: 14rem;
+  width: 18rem;
   border-radius: 9999px;
   background-color: rgb(var(--color-slate-300) / 0.5);
-  padding-right: 2rem;
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -9857,9 +9856,7 @@ html body {
 .dark .search .search__input {
   background-color: rgb(var(--color-darkmode-400) / 0.7);
 }
-.search .search__input:focus {
-  width: 18rem;
-}
+
 .search .search__icon {
   position: absolute;
   top: 0px;
@@ -15408,14 +15405,12 @@ html body {
 }
 .search-result {
     width: 450px;
-    visibility: hidden;
     position: absolute;
     right: 0px;
     z-index: 20;
     margin-top: 0.25rem;
-    opacity: 0;
-    transition: visibility 0s linear 0.2s, opacity 0.2s 0s;
 }
+
 .search-result.show {
         transition: visibility 0s linear 0s, opacity 0.2s 0s;
         visibility: visible;

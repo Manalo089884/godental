@@ -33,7 +33,7 @@ class HomeBannerTable extends Component
         }else{
 
         }
-            $this->action = $action;
+        $this->action = $action;
     }
 
     public function render()

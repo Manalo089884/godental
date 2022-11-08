@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="StoreProductData">
+    <form wire:submit.prevent="StoreTransferData">
         <div class="grid grid-cols-12 gap-x-6 mt-5 pb-20">
             <div class="intro-y col-span-12">
                 <!-- Begin: Product Information -->
@@ -54,7 +54,6 @@
                                         <div class="flex items-center">
                                             <div class="font-medium">Supplier Origin</div>
                                             <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -83,11 +82,54 @@
                         <div class="mt-5">
                             <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input type="search" class="form-control" wire:model="product" name="" id="">
-
-                                    <div class="text-danger mt-2">@error('products'){{$message}}@enderror</div>
+                                    <div class="intro-x relative">
+                                        <input type="search" class="form-control" wire:model="query" >
+                                        <div wire:loading wire:target="query" class="flex items-center mt-2 font-medium ">
+                                            <div>Searching...</div>
+                                        </div>
+                                        @if (!empty($query))
+                                          <div class="search-result__content ">
+                                            @if(!empty($products))
+                                                @foreach($products as $product)
+                                                <div class="flex items-center mt-2 font-medium">
+                                                    <button wire:click="AddTd({{json_encode($product)}})" type="button" class="truncate" >
+                                                        {{ $product['name']}}
+                                                      </button>
+                                                      <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Current Stock: {{ $product['stock'] }}</div>
+                                                </div>
+                                                @endforeach
+                                            @else
+                                                <div class="flex items-center mt-2 font-medium">No Results Found</div>
+                                            @endif
+                                         </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
+                            @if(!empty($selectedProducts))
+                            <div class="overflow-x-auto mt-5">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="whitespace-nowrap">Product Name</th>
+                                            <th class="whitespace-nowrap">SKU</th>
+                                            <th class="whitespace-nowrap">Quantity</th>
+                                            <th class="whitespace-nowrap">Action </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($selectedProducts as $selectedproduct)
+                                            <tr>
+                                                <td>{{ $selectedproduct['name'] }}</td>
+                                                <td> {{ $selectedproduct['SKU'] }}</td>
+                                                <td> <input type="number" placeholder="Order Quantity" class="form-control"></td>
+                                                <td> <button type="button" wire:click="DeleteTd({{ json_encode($selectedproduct)}})">Delete</button> </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -112,11 +154,20 @@
                                         </div>
                                     </div>
                                     <div class="w-full mt-3 xl:mt-0 flex-1">
-                                        <div class="relative w-full mx-auto">
-                                            <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-slate-100 border text-slate-500 dark:bg-darkmode-700 dark:border-darkmode-800 dark:text-slate-400">
-                                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                        <input type="date" wire:model="shipping" class="form-control" data-single-mode="true">
+                                    </div>
+                                </div>
+                                <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
+                                    <div class="form-label xl:w-64 xl:!mr-5">
+                                        <div class="text-left">
+                                            <div class="flex items-center">
+                                                <div class="font-medium">Tracking Number:</div>
                                             </div>
-                                            <input type="text" class="datepicker form-control pl-12" data-single-mode="true">
+                                        </div>
+                                    </div>
+                                    <div class="w-full mt-3 xl:mt-0 flex-1">
+                                        <div class="relative w-full mx-auto">
+                                            <input type="text" wire:model="tracking" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
@@ -133,15 +184,19 @@
                             <div class="mt-5">
                                 <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
                                     <div class="w-full mt-3 xl:mt-0 flex-1">
-                                        <input type="search" class="form-control" wire:model="product" name="" id="">
-
-                                        <div class="text-danger mt-2">@error('products'){{$message}}@enderror</div>
+                                        <textarea class="form-control" rows="5" wire:model="remarks">{!! $remarks !!}</textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                  </div>
+            </div>
+        </div>
+        <div class="intro-y flex justify-end flex-col md:flex-row gap-2 ">
+            <div class="flex justify-end flex-col md:flex-row gap-2 ">
+                <button wire:click="Cancel" type="button" class="btn py-3 border-slate-300 dark:border-darkmode-400 text-slate-500 w-full md:w-52">Cancel</button>
+                <input type="submit" class="btn py-3 btn-primary w-full md:w-52" value="Save">
             </div>
         </div>
     </form>

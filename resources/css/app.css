@@ -125,8 +125,7 @@
 @import "./components/_mobile-menu.css";
 @import "./components/_inbox-filter.css";
 @import "./components/_inbox.css";
-@import "./components/_chat.css";
-@import "./components/_chat-dropdown.css";
+
 @import "./components/_news.css";
 @import "./components/_pricing-tabs.css";
 @import "./components/_error-page.css";

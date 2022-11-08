@@ -23,8 +23,9 @@ class Supplier extends Model
    }
    public function supplierTransactions()
    {
-       return $this->hasMany(Product::class, 'suppliers_id','id');
+       return $this->hasMany(PurchaseOrder::class, 'suppliers_id','id');
    }
+
 
    public static function search($search){
     return empty($search) ? static::query() :

@@ -6,7 +6,7 @@
             <div class="w-full xl:flex sm:mr-auto" >
                 <div class="w-full sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
                     <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
-                    <input  type="text" class="form-control w-full sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
+                    <input type="search" wire:model.lazy="search" class="form-control w-full sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
                 </div>
             </div>
             <!-- Sort -->

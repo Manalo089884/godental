@@ -17,6 +17,10 @@ class CartTable extends Component
     public $action;
     public $selectedItem;
 
+    public function ProceedToCheckout(){
+
+    }
+
     protected $listeners = [
         'refreshParent' => '$refresh'
     ];

@@ -38,12 +38,16 @@
                                             <th class="whitespace-nowrap ">Transfer Code</th>
                                             <th class="whitespace-nowrap text-center">Supplier Name</th>
                                             <th class="whitespace-nowrap text-center">Status</th>
-                                            <th class="whitespace-nowrap text-center">Received</th>
-                                            <th class="whitespace-nowrap text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        @foreach ($orders as $order)
+                                        <tr>
+                                            <td>T00{{ $order->id }}</td>
+                                            <td class="whitespace-nowrap text-center">{{ $order->suppliers->name }}</td>
+                                            <td class="whitespace-nowrap text-center">{{ $order->status }}</td>
+                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

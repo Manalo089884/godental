@@ -32,7 +32,7 @@ import "./tom-select";
 //import "./dropzone";
 import "./validation";
 import "./notification";
-import "./tabulator";
+//import "./tabulator";
 import "./calendar";
 import "./zoom";
 
@@ -45,14 +45,17 @@ import "./zoom";
  |
  */
 
-import "./chat";
+//import "./chat";
 import "./show-modal";
 import "./show-slide-over";
 import "./show-dropdown";
 import "./search";
-import "./copy-code";
-import "./show-code";
+
+//import "./copy-code";
+//import "./show-code";
+
 import "./side-menu";
 import "./mobile-menu";
 import "./side-menu-tooltip";
+
 import "./dark-mode-switcher";

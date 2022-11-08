@@ -93,7 +93,6 @@ class ProductAddForm extends Component
     }
 
     public function StoreProductData(){
-
         $this->validate();
         $product = Product::create([
             'name' => $this->name,

@@ -39,6 +39,12 @@ class Customer extends Authenticatable
         return $this->hasMany(CustomerCart::class, 'customer_id','id');
     }
 
+    public static function search($search){
+        return empty($search) ? static::query() :
+        static::query()->where('name','like','%'.$search.'%')
+        ->orWhere('email','like','%'.$search.'%')
+        ->orWhere('phone_number','like','%'.$search.'%');
+      }
     /**
      * The attributes that should be hidden for arrays.
      *

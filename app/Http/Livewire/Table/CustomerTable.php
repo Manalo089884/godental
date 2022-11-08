@@ -25,7 +25,8 @@ class CustomerTable extends Component
 
     public function render()
     {
-        $customers = Customer::paginate($this->perPage);
+        $customers = Customer::search($this->search)
+        ->paginate($this->perPage);
         return view('livewire.table.customer-table',[
             'customers' => $customers,
         ]);

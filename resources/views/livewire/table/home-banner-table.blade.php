@@ -1,7 +1,9 @@
 <div>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal" data-tw-target="#add-item-modal">Add New Image</button>
+            @can('post_create')
+                <button class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal" data-tw-target="#add-item-modal">Add New Banner</button>
+            @endcan
             <div class="hidden md:block mx-auto text-slate-500">
                 @if($banners->count() == 0)
                     Showing 0 to 0 of 0 entries
@@ -38,8 +40,12 @@
                              </a>
                             <div class="dropdown-menu w-40">
                                 <div class="dropdown-content">
-                                    <button wire:click="selectItem({{ $banner->id }},'edit')" class="dropdown-item w-full"> <i class="fa-solid fa-pen mr-1"></i></i> Edit </button>
-                                    <button wire:click="selectItem({{$banner->id}},'delete')"  class="dropdown-item w-full"> <i class="fa-solid fa-trash mr-1"></i> Delete </button>
+                                    @can('post_edit')
+                                        <button wire:click="selectItem({{ $banner->id }},'edit')" class="dropdown-item w-full"> <i class="fa-solid fa-pen mr-1"></i></i> Edit </button>
+                                    @endcan
+                                    @can('post_delete')
+                                        <button wire:click="selectItem({{$banner->id}},'delete')"  class="dropdown-item w-full"> <i class="fa-solid fa-trash mr-1"></i> Delete </button>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -55,7 +61,7 @@
                 </div>
             </div>
         @empty
-            <div class="intro-y col-span-12 flex justify-center box p-10">
+            <div class="intro-y col-span-12 text-lg font-medium flex justify-center box p-10">
                 <div class="flex justify-center flex-col">
                     <img alt="Missing Image" class="object-fill  rounded-md h-48 w-96" src="{{ asset('dist/images/NoResultFound.svg') }}">
                     <div class="flex justify-center mt-1">No Results found <strong class="ml-1"> {{ $search }}</strong>  </div>

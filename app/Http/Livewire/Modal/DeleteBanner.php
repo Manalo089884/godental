@@ -28,9 +28,8 @@ class DeleteBanner extends Component
         $this->dispatchBrowserEvent('CloseDeleteModal');
     }
     public function delete(){
-
+        abort_if(Gate::denies('post_delete'),403);
         $home = Home::find($this->modelId);
-
         Storage::delete('public/banner/'.$home->featured_image);
         $home->delete();
         $this->dispatchBrowserEvent('SuccessAlert',[

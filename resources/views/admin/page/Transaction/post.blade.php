@@ -7,7 +7,6 @@
 <livewire:form.home-banner-form/>
 <livewire:form.home-banner-edit-form/>
 <livewire:table.home-banner-table/>
-
 <livewire:modal.delete-banner/>
 
 <div id="success-notification-content" class="toastify-content hidden flex non-sticky-notification-content">

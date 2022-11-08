@@ -90,9 +90,9 @@
                             </div>
                             <!-- END: Modal Content -->
                         @else
-                            <a href="{{ Route('shipping') }}">
-                                <button class="btn btn-primary w-full mr-1 mb-1">Proceed to Checkout</button>
-                            </a>
+                            <form wire:submit.prevent="ProceedToCheckout">
+                                <button type="submit" class="btn btn-primary w-full mr-1 mb-1">Proceed to Checkout</button>
+                            </form>
                         @endif
                     </div>
                 </div>

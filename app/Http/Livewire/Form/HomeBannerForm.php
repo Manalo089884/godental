@@ -51,21 +51,16 @@ class HomeBannerForm extends Component
     }
 
     public function StoreBannerData(){
+        abort_if(Gate::denies('post_create'),403);
         $this->validate();
-
-
         if(!empty($this->picture)){
             $this->picture->store('public/banner');
         }
-
-
         $data = [
             'title' => $this->title,
             'status' => $this->status,
             'featured_image' => $this->picture->hashName(),
-
         ];
-
         Home::create($data);
         $this->dispatchBrowserEvent('SuccessAlert',[
             'name' => $this->title.' was successfully saved!',

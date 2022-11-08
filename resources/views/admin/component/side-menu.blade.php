@@ -110,15 +110,7 @@
             </a>
         </li>
         @endcan
-        <!--Chat-->
-        @can('chat_access')
-        <li>
-            <a href="{{Route('chat.index')}}" class="side-menu {{ (request()->is('admin/chat')) ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i class="fa-solid fa-message fa-lg p-1"></i></div>
-                <div class="side-menu__title"> Chat </div>
-            </a>
-        </li>
-        @endcan
+
         <!--Post-->
         @can('post_access')
         <li>

@@ -90,15 +90,6 @@
             </a>
         </li>
         @endcan
-
-        @can('chat_access')
-        <li>
-            <a href="{{Route('chat.index')}}" class="menu">
-                <div class="menu__icon"> <i class="fa-solid fa-message fa-lg p-1"></i> </div>
-                <div class="menu__title"> Chat </div>
-            </a>
-        </li>
-        @endcan
         @can('post_access')
         <li>
             <a href="{{Route('post.index')}}" class="menu">

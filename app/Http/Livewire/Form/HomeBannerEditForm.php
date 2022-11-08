@@ -52,6 +52,7 @@ class HomeBannerEditForm extends Component
         $this->dispatchBrowserEvent('CloseEditModal');
     }
     public function UpdateBannerData(){
+        abort_if(Gate::denies('post_edit'),403);
         $this->validate();
         $home = Home::find($this->modelId);
         $home->title = $this->title;
