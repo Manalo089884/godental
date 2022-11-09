@@ -40,14 +40,7 @@ class CartTable extends Component
         $this->action = $action;
     }
 
-    public function render()
-    {
-        if (Auth::guard('customer')->check()){
-            $customer_id = Auth::id();
-            $cart = CustomerCart::with('getProduct')->where('customers_id', $customer_id)->get();
-        }else{
-            return redirect()->route('CLogin.index');
-        }
+    public function updatedItems(){
         $this->total = 0;
         $this->subtotal = 0;
          foreach($this->items as $item){
@@ -67,7 +60,41 @@ class CartTable extends Component
             $this->total = $this->subtotal + $this->shippingfee;
        }
 
+    }
+    public function mount(){
+        $this->validatequantity();
+    }
 
+    public function validatequantity(){
+        if (Auth::guard('customer')->check()){
+            $customer_id = Auth::id();
+            $carts = CustomerCart::with('product','customer')->where('customers_id', $customer_id)->get();
+
+        }else{
+            return redirect()->route('CLogin.index');
+        }
+
+        foreach($carts as $cart){
+            $updatecart = CustomerCart::with('product','customer')->where('product_id', $cart->product_id)->where('customers_id', $customer_id)->get();
+            foreach($updatecart as $items){
+                if($items->quantity > $cart->product->stock){
+                    $items->quantity = $cart->product->stock;
+                    $items->update();
+                }
+            }
+        }
+    }
+
+    public function render()
+    {
+        if (Auth::guard('customer')->check()){
+            $customer_id = Auth::id();
+            $cart = CustomerCart::with('product','customer')->where('customers_id', $customer_id)->get();
+
+        }else{
+            return redirect()->route('CLogin.index');
+        }
+        $this->validatequantity();
         return view('livewire.table.cart-table',[
             'cart' => $cart,
         ]);

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class StoreCustomerRegister extends FormRequest
 {
@@ -29,7 +30,7 @@ class StoreCustomerRegister extends FormRequest
             'phone'=>'required|numeric',
             'birthday' => 'required',
             'gender' => 'required|max:255',
-            'password' => 'required|min:8|max:255|confirmed',
+            'password' => ['required', Password::defaults() ,'confirmed',],
             'g-recaptcha-response' => 'required|captcha',
         ];
     }

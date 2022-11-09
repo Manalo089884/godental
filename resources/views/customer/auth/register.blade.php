@@ -50,8 +50,6 @@
                         <label class="form-label">Phone Number</label>
                         <input type="number" name="phone" class="form-control" placeholder="Phone Number" value="{{ old('phone') }}">
                     </div>
-
-
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label class="form-label">Gender</label>
                         <select name="gender" class="form-select">
@@ -61,11 +59,11 @@
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="Password" >
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label class="form-label">Password Confirmation</label>
-                        <input type="password" name="password_confirmation" class="form-control" placeholder="Password Confirmation">
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Password Confirmation" >
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label class="form-label">Birthday</label>

@@ -70,7 +70,7 @@
     </div>
     <div class="intro-y box col-span-12 lg:col-span-6 ">
         <div class="flex items-center justify-center">
-            <img src="dist/images/logo.png" class="" style="max-width: 27.8rem " alt="..." />
+            <img src="dist/images/logo.png" class="w-full" alt="..." />
         </div>
     </div>
 </div>

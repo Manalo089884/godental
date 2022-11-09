@@ -12,8 +12,11 @@ use Carbon\Carbon;
 use App\Models\Customer;
 use Illuminate\Support\Str;
 use App\Mail\CustomerResetPassword;
+use App\Http\Requests\ResetCustomerPassword;
 
 use App\Jobs\CustomerResetPasswordJob;
+use Illuminate\Validation\Rules\Password;
+
 class CustomerResetController extends Controller
 {
     public function index(){
@@ -45,12 +48,8 @@ class CustomerResetController extends Controller
     }
 
 
-   public function ResetPassword(Request $request){
-        $request->validate([
-            'email'=>'required|email|exists:customers,email',
-            'password'=>'required|min:5|confirmed',
-            'password_confirmation'=>'required',
-        ]);
+   public function ResetPassword(ResetCustomerPassword $request){
+        $request->validated();
 
         $check_token = \DB::table('password_resets')->where([
             'email'=>$request->email,
