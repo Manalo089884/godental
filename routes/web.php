@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\HomeController;
 //Transactions Controller
 use App\Http\Controllers\Frontend\Transaction\ContactController;
 use App\Http\Controllers\Frontend\Transaction\ShippingController;
+use App\Http\Controllers\Frontend\Transaction\CheckoutController;
 
 //Import Customer Account Controller
 use App\Http\Controllers\Frontend\Auth\CustomerProfileController;
@@ -61,10 +62,12 @@ Route::middleware(['PreventBackHistory'])->group(function () {
     Route::middleware(['auth:customer'])->group(function () {
         Route::resource('cart', CartController::class)->only(['index','store']);
         Route::post('/product/cart/', [CartController::class,'addToCart']);
-        Route::resource('wishlist', WishlistController::class)->only(['index','store']);
+
         Route::get('/CLogout', [CustomerLogoutController::class, 'store'])->name('CLogout');
 
         Route::middleware(['is_customer_verify_email'])->group(function () {
+            Route::resource('checkout', CheckoutController::class)->only(['index','store']);
+
             Route::get('/shipping', [ShippingController::class,'index'])->name('shipping');
         });
 
@@ -77,6 +80,7 @@ Route::middleware(['PreventBackHistory'])->group(function () {
             Route::post('address/create',[CustomerProfileController::class,'saveaddress']);
             Route::get('/address/edit/{id}', [CustomerProfileController::class,'editaddress'])->name('customer.address.edit');
             Route::post('/address/edit/{id}', [CustomerProfileController::class,'updateaddress']);
+            Route::post('/address/default/{id}',[CustomerProfileController::class,'setdefaultaddress'])->name('setdefaultaddress');
             Route::delete('/address/{id}', [CustomerProfileController::class, 'destroyaddress']);
             Route::get('/changepassword',[CustomerProfileController::class,'changepassword'])->name('customer.change.pass');
             Route::post('changepassword',[CustomerProfileController::class,'resetpass']);

@@ -10,7 +10,7 @@ class CustomerShippingAddress extends Model
     use HasFactory;
     protected $table = 'customer_shipping_address';
      protected $fillable = [
-        'name','customers_id','phone_number','notes','house','province','city','barangay'
+        'name','customers_id','phone_number','notes','house','province','city','barangay','default_address'
     ];
 
     public function customership(){

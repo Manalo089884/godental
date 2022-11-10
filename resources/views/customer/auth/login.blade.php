@@ -48,7 +48,7 @@
                 <div class="preview">
                     <div class="intro-x">
                         <label class="form-label">Email</label>
-                        <input type="text" name="email" class="form-control" placeholder="example@gmail.com">
+                        <input type="text" name="email" class="form-control" placeholder="example@gmail.com" value="{{ old('email') }}">
                     </div>
                     <div class="mt-3 intro-x">
                         <label class="form-label">Password</label>

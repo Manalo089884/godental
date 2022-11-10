@@ -36,6 +36,7 @@
         "lucide": "^0.17.1",
         "pristinejs": "^0.1.9",
         "select-philippines-address": "^1.0.6",
+        "sweetalert2": "^11.6.7",
         "tabulator-tables": "^4.9.1",
         "tiny-slider": "^2.9.3",
         "tippy.js": "^6.2.7",

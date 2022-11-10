@@ -20,6 +20,9 @@ class CustomerAddressTable extends Component
         if($action == 'delete'){
             $this->emit('getModelDeleteModalId',$this->selectedItem);
             $this->dispatchBrowserEvent('openDeleteModal');
+        }elseif($action == 'set'){
+            $this->emit('getModelSetModalId',$this->selectedItem);
+            $this->dispatchBrowserEvent('openSetModal');
         }
         $this->action = $action;
     }
@@ -28,11 +31,14 @@ class CustomerAddressTable extends Component
         if (Auth::guard('customer')->check()){
             $customer_id = Auth::id();
             $address = CustomerShippingAddress::where('customers_id', $customer_id)->orderBy('name')->get();
+            $customeraddress = CustomerShippingAddress::where('customers_id', $customer_id)->count();
+
         }else{
             return redirect()->route('CLogin.index');
         }
         return view('livewire.table.customer-address-table',[
-            'address' => $address
+            'address' => $address,
+            'countaddress' => $customeraddress
         ]);
     }
 }

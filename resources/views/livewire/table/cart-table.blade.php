@@ -43,17 +43,6 @@
                         </div>
                     </div>
                     <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <h1 class="font-medium leading-none mt-1 mb-2">Voucher Code:</h1>
-                        <div class="flex justify-between gap-1">
-                            <div class="w-full">
-                                <input type="text" class="w-full form-control">
-                            </div>
-                            <div>
-                                <button class="btn btn-primary w-24">Apply</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                         <div class="flex justify-between mt-3 ">
                             <div>
                                 <h1 class="font-medium leading-none mt-1 mb-2">Subtotal</h1>
@@ -68,7 +57,8 @@
                             <div class="text-center">
                                 <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#warning-modal-preview" class="btn btn-primary w-full mr-1 mb-1">Proceed to Checkout</a>
                             </div>
-                            <!-- END: Modal Toggle --> <!-- BEGIN: Modal Content -->
+                            <!-- END: Modal Toggle --> +
+                            <!-- BEGIN: Modal Content -->
                             <div id="warning-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -123,7 +113,8 @@
                                 <tbody>
                                     @foreach ($cart as $cart)
                                         <tr>
-                                            <td class="whitespace-nowrap text-center w-20"><input type="checkbox" class="form-check-input" wire:model="items.{{ $cart->id }}" value="{{ $cart->id }}"></td>
+                                            <td class="whitespace-nowrap text-center w-20">
+                                                <input type="checkbox" class="form-check-input" wire:click="add({{ $cart->id }})" value="1" @if($cart->check == true) checked @endif></td>
                                             <td class="whitespace-nowrap text-center">{{ $cart->product->name }}</td>
                                             <td class="whitespace-nowrap text-center">{{ $cart->quantity }}</td>
                                             <td class="whitespace-nowrap text-center">₱{{ $cart->product->sprice }}</td>

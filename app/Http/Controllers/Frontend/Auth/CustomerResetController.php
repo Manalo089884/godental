@@ -11,7 +11,7 @@ use DB;
 use Carbon\Carbon;
 use App\Models\Customer;
 use Illuminate\Support\Str;
-use App\Mail\CustomerResetPassword;
+Use Alert;
 use App\Http\Requests\ResetCustomerPassword;
 
 use App\Jobs\CustomerResetPasswordJob;
@@ -27,21 +27,28 @@ class CustomerResetController extends Controller
         $request->validate([
             'email' => 'required|email|exists:customers,email'
         ]);
+        $restrictedcustomer = Customer::onlyTrashed()->where('email',$request->email)->get();
+        if(count($restrictedcustomer) == 0){
+            $token = Str::random(64);
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
 
-        $token = Str::random(64);
-        DB::table('password_resets')->insert([
-            'email' => $request->email,
-            'token' => $token,
-            'created_at' => Carbon::now()
-        ]);
+            $details = [
+                'email' => $request['email'],
+                'action_link' => route('customer.reset.password.form',['token'=>$token,'email'=>$request->email])
+            ];
 
-        $details = [
-            'email' => $request['email'],
-            'action_link' => route('customer.reset.password.form',['token'=>$token,'email'=>$request->email])
-        ];
+            dispatch(new CustomerResetPasswordJob($details));
+            return back()->with('success', 'A Verification email has been sent to this email address '.$request->email . ' Please verify it.');
 
-        dispatch(new CustomerResetPasswordJob($details));
-        return back()->with('success', 'A Verification email has been sent to this email address '.$request->email . ' Please verify it.');
+        }else{
+            Alert::error('Account Restricted','Contact Customer Support to Retrieve your account' );
+            return back();
+        }
+
     }
     public function ShowResetForm(Request $request, $token = null){
         return view('customer.auth.forgot')->with(['token' => $token,'email'=>$request->email]);

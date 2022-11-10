@@ -47,21 +47,36 @@ class CustomerProfileController extends Controller
             $customer_id = Auth::id();
             $customeraddress = CustomerShippingAddress::where('customers_id', $customer_id)->count();
             if($customeraddress <= 4){
-                CustomerShippingAddress::create([
-                    'name' => $request->full_name,
-                    'customers_id' => $customer_id,
-                    'phone_number' => $request->phone_number,
-                    'notes'=>$request->notes,
-                    'house' => $request->house,
-                    'province'=>$request->province,
-                    'city'=>$request->city,
-                    'barangay' => $request->barangay
-                ]);
-                return redirect()->route('customer.address')->with('success', 'Address was successfully added');
+                $hasdefaultaddress = CustomerShippingAddress::where('customers_id', $customer_id)->where('default_address','1')->count();
+                if($hasdefaultaddress == 0){
+                    CustomerShippingAddress::create([
+                        'name' => $request->full_name,
+                        'customers_id' => $customer_id,
+                        'phone_number' => $request->phone_number,
+                        'notes'=>$request->notes,
+                        'house' => $request->house,
+                        'province'=>$request->province,
+                        'city'=>$request->city,
+                        'barangay' => $request->barangay,
+                        'default_address' => 1
+                    ]);
+                }else{
+                    CustomerShippingAddress::create([
+                        'name' => $request->full_name,
+                        'customers_id' => $customer_id,
+                        'phone_number' => $request->phone_number,
+                        'notes'=>$request->notes,
+                        'house' => $request->house,
+                        'province'=>$request->province,
+                        'city'=>$request->city,
+                        'barangay' => $request->barangay,
+                        'default_address' => 0
+                    ]);
+                }
 
+                return redirect()->route('customer.address')->with('success', 'Address was successfully added');
             }else{
                 return redirect()->route('customer.address')->with('invalid', 'You can only add up to five shipping address');
-
             }
         }else{
             return back()->with('invalid',"Invalid!!!");
