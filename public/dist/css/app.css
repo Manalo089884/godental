@@ -11603,8 +11603,9 @@ html body {
     padding-right: 1.5rem;
   }
   }
+
 .top-nav > ul > li > .top-menu {
-  margin-top: 3px;
+  margin-top: 8px;
 }
 .top-nav > ul > li > .top-menu > .top-menu__icon {
   margin-top: -3px;

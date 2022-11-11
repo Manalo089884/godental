@@ -18,7 +18,7 @@
             </h2>
         </div>
 
-        <div class="grid grid-cols-12 gap-6" id="CartVue">
+        <div class="grid grid-cols-12 gap-6">
             <!-- BEGIN: Order Summary -->
             <div class="col-span-12 lg:col-span-4 2xl:col-span-3 flex lg:block flex-col-reverse">
                 <div class="intro-y box mt-5">
