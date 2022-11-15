@@ -159,6 +159,7 @@ import { tns } from "tiny-slider/src/tiny-slider";
                 nextButton:false,
                 controlsContainer : false,
                 nav: true,
+                autoHeight: true,
                 speed: 500,
             });
         });

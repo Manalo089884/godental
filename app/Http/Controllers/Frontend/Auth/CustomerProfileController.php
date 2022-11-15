@@ -21,6 +21,7 @@ class CustomerProfileController extends Controller
     public function index(){
         return view('customer.account.profile');
     }
+
     //Address Page
     public function address(){
         if (Auth::guard('customer')->check()){
@@ -35,10 +36,12 @@ class CustomerProfileController extends Controller
             'countaddress' => $countaddress
         ]);
     }
+
     //Create Address Page
     public function createaddress(){
         return view('customer.account.createaddress');
     }
+
     //Store Customer Address
     public function saveaddress(StoreCustomerAddress $request){
         $request->validated();
@@ -109,12 +112,7 @@ class CustomerProfileController extends Controller
         }
     }
 
-    //Delete Customer Address
-    public function destroyaddress($id){
-        $address = CustomerShippingAddress::findorFail($id);
-        $address->delete();
-        return back()->with('deleteSuccess', $address->name ." Deleted Successfully");
-    }
+
     //Change Password Page
     public function changepassword(){
         return view('customer.account.changepass');

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use Livewire\Component;
 use App\Models\Home;
+use Illuminate\Support\Facades\Gate;
 class HomeBannerEditForm extends Component
 {
     public $title,$status,$modelId = 1;

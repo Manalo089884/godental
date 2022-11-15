@@ -57,7 +57,7 @@
                             <div class="text-center">
                                 <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#warning-modal-preview" class="btn btn-primary w-full mr-1 mb-1">Proceed to Checkout</a>
                             </div>
-                            <!-- END: Modal Toggle --> +
+                            <!-- END: Modal Toggle -->
                             <!-- BEGIN: Modal Content -->
                             <div id="warning-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">

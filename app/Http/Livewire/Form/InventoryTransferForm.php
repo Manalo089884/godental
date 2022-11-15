@@ -11,6 +11,15 @@ use Illuminate\Support\Arr;
 
 class InventoryTransferForm extends Component
 {
+    public $transferproducts = [];
+
+    protected $listeners = [
+        'Prod',
+    ];
+    public function onchange(array $products){
+        dd($products);
+    }
+
     public $selectedProducts = [];
     public $query;
 
@@ -26,6 +35,12 @@ class InventoryTransferForm extends Component
 
 
     public $toggleinfo = false;
+
+
+    public function Prod($value,$id,$index){
+        //dd($selectedProducts);
+        $this->selectedProducts[$index]['t_quantity'] = $value;
+    }
 
     public function rules(){
         return [
@@ -79,6 +94,7 @@ class InventoryTransferForm extends Component
         return redirect()->route('transfer.index');
     }
 
+
     public function StoreTransferData(){
         $this->validate();
         $purchaseorder = PurchaseOrder::create([
@@ -88,6 +104,15 @@ class InventoryTransferForm extends Component
             'tracking' => $this->tracking,
             'remarks' => $this->remarks
         ]);
+
+        foreach($this->selectedProducts as $value){
+            OrderedItems::create([
+                'purchase_order_id' => $purchaseorder->id,
+                'product_id' => $value['id'],
+                'quantity' => $value['t_quantity'],
+            ]);
+        }
+
 
         return redirect()->route('transfer.index')->with('success','Purchase Order Created Successfully');
 

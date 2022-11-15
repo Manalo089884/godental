@@ -9,6 +9,9 @@ import TomSelect from "tom-select";
             plugins: {
                 dropdown_input: {},
             },
+            option: function (data, escape) {
+                console.log(data)
+            },
         };
 
         if ($(this).data("placeholder")) {
@@ -37,6 +40,8 @@ import TomSelect from "tom-select";
                                   '"?'
                     );
                 },
+
+
             };
         }
 

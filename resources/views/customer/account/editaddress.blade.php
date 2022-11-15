@@ -63,17 +63,22 @@
                         <div class="mt-3">
                             <label for="Province" class="form-label">Province</label>
                             <select id="Province" class="tom-select w-full" name="province" data-search="true"  >
+                                <option value=""  selected>Province of shipping address</option>
 
                             </select>
                         </div>
                         <div class="mt-3">
                             <label for="city" class="form-label">City/Municipality</label>
                             <select id="city" data-search="true" class="tom-select w-full" name="city">
+                                <option value=""  selected>City of shipping address</option>
+
                             </select>
                         </div>
                         <div class="mt-3">
                             <label for="barangay" class="form-label">Barangay</label>
                             <select id="barangay" data-search="true" class=" w-full tom-select" name="barangay">
+                                <option value="" class="text-muted"  selected>Barangay of shipping address</option>
+
                             </select>
                         </div>
                     </div>
@@ -99,6 +104,7 @@
     const provinceCode ="{{old('province') ?? $address->province}}"
     const cityCode = "{{old('city') ?? $address->city}}"
     const brgyCode = "{{old('barangay') ?? $address->barangay}}"
+    window.MODE = "EDIT"
     window.address = {
         provinceCode,
         cityCode,

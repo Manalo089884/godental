@@ -305,13 +305,13 @@
                                 <td class="w-40">
                                     <div class="flex">
                                         <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-6.jpg') }}" title="Uploaded at 27 April 2022">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 27 April 2022">
                                         </div>
                                         <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-10.jpg') }}" title="Uploaded at 25 May 2022">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 25 May 2022">
                                         </div>
                                         <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-10.jpg') }}" title="Uploaded at 7 September 2020">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 7 September 2020">
                                         </div>
                                     </div>
                                 </td>
@@ -334,13 +334,13 @@
                                 <td class="w-40">
                                     <div class="flex">
                                         <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-11.jpg') }}" title="Uploaded at 20 June 2021">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 20 June 2021">
                                         </div>
                                         <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-7.jpg') }}" title="Uploaded at 7 April 2021">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 7 April 2021">
                                         </div>
                                         <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-7.jpg') }}" title="Uploaded at 23 May 2022">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 23 May 2022">
                                         </div>
                                     </div>
                                 </td>
@@ -363,13 +363,13 @@
                                 <td class="w-40">
                                     <div class="flex">
                                         <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-7.jpg') }}" title="Uploaded at 25 September 2021">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 25 September 2021">
                                         </div>
                                         <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-7.jpg') }}" title="Uploaded at 14 December 2022">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 14 December 2022">
                                         </div>
                                         <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-7.jpg') }}" title="Uploaded at 16 April 2021">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 16 April 2021">
                                         </div>
                                     </div>
                                 </td>
@@ -392,13 +392,13 @@
                                 <td class="w-40">
                                     <div class="flex">
                                         <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-7.jpg') }}" title="Uploaded at 3 June 2022">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 3 June 2022">
                                         </div>
                                         <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-7.jpg') }}" title="Uploaded at 12 August 2020">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 12 August 2020">
                                         </div>
                                         <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/preview-7.jpg') }}" title="Uploaded at 21 April 2020">
+                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 21 April 2020">
                                         </div>
                                     </div>
                                 </td>
@@ -512,7 +512,7 @@
                         <div class="intro-x relative flex items-center mb-3">
                             <div class="before:block before:absolute before:w-20 before:h-px before:bg-slate-200 before:dark:bg-darkmode-400 before:mt-5 before:ml-5">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-15.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                             </div>
                             <div class="box px-5 py-3 ml-4 flex-1 zoom-in">
@@ -526,7 +526,7 @@
                         <div class="intro-x relative flex items-center mb-3">
                             <div class="before:block before:absolute before:w-20 before:h-px before:bg-slate-200 before:dark:bg-darkmode-400 before:mt-5 before:ml-5">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-5.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                             </div>
                             <div class="box px-5 py-3 ml-4 flex-1 zoom-in">
@@ -538,13 +538,13 @@
                                     <div class="mt-1">Added 3 new photos</div>
                                     <div class="flex mt-2">
                                         <div class="tooltip w-8 h-8 image-fit mr-1 zoom-in" title="Apple MacBook Pro 13">
-                                            <img alt="Go Dental Image" class="rounded-md border border-white" src="{{ asset('dist/images/preview-4.jpg') }}">
+                                            <img alt="Go Dental Image" class="rounded-md border border-white" src="{{ asset('dist/images/logo.png') }}">
                                         </div>
                                         <div class="tooltip w-8 h-8 image-fit mr-1 zoom-in" title="Apple MacBook Pro 13">
-                                            <img alt="Go Dental Image" class="rounded-md border border-white" src="{{ asset('dist/images/preview-4.jpg') }}">
+                                            <img alt="Go Dental Image" class="rounded-md border border-white" src="{{ asset('dist/images/logo.png') }}">
                                         </div>
                                         <div class="tooltip w-8 h-8 image-fit mr-1 zoom-in" title="Samsung Galaxy S20 Ultra">
-                                            <img alt="Go Dental Image" class="rounded-md border border-white" src="{{ asset('dist/images/preview-4.jpg') }}">
+                                            <img alt="Go Dental Image" class="rounded-md border border-white" src="{{ asset('dist/images/logo.png') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -554,7 +554,7 @@
                         <div class="intro-x relative flex items-center mb-3">
                             <div class="before:block before:absolute before:w-20 before:h-px before:bg-slate-200 before:dark:bg-darkmode-400 before:mt-5 before:ml-5">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-15.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                             </div>
                             <div class="box px-5 py-3 ml-4 flex-1 zoom-in">
@@ -568,7 +568,7 @@
                         <div class="intro-x relative flex items-center mb-3">
                             <div class="before:block before:absolute before:w-20 before:h-px before:bg-slate-200 before:dark:bg-darkmode-400 before:mt-5 before:ml-5">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-14.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                             </div>
                             <div class="box px-5 py-3 ml-4 flex-1 zoom-in">
@@ -593,7 +593,7 @@
                         <div class="intro-x">
                             <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-2.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                                 <div class="ml-4 mr-auto">
                                     <div class="font-medium">Johnny Depp</div>
@@ -605,7 +605,7 @@
                         <div class="intro-x">
                             <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-9.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                                 <div class="ml-4 mr-auto">
                                     <div class="font-medium">Russell Crowe</div>
@@ -617,7 +617,7 @@
                         <div class="intro-x">
                             <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-9.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                                 <div class="ml-4 mr-auto">
                                     <div class="font-medium">Arnold Schwarzenegger</div>
@@ -629,7 +629,7 @@
                         <div class="intro-x">
                             <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-13.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                                 <div class="ml-4 mr-auto">
                                     <div class="font-medium">Russell Crowe</div>
@@ -641,7 +641,7 @@
                         <div class="intro-x">
                             <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
                                 <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                    <img alt="Go Dental Image" src="{{ asset('dist/images/profile-13.jpg') }}">
+                                    <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
                                 </div>
                                 <div class="ml-4 mr-auto">
                                     <div class="font-medium">Denzel Washington</div>

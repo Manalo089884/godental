@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Form;
 use Livewire\Component;
 use App\Models\Home;
 use Livewire\WithFileUploads;
-
+use Illuminate\Support\Facades\Gate;
 
 class HomeBannerForm extends Component
 {

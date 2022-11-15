@@ -12,4 +12,12 @@
 
 @endsection
 @push('scripts')
+<script>
+        const onInput = (element,id, index)=>{
+            console.log(element.value)
+            console.log(id)
+            console.log(index)
+            livewire.emit('Prod',element.value,id,index);
+        }
+</script>
 @endpush

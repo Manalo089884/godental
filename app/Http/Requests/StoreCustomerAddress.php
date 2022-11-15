@@ -25,7 +25,7 @@ class StoreCustomerAddress extends FormRequest
     {
         return [
             'full_name' => 'required|max:255',
-            'phone_number' => 'required',
+            'phone_number' => 'required|phone:PH',
             'house' => 'required|max:255',
             'province' => 'required|max:255',
             'city' => 'required|max:255',

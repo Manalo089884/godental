@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Modal;
 use Livewire\Component;
 use App\Models\Home;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 class DeleteBanner extends Component
 {
     public $modelId;

@@ -20,115 +20,91 @@ class CategorySeeder extends Seeder
 
         DB::table('category')->insert([
             [
-                'name' => 'Gloves',
+                'name' => 'Gloves', //1
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Mask',
+                'name' => 'Mask', //2
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Bib',
+                'name' => 'Bib', //3
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Suction Tip',
+                'name' => 'Suction Tip', //4
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Dental Stones',
+                'name' => 'Dental Stones', //5
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Suturing Materials',
+                'name' => 'Suturing Materials', //6
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Root Canal Materials',
+                'name' => 'Root Canal Materials', //7
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Prophylaxis Materials',
+                'name' => 'Prophylaxis Materials', //8
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Bonding Agent',
+                'name' => 'Bonding Agent', //9
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Consumable Item',
+                'name' => 'Consumable Item', //10
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Clearner Solution',
+                'name' => 'Cleaner Solution', //11
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Cements',
+                'name' => 'Cements', //12
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Restorative Materials',
+                'name' => 'Restorative Materials', //13
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Wound Dressing Materials',
+                'name' => 'Dental Anesthesia', //14
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Needles',
+                'name' => 'Others', //15
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Tropical Anes',
+                'name' => 'Alginate', //16
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Local Anes',
+                'name' => 'Appliances', //17
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Others',
+                'name' => 'Brackets', //18
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Alignates',
+                'name' => 'Buccal Tubes', //19
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Dental Arch Wires',
+                'name' => 'Dental Arch Wires', //20
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Buccaltubes',
+                'name' => 'Ortho Appliance', //21
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Ortho Appliance',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],[
-                'name' => 'Ortho Elastics',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],[
-                'name' => 'Appliances',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],[
-                'name' => 'Brackets',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],[
-                'name' => 'Dental Anesthesia',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],[
-                'name' => 'Dental Fillings',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],[
-                'name' => 'Prophylaxis',
+                'name' => 'Ortho Elastics', //22
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

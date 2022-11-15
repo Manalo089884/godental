@@ -38,6 +38,21 @@ class DeleteCustomerAddress extends Component
             'name' => $address->name.' was successfully deleted!',
             'title' => 'Record Deleted',
         ]);
+        $customer_id = Auth::guard('customer')->user()->id;
+        $HasNoDefaultAddress = CustomerShippingAddress::where('customers_id',$customer_id)
+        ->where('default_address',1)
+        ->count();
+
+        if($HasNoDefaultAddress == 0){
+            $AddNewShippingAddress = CustomerShippingAddress::where('customers_id',$customer_id)
+            ->where('default_address',0)
+            ->take(1)
+            ->get();
+            foreach($AddNewShippingAddress as $address){
+                $address->default_address = 1;
+                $address->update();
+            }
+        }
 
         $this->emit('refreshParent');
         $this->cleanVars();

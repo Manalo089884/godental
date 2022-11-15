@@ -1022,14 +1022,14 @@ select {
 .h-full {
   height: 100%;
 }
-.h-16 {
-  height: 4rem;
-}
 .h-72 {
   height: 18rem;
 }
 .h-80 {
   height: 20rem;
+}
+.h-16 {
+  height: 4rem;
 }
 .h-28 {
   height: 7rem;
@@ -1097,19 +1097,8 @@ select {
 .w-5 {
   width: 1.25rem;
 }
-.w-16 {
-  width: 4rem;
-}
-.w-24 {
-  width: 6rem;
-}
 .w-11\/12 {
   width: 91.666667%;
-}
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 .w-1\/5 {
   width: 20%;
@@ -1119,6 +1108,12 @@ select {
 }
 .w-14 {
   width: 3.5rem;
+}
+.w-16 {
+  width: 4rem;
+}
+.w-24 {
+  width: 6rem;
 }
 .w-48 {
   width: 12rem;
@@ -1134,15 +1129,6 @@ select {
 }
 .w-3\/4 {
   width: 75%;
-}
-.w-28 {
-  width: 7rem;
-}
-.w-auto {
-  width: auto;
-}
-.w-36 {
-  width: 9rem;
 }
 .max-w-xs {
   max-width: 20rem;
@@ -1580,11 +1566,11 @@ select {
 .pb-10 {
   padding-bottom: 2.5rem;
 }
-.pb-8 {
-  padding-bottom: 2rem;
-}
 .pl-12 {
   padding-left: 3rem;
+}
+.pb-8 {
+  padding-bottom: 2rem;
 }
 .pb-20 {
   padding-bottom: 5rem;
@@ -1738,10 +1724,6 @@ select {
   --tw-text-opacity: 1;
   color: rgb(var(--color-pending) / var(--tw-text-opacity));
 }
-.text-warning {
-  --tw-text-opacity: 1;
-  color: rgb(var(--color-warning) / var(--tw-text-opacity));
-}
 .text-gray-200 {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
@@ -1749,6 +1731,10 @@ select {
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.text-warning {
+  --tw-text-opacity: 1;
+  color: rgb(var(--color-warning) / var(--tw-text-opacity));
 }
 .text-blue-400 {
   --tw-text-opacity: 1;
@@ -2226,10 +2212,6 @@ select {
     width: 13rem;
   }
 
-  .md\:w-6 {
-    width: 1.5rem;
-  }
-
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2263,10 +2245,6 @@ select {
 
   .md\:text-center {
     text-align: center;
-  }
-
-  .md\:font-medium {
-    font-weight: 500;
   }
 }
 @media (min-width: 1024px) {
@@ -2359,14 +2337,6 @@ select {
     width: 75%;
   }
 
-  .lg\:w-6 {
-    width: 1.5rem;
-  }
-
-  .lg\:w-4 {
-    width: 1rem;
-  }
-
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -2427,10 +2397,6 @@ select {
   .lg\:text-5xl {
     font-size: 3rem;
     line-height: 1;
-  }
-
-  .lg\:font-medium {
-    font-weight: 500;
   }
 }
 @media (min-width: 1280px) {
@@ -2536,10 +2502,6 @@ select {
     width: 16rem;
   }
 
-  .xl\:w-6 {
-    width: 1.5rem;
-  }
-
   .xl\:flex-initial {
     flex: 0 1 auto;
   }
@@ -2580,11 +2542,6 @@ select {
   .xl\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
-  }
-
-  .xl\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
   }
 
   .xl\:shadow-none {
@@ -2640,10 +2597,6 @@ select {
     width: 100%;
   }
 
-  .\32xl\:w-6 {
-    width: 1.5rem;
-  }
-
   .\32xl\:flex-row {
     flex-direction: row;
   }
@@ -2663,11 +2616,6 @@ select {
 
   .\32xl\:pl-6 {
     padding-left: 1.5rem;
-  }
-
-  .\32xl\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
   }
 }
 

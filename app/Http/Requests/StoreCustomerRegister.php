@@ -27,7 +27,7 @@ class StoreCustomerRegister extends FormRequest
         return [
             'name' => 'required|max:255',
             'email'=>'required|max:255|email|unique:customers,email',
-            'phone'=>'required|numeric',
+            'phone'=>'required|phone:PH',
             'birthday' => 'required',
             'gender' => 'required|max:255',
             'password' => ['required', Password::defaults() ,'confirmed',],

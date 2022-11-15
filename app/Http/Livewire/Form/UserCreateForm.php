@@ -23,7 +23,7 @@ class UserCreateForm extends Component
             'address' => 'required|max:100',
             'email' => 'required|email',
             'gender' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|phone:PH',
             'age' => 'required|numeric',
             'role' => 'required',
 
@@ -38,10 +38,9 @@ class UserCreateForm extends Component
             'address' => 'required|max:100',
             'email' => 'required|email',
             'gender' => 'required',
-            'phone' => 'required',
-            'age' => 'required|numeric',
+            'phone' => 'required|phone:PH',
+            'age' => 'required',
             'role' => 'required',
-
             'password' => 'required'
         ]);
     }

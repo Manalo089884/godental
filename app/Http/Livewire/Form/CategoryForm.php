@@ -72,7 +72,11 @@ class CategoryForm extends Component
         }
         $this->cleanVars();
         $this->dispatchBrowserEvent('CloseModal');
+
+
         $this->emit('refreshParent');
+
+
         $this->resetErrorBag();
     }
     private function cleanVars(){
