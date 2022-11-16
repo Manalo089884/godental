@@ -53,7 +53,7 @@ Route::middleware(['PreventBackHistory'])->group(function () {
 
     Route::middleware(['guest:customer'])->group(function () {
         Route::resource('CLogin', CustomerLoginController::class)->only(['index','store']);
-        Route::resource('CRegister', CustomerRegisterController::class)->only(['index','store']);
+        Route::resource('CRegister', CustomerRegisterController::class)->only(['index']);
         Route::resource('resetcustomer', CustomerResetController::class)->only(['index','store']);
         Route::get('resetcustomer/password/{token}', [CustomerResetController::class, 'ShowResetForm'])->name('customer.reset.password.form');
         Route::post('resetcustomer/password',[CustomerResetController::class,'ResetPassword'])->name('customer.reset.password');
