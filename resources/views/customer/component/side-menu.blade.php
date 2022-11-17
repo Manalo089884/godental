@@ -1,4 +1,4 @@
-<nav class="top-nav lg:hidden">
+<nav class="top-nav xl:hidden">
     <ul>
         <li>
             <a href="{{ Route('home') }}" class="top-menu">

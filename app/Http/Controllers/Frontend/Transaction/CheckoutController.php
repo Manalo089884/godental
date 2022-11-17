@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerCart;
-
+use App\Models\CustomerShippingAddress;
+use Alert;
 class CheckoutController extends Controller
 {
     public function index(){
@@ -14,14 +15,20 @@ class CheckoutController extends Controller
         $checkoutcount = CustomerCart::with('product','customer')
             ->where('customers_id', $customer_id)
             ->where('check',1)
-            ->get();
+            ->count();
+        $shippingaddresscount = CustomerShippingAddress::where('customers_id',$customer_id)->count();
 
-            if(count($checkoutcount) == 0){
+
+            if($checkoutcount == 0){
+                Alert::warning('No Products in Cart', 'Please add products into the cart before checking out');
                 return redirect()->route('cart.index');
             }
+            if($shippingaddresscount == 0){
+                Alert::warning('No Shipping Address', 'Please Add Shipping Address Before Checking Out');
+                return redirect()->route('cart.index');
+            }
+
         return view('customer.page.cart.checkout');
     }
-    public function store(){
 
-    }
 }

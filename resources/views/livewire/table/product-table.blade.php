@@ -72,8 +72,10 @@
                    <tbody>
                    @foreach($products as $product)
                        <tr class="intro-x">
-                           <td class="whitespace-nowrap font-medium"><a href="{{Route('product.show',$product)}}">{{$product->name}}
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{$product->brand->name}}</div></a>
+                           <td class="whitespace-nowrap font-medium">
+                            <a href="{{ Route('productshow', $product) }}" target="_blank">
+                                {{$product->name}}<div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{$product->brand->name}}</div>
+                            </a>
                             </td>
                            <td class="whitespace-nowrap text-center">{{$product->category->name}}</td>
                            <td class="whitespace-nowrap text-center">
@@ -94,9 +96,6 @@
                            <td class="table-report__action w-56">
                                <div class="flex justify-center items-center">
                                    <div class="flex justify-center items-center">
-                                        @can('product_show')
-                                            <a class="flex items-center mr-3" href="{{Route('product.show',$product)}}"> <i class="fa-solid fa-eye w-4 h-4 mr-1"></i> Show </a>
-                                        @endcan
                                         @can('product_edit')
                                             <a class="flex items-center mr-3" href="{{Route('product.edit',$product)}}"> <i class="fa-regular fa-pen-to-square w-4 h-4 mr-1"></i> Edit </a>
                                         @endcan

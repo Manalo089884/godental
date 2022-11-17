@@ -53,11 +53,14 @@ class ProductController extends Controller
         ]);
     }
 
+    /*
     //Show Product Page Info
     public function show(Product $product){
         abort_if(Gate::denies('product_show'),403);
         return view('admin.page.product.productshow', compact('product'));
     }
+    */
+
       //Show Product Archive Page
       public function ProductArchiveIndex(){
         abort_if(Gate::denies('product_archive_access'),403);

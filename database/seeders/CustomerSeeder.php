@@ -20,7 +20,7 @@ class CustomerSeeder extends Seeder
         DB::table('customers') ->insert([
             [
                 'name' => 'Sofa Rinkashime',
-                'email' => 'rinka@gmail.com',
+                'email' => 'markjosephmanalo1110@gmail.com',
                 'email_verified_at' => now(),
                 'phone_number' => '09452692274',
                 'password' => bcrypt('markmark12'),
@@ -31,7 +31,7 @@ class CustomerSeeder extends Seeder
             ],
             [
                 'name' => 'Shine Rinka',
-                'email' => 'shine@gmail.com',
+                'email' => 'programmingmind1110@gmail.com',
                 'email_verified_at' => now(),
                 'phone_number' => '09452692273',
                 'password' => bcrypt('markmark12'),

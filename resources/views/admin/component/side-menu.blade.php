@@ -87,9 +87,6 @@
                     </a>
                 </li>
                 @endcan
-
-
-
             </ul>
         </li>
         @endif
@@ -107,6 +104,14 @@
             <a href="{{Route('orders.index')}}" class="side-menu {{ (request()->is('admin/orders')) ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i class="fa-solid fa-cart-plus fa-lg p-1"></i> </div>
                 <div class="side-menu__title"> Orders </div>
+            </a>
+        </li>
+        @endcan
+        @can('discount_access')
+        <li>
+            <a href="{{Route('discount.index')}}" class="side-menu {{ (request()->is('admin/orders')) ? 'side-menu--active' : '' }}">
+                <div class="side-menu__icon"><i class="fa-solid fa-tag fa-lg p-1"></i> </div>
+                <div class="side-menu__title"> Discount </div>
             </a>
         </li>
         @endcan

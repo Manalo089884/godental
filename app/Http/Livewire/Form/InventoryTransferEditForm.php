@@ -9,7 +9,7 @@ use App\Models\PurchaseOrder;
 use App\Models\OrderedItems;
 use Illuminate\Support\Arr;
 
-class InventoryTransferForm extends Component
+class InventoryTransferEditForm extends Component
 {
     public $transferproducts = [];
 
@@ -37,7 +37,6 @@ class InventoryTransferForm extends Component
 
     public $toggleinfo = false;
 
-
     public function Prod($value,$id,$index){
         $this->selectedProducts[$index]['t_quantity'] = $value;
     }
@@ -50,11 +49,6 @@ class InventoryTransferForm extends Component
         ];
     }
 
-    protected $validationAttributes = [
-        'origin' => 'Supplier',
-        'shipping' => 'Estimated Arrival',
-    ];
-
     public function updated($fields){
         $this->validateOnly($fields,[
             'origin' => 'required',
@@ -63,9 +57,17 @@ class InventoryTransferForm extends Component
         ]);
     }
 
-    public function mount(){
-        $this->origin = "";
-        $this->query = '';
+
+    protected $validationAttributes = [
+        'origin' => 'Supplier',
+        'shipping' => 'Estimated Arrival',
+    ];
+
+    public function mount($orderinfos){
+        $this->origin = $orderinfos->suppliers_id;
+        $this->shipping = $orderinfos->shipping_date;
+        $this->tracking = $orderinfos->tracking;
+        $this->remarks = $orderinfos->remarks;
         $this->products = [];
         $this->selectedProducts = [];
     }
@@ -96,36 +98,8 @@ class InventoryTransferForm extends Component
     public function Cancel(){
         return redirect()->route('transfer.index');
     }
-
-
-    public function StoreTransferData(){
-        $this->validate();
-
-
-
-        $purchaseorder = PurchaseOrder::create([
-            'suppliers_id' => $this->origin,
-            'status' => 'Pending',
-            'shipping_date' => $this->shipping,
-            'tracking' => $this->tracking,
-            'remarks' => $this->remarks
-        ]);
-
-        foreach($this->selectedProducts as $value){
-            OrderedItems::create([
-                'purchase_order_id' => $purchaseorder->id,
-                'product_id' => $value['id'],
-                'quantity' => $value['t_quantity'],
-            ]);
-        }
-
-
-        return redirect()->route('transfer.index')->with('success','Purchase Order Created Successfully');
-
-    }
     public function render()
     {
-
         $suppliers = Supplier::get();
         if($this->origin != null){
             $supplierinfo = Supplier::where('id',$this->origin)->get();
@@ -135,7 +109,7 @@ class InventoryTransferForm extends Component
             $this->toggleinfo = false;
         }
 
-        return view('livewire.form.inventory-transfer-form',[
+        return view('livewire.form.inventory-transfer-edit-form',[
             'suppliers'  => $suppliers,
             'supplierinfo' => $supplierinfo,
         ]);

@@ -26,13 +26,11 @@ class CustomerLoginController extends Controller
                 Alert::success('Login Successfully ','Welcome to Go Dental' );
                 return redirect()->route('home');
             }else{
-                return back()->with('fail', 'Your Account and/or password is incorrect, please try again');
+                return back()->with('fail', 'Your Account and/or password is incorrect, please try again')->withInput();
             }
-
         }else{
             Alert::error('Account Restricted','Contact Customer Support to Retrieve your account' );
             return back();
         }
-
     }
 }

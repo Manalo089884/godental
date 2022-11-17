@@ -43,7 +43,7 @@
                                     <tbody>
                                         @foreach ($orders as $order)
                                         <tr>
-                                            <td>T00{{ $order->id }}</td>
+                                            <td><a href="{{ Route('transfer.edit',$order->id) }}">T00{{ $order->id }}</a> </td>
                                             <td class="whitespace-nowrap text-center">{{ $order->suppliers->name }}</td>
                                             <td class="whitespace-nowrap text-center">{{ $order->status }}</td>
                                         </tr>

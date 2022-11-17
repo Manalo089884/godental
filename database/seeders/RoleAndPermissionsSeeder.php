@@ -54,7 +54,6 @@ class RoleAndPermissionsSeeder extends Seeder
             'product_archive_access',
             'product_create',
             'product_edit',
-            'product_show',
             'product_archive',
             'product_export',
             'product_restore',
@@ -71,6 +70,7 @@ class RoleAndPermissionsSeeder extends Seeder
             'inventory_logs',
             'inventory_transfer_access',
             'inventory_transfer_create',
+            'discount_access'
 
         ];
         foreach($permissions as $permission){

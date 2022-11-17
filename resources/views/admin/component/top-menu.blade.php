@@ -15,7 +15,7 @@
                 <div class="notification-content__title">Notifications</div>
                 <div class="cursor-pointer relative flex items-center ">
                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/profile-15.jpg')}}">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/logo.png')}}">
                         <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                     </div>
                     <div class="ml-2 overflow-hidden">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="cursor-pointer relative flex items-center mt-5">
                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/profile-15.jpg')}}">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/logo.png')}}">
                         <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                     </div>
                     <div class="ml-2 overflow-hidden">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="cursor-pointer relative flex items-center mt-5">
                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/profile-15.jpg')}}">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/logo.png')}}">
                         <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                     </div>
                     <div class="ml-2 overflow-hidden">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="cursor-pointer relative flex items-center mt-5">
                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/profile-15.jpg')}}">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/logo.png')}}">
                         <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                     </div>
                     <div class="ml-2 overflow-hidden">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="cursor-pointer relative flex items-center mt-5">
                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/profile-15.jpg')}}">
+                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/logo.png')}}">
                         <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                     </div>
                     <div class="ml-2 overflow-hidden">

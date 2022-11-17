@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Table;
 use App\Models\CustomerCart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use App\Models\CustomerShippingAddress;
 
 class CartTable extends Component
 {
@@ -121,8 +122,13 @@ class CartTable extends Component
         }
 
         $this->validatequantity();
+        $customer_id = Auth::guard('customer')->user()->id;
+        $shippingaddresscount = CustomerShippingAddress::where('customers_id',$customer_id)->count();
+
+
         return view('livewire.table.cart-table',[
             'cart' => $cart,
+            'shippingaddresscount' => $shippingaddresscount
         ]);
     }
 }

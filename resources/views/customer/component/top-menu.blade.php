@@ -1,9 +1,8 @@
 <div class="top-bar-boxed border-b border-white/[0.08] -mt-7 md:mt-0 -mx-3 sm:-mx-8 md:mx-0 px-4 sm:px-8 md:px-6 mb-14 md:mb-8">
     <div class="h-full flex items-center">
         <!-- BEGIN: Logo -->
-        <div href="" class="-intro-x hidden md:flex w-32">
-            <img alt="Go Dental Logo" class="w-6" src="{{asset('icons/log.png')}}">
-            <span class="text-white text-lg ml-2 mt-1"> Go Dental </span>
+        <div href="" class="-intro-x hidden md:flex w-auto">
+            <img alt="Go Dental Logo" class="w-8" src="{{asset('icons/log.png')}}">
         </div>
 
         <!-- END: Logo -->
@@ -14,7 +13,7 @@
             </ol>
         </nav>
         <!-- BEGIN: Breadcrumb -->
-        <nav class=" top-nav h-full mr-auto mt-2 w-1/2 sm:invisible lg:visible  ">
+        <nav class=" top-nav h-full mr-auto mt-2 w-1/2 sm:invisible xl:visible  ">
             <ul>
                 <li>
                     <a href="{{ Route('home') }}" class="top-menu {{ (request()->is('/')) ? 'top-menu--active' : '' }}">

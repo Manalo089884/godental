@@ -4,6 +4,7 @@
 
 <livewire:form.checkout-form/>
 <livewire:modal.remove-checkout/>
+
 @endsection
 @push('scripts')
 <script>

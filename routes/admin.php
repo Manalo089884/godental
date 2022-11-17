@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\Product\ProductImageController;
 use App\Http\Controllers\Backend\Product\InventoryController;
 use App\Http\Controllers\Backend\Product\InventoryTransferController;
 use App\Http\Controllers\Backend\Product\SupplierController;
+use App\Http\Controllers\Backend\Product\DiscountController;
 //Import Admin Transaction Stuff
 use App\Http\Controllers\Backend\Transaction\ChatController;
 use App\Http\Controllers\Backend\Transaction\OrderController;
@@ -95,6 +96,7 @@ Route::group(['prefix' => 'admin'],function(){
             Route::resource('profile', ProfileController::class)->only('index');
             Route::resource('changepassword', ChangePasswordController::class)->only('index');
             Route::resource('analytics', AnalyticsController::class)->only('index');
+            Route::resource('discount', DiscountController::class);
             Route::resource('report', ReportController::class);
 
             Route::get('/customer/archive',[CustomerController::class,'CustomerArchiveIndex'])->name('CustomerArchiveIndex');
