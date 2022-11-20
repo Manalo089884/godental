@@ -10,7 +10,7 @@ use Livewire\WithFileUploads;
 use Carbon\Carbon;
 use Spatie\Permission\Models\Role;
 use Laravolt\Avatar\Facade as Avatar;
-
+use Illuminate\Support\Facades\Storage;
 
 class UserCreateForm extends Component
 {
@@ -26,9 +26,7 @@ class UserCreateForm extends Component
             'phone' => 'required|phone:PH',
             'age' => 'required|numeric',
             'role' => 'required',
-
             'password' => 'required'
-
         ];
     }
 
@@ -49,26 +47,26 @@ class UserCreateForm extends Component
         $this->validate();
         $imagename = $this->email.Str::random(10);
 
-
-
-
         $data = [
             'name' => $this->name,
             'email' => $this->email,
             'phone_number' => $this->phone,
             'address' => $this->address,
             'password' => $this->password,
-            'photo' => $imagename,
+            'photo' => $imagename.'.png',
             'gender' => $this->gender,
             'age' => $this->age,
 
         ];
 
-
-
-
         $user = User::create($data);
-        $avatar = Avatar::create($this->name)->save(storage_path('app/public/photos/'.$imagename.'.png'));
+
+        if(!Storage::disk('public')->exists('employee_profile_picture'))
+        {
+            Storage::disk('public')->makeDirectory('employee_profile_picture', 0775, true);
+        }
+
+        $avatar = Avatar::create($this->name)->save(storage_path('app/public/employee_profile_picture/'.$imagename.'.png'));
         $user->assignRole($this->role);
         return redirect()->route('user.index')->with('success', $this->name .' was successfully inserted');
     }

@@ -1,7 +1,7 @@
 @extends('customer.layout.base')
 @section('content')
 @section('title', 'Address')
-<script src="{{ asset('dist/js/phil-address.js') }}"></script>
+<script src="{{ asset('dist/js/address.js') }}"></script>
 <div class="intro-y flex items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
             Welcome to Go Dental!
@@ -62,20 +62,20 @@
                         </div>
                         <div class="mt-3">
                             <label for="Province" class="form-label">Province</label>
-                            <select id="Province" class="tom-select w-full" name="province" data-search="true"  >
-                                <option value=""  selected>Province of shipping address</option>
+                            <select id="Province" class="form-select w-full" name="province"  >
+                                <option value="" >Province of shipping address</option>
                             </select>
                         </div>
                         <div class="mt-3">
-                            <label for="city" class="form-label">City/Municipality</label>
-                            <select id="city" data-search="true" class="tom-select w-full" name="city">
-                                <option value=""  selected>City of shipping address</option>
+                            <label for="City" class="form-label">City/Municipality</label>
+                            <select id="City" data-search="true" class="form-select w-full" name="city">
+                                <option value="" >City of shipping address</option>
                             </select>
                         </div>
                         <div class="mt-3">
-                            <label for="barangay" class="form-label">Barangay</label>
-                            <select id="barangay" data-search="true" class=" w-full tom-select" name="barangay">
-                                <option value="" class="text-muted"  selected>Barangay of shipping address</option>
+                            <label for="Barangay" class="form-label">Barangay</label>
+                            <select id="Barangay" data-search="true" class=" w-full form-select" name="barangay">
+                                <option value="" class="text-muted" >Barangay of shipping address</option>
                             </select>
                         </div>
                     </div>

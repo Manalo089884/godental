@@ -1,7 +1,7 @@
 @extends('customer.layout.base')
 @section('content')
 @section('title', 'Edit Address')
-<script src="{{ asset('dist/js/phil-address.js') }}"></script>
+<script src="{{ asset('dist/js/address.js') }}"></script>
 <div class="intro-y flex items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
             Welcome to Go Dental!
@@ -62,23 +62,21 @@
                         </div>
                         <div class="mt-3">
                             <label for="Province" class="form-label">Province</label>
-                            <select id="Province" class="tom-select w-full" name="province" data-search="true"  >
-                                <option value=""  selected>Province of shipping address</option>
+                            <select id="Province" class="form-select w-full" name="province"  >
+                                <option value="">Province of shipping address</option>
 
                             </select>
                         </div>
                         <div class="mt-3">
                             <label for="city" class="form-label">City/Municipality</label>
-                            <select id="city" data-search="true" class="tom-select w-full" name="city">
-                                <option value=""  selected>City of shipping address</option>
-
+                            <select id="City" class="form-select w-full" name="city">
+                                <option value="">City of shipping address</option>
                             </select>
                         </div>
                         <div class="mt-3">
                             <label for="barangay" class="form-label">Barangay</label>
-                            <select id="barangay" data-search="true" class=" w-full tom-select" name="barangay">
-                                <option value="" class="text-muted"  selected>Barangay of shipping address</option>
-
+                            <select id="Barangay" class=" w-full form-select" name="barangay">
+                                <option value="">Barangay of shipping address</option>
                             </select>
                         </div>
                     </div>
@@ -101,14 +99,14 @@
 @endsection
 @push('scripts')
 <script>
-    const provinceCode ="{{old('province') ?? $address->province}}"
-    const cityCode = "{{old('city') ?? $address->city}}"
-    const brgyCode = "{{old('barangay') ?? $address->barangay}}"
+    const province ="{{old('province') ?? $address->province}}"
+    const city = "{{old('city') ?? $address->city}}"
+    const brgy= "{{old('barangay') ?? $address->barangay}}"
     window.MODE = "EDIT"
     window.address = {
-        provinceCode,
-        cityCode,
-        brgyCode
+        province,
+        city,
+        brgy
     }
 </script>
 @endpush

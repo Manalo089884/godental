@@ -4,7 +4,7 @@
 
 <livewire:form.checkout-form/>
 <livewire:modal.remove-checkout/>
-
+<livewire:form.change-address-form/>
 @endsection
 @push('scripts')
 <script>
@@ -24,5 +24,18 @@
     DeleteModal.addEventListener('hidden.tw.modal', function(event) {
         livewire.emit('forceCloseModal');
     });
+
+
+    const mySlideOver = tailwind.Modal.getOrCreateInstance(document.querySelector("#header-footer-slide-over-preview"));
+    window.addEventListener('openAddressModal', function(event) {
+        mySlideOver.show();
+    });
+    window.addEventListener('CloseAddressModal', function(event) {
+        mySlideOver.hide();
+    });
+
+
+
+
 </script>
 @endpush

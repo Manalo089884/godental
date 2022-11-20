@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Modal;
 use Livewire\Component;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Storage;
 class ForceDeleteUser extends Component
 {
     public $modelId;
@@ -37,6 +37,8 @@ class ForceDeleteUser extends Component
     public function delete(){
         abort_if(Gate::denies('user_forcedelete'),403);
         $user = User::onlyTrashed()->find($this->modelId);
+
+        Storage::delete('public/employee_profile_picture/'.$user->photo);
         $user->forcedelete();
         $this->dispatchBrowserEvent('SuccessAlert',[
             'name' => $user->name.' was successfully deleted!',

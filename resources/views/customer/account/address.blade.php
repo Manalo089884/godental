@@ -42,7 +42,6 @@
 
 
 @push('scripts')
-<script src="{{ asset('dist/js/phil-conv-address.js') }}"></script>
 <script>
        window.addEventListener('SuccessAlert',event => {
         let id = (Math.random() + 1).toString(36).substring(7);

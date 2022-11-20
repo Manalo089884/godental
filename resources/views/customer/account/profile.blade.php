@@ -32,39 +32,21 @@
                         <div class="alert alert-danger show mb-2 intro-x" role="alert">{{ session('fail') }}</div>
                     @endif
                     <div class="flex flex-col-reverse xl:flex-row flex-col">
-                        <div class="flex-1 mt-6 xl:mt-0">
-                            <div class="grid grid-cols-12 gap-x-5">
-                                <div class="col-span-12 2xl:col-span-6">
-                                    <div>
-                                        <label for="fullname" class="form-label">Full Name</label>
-                                        <input id="fullname" type="text" class="form-control" placeholder="Input text" value="{{Auth::guard('customer')->user()->name}}" disabled>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input id="email" type="text" class="form-control" placeholder="Input text" value="{{Auth::guard('customer')->user()->email}}" disabled>
-                                    </div>
+                        <livewire:show.customer-profile/>
+                        <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
+                            <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                                <div class=" ">
+                                    @if(!empty(Auth::guard('customer')->user()->photo))
+                                        <img src="{{ url('storage/customer_profile_picture/'.Auth::guard('customer')->user()->photo.'') }}" class="rounded-md h-40 w-full object-fill"  alt="Missing Image" data-action="zoom">
+                                    @else
+                                        <img alt="Missing Image" class="rounded-md" src="{{asset('dist/images/undraw_pic.svg')}}" data-action="zoom">
+                                    @endif
                                 </div>
-                                <div class="col-span-12 2xl:col-span-6">
-                                    <div class="mt-3 2xl:mt-0">
-                                        <label for="phone_number" class="form-label">Phone Number</label>
-                                        <input id="phone_number" type="text" class="form-control" placeholder="Input text" value="{{Auth::guard('customer')->user()->phone_number}}" disabled>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label for="gender" class="form-label">Gender</label>
-                                        <input id="gender" type="text" class="form-control" placeholder="Input text" value="{{Auth::guard('customer')->user()->gender}}" disabled>
-                                    </div>
+                                <div class="mx-auto cursor-pointer relative mt-5">
+                                    <button class="btn btn-primary w-full" data-tw-toggle="modal" data-tw-target="#change-profile-modal">
+                                        Change Photo
+                                    </button>
                                 </div>
-                                <div class="col-span-12">
-                                    <div class="mt-3">
-                                        <label for="age" class="form-label">Birthday</label>
-                                        <input id="age" type="text" class="form-control" placeholder="Input text" value="{{Auth::guard('customer')->user()->birthday}}" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex justify-end gap-2">
-                                <button class="btn btn-primary w-32 mt-3">Edit Profile</button>
-                                <a href="{{ Route('customer.change.pass') }}" class="btn btn-primary w-50 mt-3">Change Password</a>
-
                             </div>
                         </div>
                     </div>
@@ -80,8 +62,8 @@
                 </div>
                 <div class="p-5">
                     <div class="overflow-x-auto">
-                        <table class="table table-bordered table-hover">
-                            <thead class="table-light">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead class="table-dark">
                                 <tr>
                                     <th class="whitespace-nowrap">Order #</th>
                                     <th class="whitespace-nowrap text-center">Place On</th>
@@ -120,9 +102,44 @@
              <!-- END: RECENT ORDERS -->
         </div>
     </div>
-
+    <livewire:form.customer-change-profile-form/>
+    <livewire:form.customer-change-information/>
 @endsection
 @push('scripts')
 <script>
+ const myModal = tailwind.Modal.getInstance(document.querySelector("#change-profile-modal"));
+    //Hide Form Modal
+    window.addEventListener('CloseModal',event => {
+        myModal.hide();
+    });
+    //Closing Modal and Refreshing its value
+    const myModalEl = document.getElementById('change-profile-modal')
+     myModalEl.addEventListener('hidden.tw.modal', function(event) {
+        livewire.emit('forceCloseModal');
+    });
+
+
+
+
+    const informationModal = tailwind.Modal.getInstance(document.querySelector("#change-profile-information-modal"));
+    window.addEventListener('openEditInformationModal',event => {
+        informationModal.show();
+    });
+
+    //Hide Form Modal
+    window.addEventListener('CloseInformationModal',event => {
+        informationModal.hide();
+    });
+    //Closing Modal and Refreshing its value
+    const infoModal = document.getElementById('change-profile-information-modal')
+    infoModal.addEventListener('hidden.tw.modal', function(event) {
+        console.log('wor')
+        livewire.emit('ForceClose');
+    });
+
+
+
+
+
 </script>
 @endpush

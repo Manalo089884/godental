@@ -23,8 +23,7 @@
             </div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <input type="text" wire:model.lazy="search" class="form-control w-56 box pr-10" placeholder="Search...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                    <input type="search" wire:model.lazy="search" class="form-control w-56 box" placeholder="Search...">
                 </div>
             </div>
         </div>
@@ -36,7 +35,7 @@
                     <div class="w-full flex flex-col lg:flex-row items-center">
                         <div class="w-16 h-16 image-fit">
                             @if(!empty($user->photo))
-                                <img src="{{ url('storage/photos/'.$user->photo.'.png') }}" data-action="zoom" class="" alt="">
+                                <img src="{{ url('storage/employee_profile_picture/'.$user->photo) }}" data-action="zoom" alt="Missing Image">
                             @else
                                 <img alt="Missing Image" class="rounded-full" data-action="zoom" src="{{asset('dist/images/undraw_pic.svg')}}">
                             @endif
@@ -69,10 +68,7 @@
                     <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"><i class="fa-regular fa-envelope mr-1"></i>{{ $user->email }} </div>
                     <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i class="fa-solid fa-phone mr-1"></i> {{ $user->phone_number }} </div>
                 </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
+
             </div>
         </div>
         @empty
@@ -83,8 +79,6 @@
             </div>
         </div>
         @endforelse
-
-
         <!-- END: Users Layout -->
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">

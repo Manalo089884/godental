@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use App\Jobs\CustomerVerifyJob;
 Use Alert;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerRegister extends Component
 {
@@ -51,16 +52,23 @@ class CustomerRegister extends Component
     public function StoreCustomerData(){
         $this->validate();
         $avatar =  $this->email.Str::random(10);
+        if(!Storage::disk('public')->exists('customer_profile_picture'))
+        {
+            Storage::disk('public')->makeDirectory('customer_profile_picture', 0775, true);
+        }
+
+        $avatarimage = Avatar::create($this->name)->save(storage_path('app/public/customer_profile_picture/'.$avatar.'.png'));
         $customer = Customer::create([
             'name' => $this->name,
             'email' => $this->email,
             'phone_number'=>$this->phone,
             'birthday'=>$this->birthday,
             'gender'=>$this->gender,
-            'photo' => $avatar,
+            'photo' => $avatar.'.png',
             'password' => Hash::make($this->password),
         ]);
-        $avatarimage = Avatar::create($this->name)->save(storage_path('app/public/photos/'.$avatar.'.png'));
+
+
 
         $token = $customer->id.hash('sha256', \Str::random(120));
         $verifyURL = route('verify',['token'=>$token,'service'=>'Email_verification']);

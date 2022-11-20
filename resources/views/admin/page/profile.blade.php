@@ -1,11 +1,6 @@
 @extends('admin.layout.admin')
 @section('content')
 @section('title', 'Profile')
-<div class="intro-y flex items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">
-        Update Profile
-    </h2>
-</div>
 <div class="grid grid-cols-12 gap-6">
     <!-- BEGIN: Profile Menu -->
     @include('admin.component.profile-side')
@@ -45,7 +40,6 @@
 
                         </div>
                         <div class="flex justify-end"> <button type="button" class="btn btn-primary w-32 mt-8">Edit Profile</button></div>
-
                     </div>
                     <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
                         <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
@@ -63,6 +57,7 @@
             </div>
         </div>
         <!-- END: Display Information -->
+
 
     </div>
 </div>

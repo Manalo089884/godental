@@ -23,7 +23,7 @@
                     <div class="w-full flex flex-col lg:flex-row items-center">
                         <div class="w-16 h-16 image-fit">
                             @if(!empty($user->photo))
-                                <img src="{{ url('storage/photos/'.$user->photo.'.png') }}" data-action="zoom" class="" alt="">
+                                <img src="{{ url('storage/employee_profile_picture/'.$user->photo) }}" data-action="zoom" class="" alt="Missing Image">
                             @else
                                 <img alt="Missing Image" class="rounded-full" data-action="zoom" src="{{asset('dist/images/undraw_pic.svg')}}">
                             @endif

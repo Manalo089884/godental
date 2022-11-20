@@ -9,7 +9,7 @@ class Brand extends Model
 {
     use HasFactory;
     protected $table = 'brand';
-     protected $fillable = [
+    protected $fillable = [
         'name',
     ];
     public function brandTransactions()

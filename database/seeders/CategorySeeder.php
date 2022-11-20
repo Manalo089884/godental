@@ -60,7 +60,7 @@ class CategorySeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Cleaner Solution', //11
+                'name' => 'Clearner Solution', //11
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
@@ -72,7 +72,7 @@ class CategorySeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
-                'name' => 'Dental Anesthesia', //14
+                'name' => 'Local Anesthesia', //14
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
@@ -105,6 +105,10 @@ class CategorySeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],[
                 'name' => 'Ortho Elastics', //22
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'Topical Anesthesia', //23
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

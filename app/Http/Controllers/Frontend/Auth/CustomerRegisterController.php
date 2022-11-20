@@ -39,5 +39,5 @@ class CustomerRegisterController extends Controller
                  return redirect()->route('CLogin.index')->with('info','Your email is already verified. You can now login')->with('verifiedEmail', $verifyUser->customers->name);
             }
         }
-}
+    }
 }

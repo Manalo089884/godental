@@ -7,7 +7,7 @@
         </ol>
     </nav>
     <!-- END: Breadcrumb -->
-    <!-- BEGIN: Notifications -->
+    <!--
     <div class="intro-x dropdown mr-auto sm:mr-6">
         <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="bell" class="notification__icon dark:text-slate-500"></i> </div>
         <div class="notification-content pt-2 dropdown-menu">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="cursor-pointer relative flex items-center mt-5">
                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{asset('dist/images/logo.png')}}">
+                        <img alt="Go Dental Logo" class="rounded-full" src="{{asset('dist/images/logo.png')}}">
                         <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                     </div>
                     <div class="ml-2 overflow-hidden">
@@ -81,12 +81,12 @@
             </div>
         </div>
     </div>
-    <!-- END: Notifications -->
+     -->
     <!-- BEGIN: Account Menu -->
     <div class="intro-x dropdown w-8 h-8">
         <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false" data-tw-toggle="dropdown">
             @if(!empty(Auth::guard('web')->user()->photo))
-                <img src="{{ url('storage/photos/'.Auth::guard('web')->user()->photo.'.png') }}" class="rounded-full"  alt="Missing Image">
+                <img src="{{ url('storage/employee_profile_picture/'.Auth::guard('web')->user()->photo.'.png') }}" class="rounded-full"  alt="Missing Image">
             @else
                 <img alt="Missing Image" class="rounded-full" src="{{asset('dist/images/undraw_pic.svg')}}">
             @endif
