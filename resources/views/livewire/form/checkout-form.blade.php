@@ -1,4 +1,35 @@
 <div>
+    <script src="https://www.paypal.com/sdk/js?client-id=AZzxYWHDmvZxLx99ZwQfI8pUjxZfqwA34vUUelB06kxxSeyqFzhOwGRcKn4z5YAyFdvt-epootEdtavV&currency=PHP"></script>
+    <script>
+        paypal.Buttons({
+            // Sets up the transaction when a payment button is clicked
+            createOrder: (data, actions) => {
+            return actions.order.create({
+                purchase_units: [{
+                amount: {
+                    value: '{{ $total }}' // Can also reference a variable or function
+                }
+                }]
+            });
+            },
+            // Finalize the transaction after payer approval
+            onApprove: (data, actions) => {
+            return actions.order.capture().then(function(orderData) {
+                // Successful capture! For dev/demo purposes:
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                const transaction = orderData.purchase_units[0].payments.captures[0];
+                if(transaction.status == "COMPLETED"){
+                    Livewire.emit('transactionEmit', transaction.id)
+                }
+                //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                // When ready to go live, remove the alert and show a success message within this page. For example:
+                // const element = document.getElementById('paypal-button-container');
+                // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                // Or go to another URL:  actions.redirect('thank_you.html');
+            });
+            }
+        }).render('#paypal-button-container');
+    </script>
     <form wire:submit.prevent="StoreCustomerOrder">
         <div class="grid grid-cols-12 gap-6">
             <div class="col-span-12 lg:col-span-8 2xl:col-span-9">
@@ -12,7 +43,7 @@
                                 </h2>
                             </div>
                             <div>
-                                <button class="underline text-blue-400 cursor-pointer"  wire:click="selectItem({{ $updateAddress }},'editaddress')">Edit</button>
+                                <button type="button" class="underline text-blue-400 cursor-pointer"  wire:click="selectItem({{ $updateAddress }},'editaddress')">Edit</button>
                             </div>
                         </div>
                     </div>
@@ -83,7 +114,7 @@
                                                         </div>
                                                     <!-- END: Modal Content -->
                                                 @else
-                                                    <button wire:click="selectItem({{ $order->id }},'remove')" class="flex items-center text-center text-danger">
+                                                    <button wire:click="selectItem({{ $order->id }},'remove')" class="flex items-center text-center text-danger" type="button">
                                                         <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i> Remove
                                                     </button>
                                                 @endif
@@ -109,6 +140,10 @@
                             <input id="trylng" name="working" class="form-check-input" type="radio"  value="Cash On Delivery" wire:model="modeofpayment"/>
                             <label for="cash-on-delivery" class="form-check-label">Cash On Delivery</label>
                         </div>
+                        <div wire:ignore class="mt-2 w-full">
+                            <div id="paypal-button-container"></div>
+                        </div>
+
                     </div>
                     <div class="p-5 border-t border-slate-200/60">
                         <h1 class="font-medium leading-none mt-1">Order Summary</h1>

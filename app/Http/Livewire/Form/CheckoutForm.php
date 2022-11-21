@@ -7,6 +7,8 @@ use App\Models\CustomerShippingAddress;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerCart;
 use App\Models\CustomerOrder;
+use App\Models\OrderedProduct;
+use Alert;
 class CheckoutForm extends Component
 {
     public $updateAddress;
@@ -20,13 +22,47 @@ class CheckoutForm extends Component
     public $shippingfee = 100;
     public $total;
     public $orders;
-
+    public $status;
     public $modeofpayment;
 
     protected $listeners = [
         'refreshParent' => '$refresh',
         'NewAddress',
+        'transactionEmit' => 'paidByPaypal',
     ];
+
+    public function paidByPaypal($value){
+        $payment_id = $value;
+        $this->modeofpayment = 'Paid by Paypal';
+
+        foreach($this->address as $info){
+            $order_id = CustomerOrder::create([
+                'customers_id' => $this->customer_id,
+                'mode_of_payment' => $this->modeofpayment,
+                'payment_id'=> $payment_id,
+                'status' => $this->status,
+                'received_by' => $info->name,
+                'phone_number' => $info->phone_number,
+                'notes' => $info->notes,
+                'house' => $info->house,
+                'province' => $info->province,
+                'city' => $info->city,
+                'barangay' => $info->barangay,
+            ]);
+
+            foreach($this->orders as $item){
+                OrderedProduct::create([
+                    'customer_orders_id' => $order_id->id,
+                    'product_name' => $item->product->name,
+                    'price' => $item->product->sprice,
+                    'quantity' => $item->quantity,
+                ]);
+                $item->delete();
+            }
+        }
+        Alert::success("Successfully Checkout");
+        return redirect()->route('cart.index');
+    }
 
     public function NewAddress($id){
         $this->updateAddress = $id;
@@ -51,18 +87,38 @@ class CheckoutForm extends Component
     }
 
     public function StoreCustomerOrder(){
-       /*
-        CustomerOrder::create([
-            'customers_id' => $this->customers_id,
-            'mode_of_payment' => $this->modeofpayment,
-            'status' => "Pending",
-            'Received_by' =>
-        ]);
-        */
+        //dd($this->address);
+        foreach($this->address as $info){
+            $order_id = CustomerOrder::create([
+                'customers_id' => $this->customer_id,
+                'mode_of_payment' => $this->modeofpayment,
+                'status' => $this->status,
+                'received_by' => $info->name,
+                'phone_number' => $info->phone_number,
+                'notes' => $info->notes,
+                'house' => $info->house,
+                'province' => $info->province,
+                'city' => $info->city,
+                'barangay' => $info->barangay,
+            ]);
+
+            foreach($this->orders as $item){
+                OrderedProduct::create([
+                    'customer_orders_id' => $order_id->id,
+                    'product_name' => $item->product->name,
+                    'price' => $item->product->sprice,
+                    'quantity' => $item->quantity,
+                ]);
+                $item->delete();
+            }
+        }
+        Alert::success("Successfully Checkout");
+        return redirect()->route('cart.index');
     }
 
     public function mount(){
         $this->customer_id = Auth::guard('customer')->user()->id;
+        $this->status = "Pending for Approval";
         $this->address = CustomerShippingAddress::where('default_address',1)
         ->where('customers_id',$this->customer_id)->get();
         foreach($this->address as $pickaddress){
@@ -89,8 +145,6 @@ class CheckoutForm extends Component
         }
 
         $this->total = $this->subtotal + $this->shippingfee;
-
-
         return view('livewire.form.checkout-form');
     }
 }

@@ -10,7 +10,6 @@ const populateSelect = (collection=[],select, key)=>{
      })
  }
  const clearSelect = (select)=>{
-    console.log(select)
     Array.from(select.children).forEach((c, i)=>{
         if(i != 0){
             c.remove()

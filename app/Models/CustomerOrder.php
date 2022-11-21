@@ -12,6 +12,7 @@ class CustomerOrder extends Model
     protected $fillable = [
         'customers_id',
         'mode_of_payment',
+        'payment_id',
         'status',
         'received_by',
         'phone_number',
@@ -21,5 +22,10 @@ class CustomerOrder extends Model
         'city',
         'barangay'
     ];
+
+    public function customers(){
+        return $this->belongsTo(Customer::class);
+    }
+
 
 }

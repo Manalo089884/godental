@@ -7,6 +7,7 @@
 <livewire:form.change-address-form/>
 @endsection
 @push('scripts')
+
 <script>
  //Delete Modal
  const RemoveToCheckoutModal = tailwind.Modal.getOrCreateInstance(document.querySelector("#remove-confirmation-modal"));
@@ -33,9 +34,5 @@
     window.addEventListener('CloseAddressModal', function(event) {
         mySlideOver.hide();
     });
-
-
-
-
 </script>
 @endpush

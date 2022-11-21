@@ -109,7 +109,7 @@
         @endcan
         @can('discount_access')
         <li>
-            <a href="{{Route('discount.index')}}" class="side-menu {{ (request()->is('admin/orders')) ? 'side-menu--active' : '' }}">
+            <a href="{{Route('discount.index')}}" class="side-menu {{ (request()->is('admin/discount')) ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"><i class="fa-solid fa-tag fa-lg p-1"></i> </div>
                 <div class="side-menu__title"> Discount </div>
             </a>

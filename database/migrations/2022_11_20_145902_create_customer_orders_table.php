@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('customers_id');
             $table->foreign('customers_id')->references('id')->on('customers')->onDelete('cascade');
             $table->string('mode_of_payment');
+            $table->string('payment_id')->nullable();
             $table->string('status');
             $table->string('received_by');
             $table->string('phone_number');

@@ -39,6 +39,7 @@ class Customer extends Authenticatable
         return $this->hasMany(CustomerCart::class, 'customer_id','id');
     }
 
+
     public static function search($search){
         return empty($search) ? static::query() :
         static::query()->where('name','like','%'.$search.'%')
@@ -75,12 +76,5 @@ class Customer extends Authenticatable
      *
      * @var array
      */
-    public function getPhotoUrlAttribute()
-    {
-        if ($this->foto !== null) {
-            return url('media/user/' . $this->id . '/' . $this->foto);
-        } else {
-            return url('media-example/no-image.png');
-        }
-    }
+
 }

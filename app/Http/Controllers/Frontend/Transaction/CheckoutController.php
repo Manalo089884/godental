@@ -17,8 +17,6 @@ class CheckoutController extends Controller
             ->where('check',1)
             ->count();
         $shippingaddresscount = CustomerShippingAddress::where('customers_id',$customer_id)->count();
-
-
             if($checkoutcount == 0){
                 Alert::warning('No Products in Cart', 'Please add products into the cart before checking out');
                 return redirect()->route('cart.index');
