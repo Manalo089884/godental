@@ -2,11 +2,14 @@
 @section('content')
 @section('title', 'Brand')
 <h2 class="intro-y text-lg font-medium mt-10">Brand</h2>
-<livewire:form.brand-form/>
 
+<!-- Begin: Brand Table -->
 <livewire:table.brand-table/>
+<!-- End: Brand Table -->
 
 <livewire:modal.delete-brand/>
+
+<livewire:form.brand-form/>
 
 <div id="success-notification-content" class="toastify-content hidden flex non-sticky-notification-content">
     <i class="fa-regular fa-circle-check fa-3x text-success mx-auto"></i>
@@ -89,7 +92,6 @@
     //Hide Modal and Refresh its value
     const DeleteModal = document.getElementById('delete-confirmation-modal')
     DeleteModal.addEventListener('hidden.tw.modal', function(event) {
-        console.log('Working');
         livewire.emit('forceCloseModal');
     })
 </script>

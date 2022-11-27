@@ -6,79 +6,76 @@
         About us
     </h2>
 </div>
+<!-- Begin: Main Container -->
 <div class="grid grid-cols-12 gap-6 mt-5">
-    <!-- BEGIN: FAQ Menu -->
-    <div  class="intro-y col-span-12 lg:col-span-4 box py-10 ">
+    <!-- BEGIN: Mission, Vision, and Core Values -->
+    <div class="intro-y col-span-12 lg:col-span-4 box py-10 ">
         <i data-lucide="shield" class="block w-12 h-12 text-primary mx-auto"></i>
         <div class="font-medium text-center text-base mt-3">Mission</div>
         <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">Lorem Ipsum is simply dummy text of the printing</div>
     </div>
-    <div href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
+    <div class="intro-y col-span-12 lg:col-span-4 box py-10">
         <i data-lucide="send" class="block w-12 h-12 text-primary mx-auto"></i>
         <div class="font-medium text-center text-base mt-3">Vision</div>
         <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">Lorem Ipsum is simply dummy text of the printing</div>
     </div>
-    <div href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
+    <div class="intro-y col-span-12 lg:col-span-4 box py-10">
         <i data-lucide="trending-up" class="block w-12 h-12 text-primary mx-auto"></i>
         <div class="font-medium text-center text-base mt-3">Core Values</div>
         <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">Lorem Ipsum is simply dummy text of the printing</div>
     </div>
-    <!-- END: FAQ Menu -->
-    <!-- BEGIN: FAQ Content -->
+    <!-- END: Mission, Vision, and Core Values -->
+    <!-- BEGIN:Go Dental Information -->
     <div class="intro-y col-span-12 lg:col-span-6">
         <div class="box">
             <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                 <h2 class="font-medium text-base mr-auto">
-                    Working with Dropplets
+                    Go Dental Information
                 </h2>
             </div>
-            <div id="faq-accordion-1" class="accordion p-5">
-                <div class="accordion-item">
-                    <div id="faq-accordion-content-1" class="accordion-header">
-                        <button class="accordion-button" type="button" data-tw-toggle="collapse" data-tw-target="#faq-accordion-collapse-1" aria-expanded="true" aria-controls="faq-accordion-collapse-1"> OpenSSL Essentials: Working with SSL Certificates, Private Keys </button>
-                    </div>
-                    <div id="faq-accordion-collapse-1" class="accordion-collapse collapse show" aria-labelledby="faq-accordion-content-1" data-tw-parent="#faq-accordion-1">
-                        <div class="accordion-body text-slate-600 dark:text-slate-500 leading-relaxed"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </div>
-                    </div>
+            <div class="w-full h-full sm:h-full p-5 text-justify">
+                <div class="indent-5"> Roman Dental Supplies Trading is a company launched in 2009 owned by Par, Roldan Vargas.
+                    The company is located at Grand Royale Subdivision, Barangay. Pinagbakahan, City of Malolos,
+                    Bulacan. The company is an importer and distributor of dental supplies and equipment.
+                    The company offers business transactions from 8:00 am to 5:00 pm, Monday to Saturday.</div>
+                <div class="indent-5 mt-2">
+                    Maecenas at sodales arcu. Sed euismod ligula quis lobortis gravida.
+                    Aliquam laoreet sagittis leo eu tempus. Curabitur tortor est, bibendum quis sapien ut,
+                    maximus vulputate mauris. Vestibulum gravida libero dui, et euismod sapien interdum vel.
+                    Aliquam venenatis tortor libero. Mauris ac ante id arcu tristique dapibus eget eu augue.
+                    Proin ac nunc et neque egestas gravida. Vivamus lacus odio, varius vehicula consectetur aliquam,
+                    blandit ut tellus. In sodales ipsum dui, quis ultrices risus tempor id. Curabitur tincidunt pulvinar nisi,
+                    at porttitor ex feugiat vel. Duis at rutrum mauris, non tristique massa.
                 </div>
-                <div class="accordion-item">
-                    <div id="faq-accordion-content-2" class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-tw-toggle="collapse" data-tw-target="#faq-accordion-collapse-2" aria-expanded="false" aria-controls="faq-accordion-collapse-2"> Understanding IP Addresses, Subnets, and CIDR Notation </button>
-                    </div>
-                    <div id="faq-accordion-collapse-2" class="accordion-collapse collapse" aria-labelledby="faq-accordion-content-2" data-tw-parent="#faq-accordion-1">
-                        <div class="accordion-body text-slate-600 dark:text-slate-500 leading-relaxed"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div id="faq-accordion-content-3" class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-tw-toggle="collapse" data-tw-target="#faq-accordion-collapse-3" aria-expanded="false" aria-controls="faq-accordion-collapse-3"> How To Troubleshoot Common HTTP Error Codes </button>
-                    </div>
-                    <div id="faq-accordion-collapse-3" class="accordion-collapse collapse" aria-labelledby="faq-accordion-content-3" data-tw-parent="#faq-accordion-1">
-                        <div class="accordion-body text-slate-600 dark:text-slate-500 leading-relaxed"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div id="faq-accordion-content-4" class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-tw-toggle="collapse" data-tw-target="#faq-accordion-collapse-4" aria-expanded="false" aria-controls="faq-accordion-collapse-4"> An Introduction to Securing your Linux VPS </button>
-                    </div>
-                    <div id="faq-accordion-collapse-4" class="accordion-collapse collapse" aria-labelledby="faq-accordion-content-4" data-tw-parent="#faq-accordion-1">
-                        <div class="accordion-body text-slate-600 dark:text-slate-500 leading-relaxed"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </div>
-                    </div>
+                <div class="indent-5 mt-2">
+                    Maecenas at sodales arcu. Sed euismod ligula quis lobortis gravida.
+                    Aliquam laoreet sagittis leo eu tempus. Curabitur tortor est, bibendum quis sapien ut, maximus vulputate mauris.
+                    Vestibulum gravida libero dui, et euismod sapien interdum vel.
+                    Aliquam venenatis tortor libero. Mauris ac ante id arcu tristique dapibus eget eu augue.
+                    Proin ac nunc et neque egestas gravida. Vivamus lacus odio, varius vehicula consectetur aliquam, blandit ut tellus.
+                    In sodales ipsum dui, quis ultrices risus tempor id. Curabitur tincidunt pulvinar nisi, at porttitor ex feugiat vel.
+                     Duis at rutrum mauris, non tristique massa.
                 </div>
             </div>
         </div>
     </div>
+    <!-- End: Go Dental Information -->
+    <!-- Begin: Go Dental Image -->
     <div class="intro-y box col-span-12 lg:col-span-6 ">
         <div class="flex items-center justify-center">
-            <img src="dist/images/logo.png" class="w-full" alt="..." />
+            <img src="{{ asset('icons/about.jpg') }}" class="w-full h-96" alt="About Us Image" data-action="zoom" />
         </div>
     </div>
+    <!-- End Go Dental Image -->
 </div>
-<div class="box mt-5 p-3 border-b border-slate-200/60">
-    <div id="map" style="" class="w-full h-96 "></div>
+<!-- Begin: Go Dental Map -->
+<div class="box intro-y mt-5 p-3 border-b border-slate-200/60">
+    <div id="map"  class="w-full h-96 "></div>
 </div>
+<!-- End: Go Dental Map -->
 
-
+@endsection
+@push('scripts')
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMPLUYUqR8R0YvltLkdenCqsCqH2v7kvQ&callback=initMap"></script>
 <script>
     // Initialize and add the map
@@ -100,8 +97,5 @@
     initMap();
     window.initMap = initMap;
 </script>
-
-@endsection
-@push('scripts')
-
 @endpush
+

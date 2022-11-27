@@ -32,8 +32,8 @@
                     <div class="mt-5">
                         <div class="overflow-x-auto scrollbar-hidden">
                             <div class="overflow-x-auto">
-                                <table class="table table-striped mt-5" id="datatable">
-                                    <thead>
+                                <table class="table table-striped table-bordered  mt-5" >
+                                    <thead class="table-dark">
                                         <tr>
                                             <th class="whitespace-nowrap ">Transfer Code</th>
                                             <th class="whitespace-nowrap text-center">Supplier Name</th>
@@ -41,29 +41,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($orders as $order)
+                                        @forelse ($orders as $order)
                                         <tr>
                                             <td><a href="{{ Route('transfer.edit',$order->id) }}">T00{{ $order->id }}</a> </td>
                                             <td class="whitespace-nowrap text-center">{{ $order->suppliers->name }}</td>
                                             <td class="whitespace-nowrap text-center">{{ $order->status }}</td>
                                         </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="3">No Transfer Found</td>
+                                            </tr>
+                                        @endforelse
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center mt-5">
                            <nav class="w-full sm:w-auto sm:mr-auto">
-                           </nav>
-                           <div class="mx-auto text-slate-500">
+                                {!! $orders->onEachSide(1)->links() !!}
+                            </nav>
 
-                            </div>
-                           <select wire:model="perPage" class="w-20 form-select box mt-3 sm:mt-0">
-                               <option>10</option>
-                               <option>25</option>
-                               <option>35</option>
-                               <option>50</option>
-                           </select>
+                            <select wire:model="perPage" class="w-20 form-select box mt-3 sm:mt-0">
+                                <option>10</option>
+                                <option>25</option>
+                                <option>35</option>
+                                <option>50</option>
+                            </select>
                        </div>
                     </div>
                 </div>

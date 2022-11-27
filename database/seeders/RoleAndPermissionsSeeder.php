@@ -20,8 +20,9 @@ class RoleAndPermissionsSeeder extends Seeder
 
         // create permissions
         $permissions = [
-            'role_create',
+
             'role_edit',
+            'role_create',
             'role_show',
             'role_access',
             'role_delete',
@@ -61,6 +62,9 @@ class RoleAndPermissionsSeeder extends Seeder
             'analytics_access',
             'report_access',
             'order_access',
+            'order_details_access',
+            'order_show',
+            'order_approval',
             'post_access',
             'post_create',
             'post_edit',

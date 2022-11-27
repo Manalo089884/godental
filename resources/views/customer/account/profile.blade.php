@@ -11,6 +11,7 @@
         <!-- BEGIN: Profile Menu -->
         @include('customer.component.side-profile')
         <!-- END: Profile Menu -->
+
         <div class="col-span-12 lg:col-span-8 2xl:col-span-9">
             <!-- BEGIN: Personal Information -->
             <div class="intro-y box lg:mt-5">
@@ -33,6 +34,8 @@
                     @endif
                     <div class="flex flex-col-reverse xl:flex-row flex-col">
                         <livewire:show.customer-profile/>
+                        <livewire:form.customer-change-profile-form/>
+                        <livewire:form.customer-change-information/>
                         <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
                             <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                                 <div class=" ">
@@ -61,49 +64,14 @@
                     </h2>
                 </div>
                 <div class="p-5">
-                    <div class="overflow-x-auto">
-                        <table class="table table-bordered table-hover table-striped">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th class="whitespace-nowrap">Order #</th>
-                                    <th class="whitespace-nowrap text-center">Place On</th>
-                                    <th class="whitespace-nowrap text-center">Items</th>
-                                    <th class="whitespace-nowrap text-center">Total</th>
-                                    <th class="whitespace-nowrap text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="whitespace-nowrap">489455921021952</td>
-                                    <td class="whitespace-nowrap text-center">28/03/2022</td>
-                                    <td class="whitespace-nowrap text-center">Toothpaste</td>
-                                    <td class="whitespace-nowrap text-center">₱100.00</td>
-                                    <td class="whitespace-nowrap text-center"><i class="fa-solid fa-eye w-4 h-4 mr-1"></i> Show</td>
-                                </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap">189455921021932</td>
-                                    <td class="whitespace-nowrap text-center">12/04/2022</td>
-                                    <td class="whitespace-nowrap text-center">Toothbrush</td>
-                                    <td class="whitespace-nowrap text-center">₱120.00</td>
-                                    <td class="whitespace-nowrap text-center"><i class="fa-solid fa-eye w-4 h-4 mr-1"></i> Show</td>
-                                </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap">789455921021952</td>
-                                    <td class="whitespace-nowrap text-center">30/06/2022</td>
-                                    <td class="whitespace-nowrap text-center">Toothpaste</td>
-                                    <td class="whitespace-nowrap text-center">₱500.00</td>
-                                    <td class="whitespace-nowrap text-center"><i class="fa-solid fa-eye w-4 h-4 mr-1"></i> Show</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <livewire:table.customer-recent-orders-table/>
                 </div>
             </div>
              <!-- END: RECENT ORDERS -->
         </div>
+        <!-- END: Personal Information -->
     </div>
-    <livewire:form.customer-change-profile-form/>
-    <livewire:form.customer-change-information/>
+
 @endsection
 @push('scripts')
 <script>

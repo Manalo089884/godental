@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $inactiveproductcount = Product::all()->where('status','=','0')->count();
         $customercount = Customer::all()->count();
         $usercount = User::all()->count();
-        $criticalproducts = Product::get()->where('stock','<=','stock_warning')->take(4);
+        $criticalproducts = Product::get()->where('stock','<=','stock_warning')->take(5);
 
         return view('admin.page.dashboard',[
             'brandcount' => $brandcount,

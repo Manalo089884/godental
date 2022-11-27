@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Modal;
 use Livewire\Component;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Storage;
 class ForceDeleteCustomer extends Component
 {
     public $modelId;
@@ -28,7 +29,6 @@ class ForceDeleteCustomer extends Component
         $this->modelId = $modelId;
     }
 
-
     public function render()
     {
         return view('livewire.modal.force-delete-customer');
@@ -42,6 +42,7 @@ class ForceDeleteCustomer extends Component
     public function delete(){
         abort_if(Gate::denies('customer_forcedelete'),403);
         $customer = Customer::onlyTrashed()->find($this->modelId);
+        Storage::delete('public/customer_profile_picture/'.$customer->photo);
         $customer->forcedelete();
         $this->dispatchBrowserEvent('SuccessAlert',[
             'name' => $customer->name.' was successfully deleted!',

@@ -14,7 +14,7 @@ use App\Http\Requests\StoreCustomerRegister;
 use Laravolt\Avatar\Facade as Avatar;
 use Illuminate\Support\Str;
 Use Alert;
-
+use Illuminate\Support\Facades\Auth;
 class CustomerRegisterController extends Controller
 {
     //Customer Register Page
@@ -33,8 +33,12 @@ class CustomerRegisterController extends Controller
             if(!$verifyUser->customers->email_verified_at){
                 $verifyUser->customers->email_verified_at  = Carbon::now();
                 $verifyUser->customers->save();
+                if( !Auth::guard('customer')->check()){
+                    return redirect()->route('CLogin.index')->with('info','Your email is verified successfully. You can now login')->with('verifiedEmail', $verifyUser->customers->name);
+                }else{
+                    return redirect()->route('customer.profile');
 
-                return redirect()->route('CLogin.index')->with('info','Your email is verified successfully. You can now login')->with('verifiedEmail', $verifyUser->customers->name);
+                }
             }else{
                  return redirect()->route('CLogin.index')->with('info','Your email is already verified. You can now login')->with('verifiedEmail', $verifyUser->customers->name);
             }

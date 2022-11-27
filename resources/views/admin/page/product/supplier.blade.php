@@ -1,9 +1,19 @@
 @extends('admin.layout.admin')
 @section('content')
 @section('title', 'Supplier')
-<h2 class="intro-y text-lg font-medium mt-10">
-    Supplier List
-</h2>
+
+<div class="intro-y flex justify-between  items-center mt-8">
+    <div>
+        <h2 class="text-lg font-medium mr-auto">
+            Supplier List
+         </h2>
+    </div>
+    @can('supplier_create')
+    <div>
+        <a href="{{Route('supplier.create')}}" type="button" class="btn btn-primary w-full sm:w-32" > </i> Add Supplier</a>
+    </div>
+    @endcan
+</div>
 
 <livewire:table.supplier-table/>
 <livewire:modal.archive-supplier/>

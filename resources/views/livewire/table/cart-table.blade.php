@@ -119,7 +119,7 @@
             <div class="col-span-12 lg:col-span-8 2xl:col-span-9">
                 <!-- BEGIN: Display Cart -->
                 <div class="intro-y box lg:mt-5">
-                    <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <div class="flex items-center p-5 border-b border-slate-200/60">
                         <h2 class="font-medium text-base mr-auto">
                             Cart
                         </h2>
@@ -127,9 +127,9 @@
                     <div class="p-5">
                         <div class="overflow-x-auto">
                             <table class="table table-bordered table-hover">
-                                <thead>
+                                <thead class="table-dark">
                                     <tr>
-                                        <th class="whitespace-nowrap">#</th>
+                                        <th class="whitespace-nowrap text-center">#</th>
                                         <th class="whitespace-nowrap text-center">Product Name</th>
                                         <th class="whitespace-nowrap text-center">Quantity</th>
                                         <th class="whitespace-nowrap text-center">Unit Price</th>

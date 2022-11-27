@@ -7,7 +7,7 @@ use App\Models\Product;
 class ShowProduct extends Component
 {
     public $modelId;
-    public $name,$category,$brand,$supplier,$stock,$sku,$cprice,$sprice,$weight,$description;
+    public $name,$category,$brand,$stock,$sku,$cprice,$sprice,$weight,$description;
 
     protected $listeners = [
         'getProductModalId',
@@ -35,7 +35,7 @@ class ShowProduct extends Component
         $this->sku = $product->SKU;
         $this->description = $product->description;
         $this->weight = $product->weight;
-        $this->supplier = $product->suppliers->name;
+
 
     }
     private function cleanVars(){

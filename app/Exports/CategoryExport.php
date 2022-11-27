@@ -6,7 +6,8 @@ use App\Models\Category;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-class CategoryExport implements FromCollection,WithHeadings,ShouldAutoSize
+use Maatwebsite\Excel\Concerns\WithMapping;
+class CategoryExport implements FromCollection,WithHeadings,ShouldAutoSize,WithMapping
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -15,13 +16,16 @@ class CategoryExport implements FromCollection,WithHeadings,ShouldAutoSize
     {
         return Category::all();
     }
+    public function map($category): array
+    {
+        return [
+            $category->name,
+        ];
+    }
     public function headings(): array
     {
         return [
-            '#',
             'Category Name',
-            'Created_at',
-            'Updated_at',
         ];
     }
 }

@@ -30,10 +30,7 @@ class Product extends Model
       static::query()->where('name','like','%'.$search.'%')
       ->orWhere('stock','like','%'.$search.'%');
     }
-   // public function getRouteKeyName()
-    //{
-   //     return 'name';
-   // }
+
 
     public function brand(){
         return $this-> belongsTo(Brand::class);
@@ -43,21 +40,10 @@ class Product extends Model
         return $this-> belongsTo(Category::class);
     }
 
-    //public function suppliers(){
-      //  return $this-> belongsTo(Supplier::class);
-    //}
-
     public function images(){
        return $this->hasMany(ProductImage::class);
     }
 
-
-    /*
-    public function productcart()
-    {
-        return $this-> belongsTo(CustomerCart::class);
-    }
-    */
     public function ProductTransaction(){
         return $this->hasMany(CustomerCart::class);
     }

@@ -123,9 +123,7 @@
                 </div>
             </div>
             <!-- END: Sales Report -->
-            <!-- BEGIN: Official Store -->
 
-            <!-- END: Official Store -->
             <!-- BEGIN: Weekly Best Sellers -->
             <div class="col-span-12 lg:col-span-8 xl:col-span-4 mt-6">
                 <div class="intro-y flex items-center h-10">
@@ -134,28 +132,26 @@
                     </h2>
                 </div>
                 <div class="mt-5">
-
                     @foreach ($criticalproducts as $product)
-                    @if($product->stock <= $product->stock_warning)
-                    <div class="intro-y">
-                        <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                            <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                <img alt="Go Dental Image" src="{{ asset('dist/images/logo.png') }}">
+                        <div class="intro-y">
+                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
+                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
+                                    @if(count($product->images) == 0)
+                                        <img alt="Go Dental Image"  data-action="zoom" src="{{ asset('dist/images/logo.png') }}">
+                                    @else
+                                        @foreach ($product->images->take(1)  as $model)
+                                            <img alt="Missing Image"  data-action="zoom" src="{{ url('storage/product_photos/'.$model->images) }}">
+                                        @endforeach
+                                    @endif
+                                </div>
+                                <div class="ml-4 mr-auto">
+                                    <div class="font-medium">{{ $product->name }}</div>
+                                    <div class="text-slate-500 text-xs mt-0.5">{{ $product->category->name }}</div>
+                                </div>
+                                <div class="py-1 px-2 rounded-full text-xs bg-danger text-white cursor-pointer font-medium">{{ $product->stock }}</div>
                             </div>
-                            <div class="ml-4 mr-auto">
-                                <div class="font-medium">{{ $product->name }}</div>
-                                <div class="text-slate-500 text-xs mt-0.5">{{ $product->category->name }}</div>
-                            </div>
-                            <div class="py-1 px-2 rounded-full text-xs bg-danger text-white cursor-pointer font-medium">{{ $product->stock }}</div>
                         </div>
-                    </div>
-                    @else
-
-                    @endif
-
                     @endforeach
-
-
                     <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View More</a>
                 </div>
             </div>
@@ -307,12 +303,6 @@
                                         <div class="w-10 h-10 image-fit zoom-in">
                                             <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 27 April 2022">
                                         </div>
-                                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 25 May 2022">
-                                        </div>
-                                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 7 September 2020">
-                                        </div>
                                     </div>
                                 </td>
                                 <td>
@@ -334,12 +324,6 @@
                                 <td class="w-40">
                                     <div class="flex">
                                         <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 20 June 2021">
-                                        </div>
-                                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 7 April 2021">
-                                        </div>
-                                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
                                             <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 23 May 2022">
                                         </div>
                                     </div>
@@ -362,13 +346,7 @@
                             <tr class="intro-x">
                                 <td class="w-40">
                                     <div class="flex">
-                                        <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 25 September 2021">
-                                        </div>
-                                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 14 December 2022">
-                                        </div>
-                                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
+                                        <div class="w-10 h-10 image-fit zoom-in ">
                                             <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 16 April 2021">
                                         </div>
                                     </div>
@@ -393,12 +371,6 @@
                                     <div class="flex">
                                         <div class="w-10 h-10 image-fit zoom-in">
                                             <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 3 June 2022">
-                                        </div>
-                                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 12 August 2020">
-                                        </div>
-                                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                                            <img alt="Go Dental Image" class="tooltip rounded-full" src="{{ asset('dist/images/logo.png') }}" title="Uploaded at 21 April 2020">
                                         </div>
                                     </div>
                                 </td>

@@ -1,45 +1,12 @@
 @extends('admin.layout.admin')
 @section('content')
 @section('title', 'Edit Role')
+
 @livewire('form.permission-form',['role' => $role->id])
 
+@livewire('table.role-permission-table',['role' => $role])
 
-<div class="col-span-12 lg:col-span-8 2xl:col-span-9">
-    <!-- BEGIN: Display Permission  -->
-    <div class="intro-y box mt-2 lg:mt-5">
-        <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-            <h2 class="font-medium text-base mr-auto">
-              {{ $role->name }} - List of Permissions
-            </h2>
-            <div class="text-center">
-                <a href="javascript:;"  data-tw-toggle="modal" data-tw-target="#add-item-modal" class="btn btn-primary w-full mr-1">
-                    <i class="fa-solid fa-add w-4 h-4 mr-1"></i>Add Permissions
-                </a>
-            </div>
-        </div>
-        <div class="p-5">
-            @if($role->permissions)
-                @foreach ($role->permissions as $role_permission)
-                    <form method="POST" action="{{ Route('roles.permissions.revoke',[$role->id,$role_permission->id]) }}" onsubmit="return confirm('Are you sure?')" class="btn btn-elevated-rounded-danger mr-1 mb-2">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">{{ $role_permission->name }}  </button>
-                    </form>
-                @endforeach
-            @endif
-            <div class="flex justify-end mt-5">
-                <a href="{{Route('role.index')}}" class="btn btn-outline-success  w-32 mr-1">Return</a>
-            </div>
-        </div>
-
-
-
-    </div>
-
-
-</div>
-
-
+<livewire:modal.remove-permission/>
 
 <div id="success-notification-content" class="toastify-content hidden flex non-sticky-notification-content">
     <i class="fa-regular fa-circle-check fa-3x text-success mx-auto"></i>
@@ -56,8 +23,6 @@
         <div class="text-slate-500 mt-1" id="message"></div>
      </div>
 </div>
-
-
 @endsection
 @push('scripts')
 
@@ -73,6 +38,20 @@
     });
     //Closing Modal and Refreshing its value
     const myModalEl = document.getElementById('add-item-modal')
+     myModalEl.addEventListener('hidden.tw.modal', function(event) {
+        livewire.emit('forceCloseModal');
+    })
+
+    //Show Revoke Modal
+    const RevokeModal = tailwind.Modal.getInstance(document.querySelector("#delete-confirmation-modal"));
+    window.addEventListener('openRevokeModal',event => {
+        RevokeModal.show();
+    });
+    window.addEventListener('CloseRevokeModal',event => {
+        RevokeModal.hide();
+    });
+    //Closing Modal and Refreshing its value
+    const ForceCloseRevokeModal = document.getElementById('delete-confirmation-modal')
      myModalEl.addEventListener('hidden.tw.modal', function(event) {
         livewire.emit('forceCloseModal');
     })

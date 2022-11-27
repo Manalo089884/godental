@@ -136,13 +136,11 @@
                         </div>
                     </div>
                     <div class="p-5 border-t border-slate-200/60">
-                        <div class="form-check mr-2 mt-2 sm:mt-0">
-                            <input id="trylng" name="working" class="form-check-input" type="radio"  value="Cash On Delivery" wire:model="modeofpayment"/>
-                            <label for="cash-on-delivery" class="form-check-label">Cash On Delivery</label>
-                        </div>
+                        <button type="submit" class="btn btn-primary w-full h-12 mb-2">Place Order (Cash on Delivery)</button>
                         <div wire:ignore class="mt-2 w-full">
                             <div id="paypal-button-container"></div>
                         </div>
+
 
                     </div>
                     <div class="p-5 border-t border-slate-200/60">
@@ -173,7 +171,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-full">Place Order!</button>
+
                     </div>
                 </div>
             </div>

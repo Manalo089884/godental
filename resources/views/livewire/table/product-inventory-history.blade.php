@@ -23,7 +23,9 @@
                                     <td  class="whitespace-nowrap text-center"><span class="text-slate-500">{{ $logs->operation_value }}</span> {{ $logs->latest_value }}</td>
                                 </tr>
                                 @empty
-
+                                <tr>
+                                    <td colspan="4">No Adjustments Made</td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -34,10 +36,7 @@
                     <nav class="w-full sm:w-auto sm:mr-auto">
                         {!! $inventory_logs->onEachSide(1)->links() !!}
                     </nav>
-
                 </div>
-
-
             </div>
         </div>
     </div>

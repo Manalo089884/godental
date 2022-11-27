@@ -86,7 +86,7 @@ Route::group(['prefix' => 'admin'],function(){
             Route::get('product/inventory_history/{id}',[ProductController::class, 'ProductInventoryHistory'])->name('ProductInventoryHistory');
 
             Route::resource('product',  ProductController::class);
-            Route::resource('orders', OrderController::class)->only('index');
+            Route::resource('orders', OrderController::class)->only('index','show');
             Route::resource('chat', ChatController::class)->only('index');
             Route::resource('post', PostController::class)->only('index');
             Route::get('/supplier/archive', [SupplierController::class,'SupplierArchiveIndex'])->name('SupplierArchiveIndex');

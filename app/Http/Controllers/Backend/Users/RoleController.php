@@ -24,23 +24,6 @@ class RoleController extends Controller
         return view('admin.page.Users.roleedit',compact('role','permissions'));
     }
 
-
-    public function givePermission(Request $request, Role $role){
-        if($role->hasPermissionTo($request->permission)){
-            return back()->with('message', 'Permission exists');
-        }
-        $role->givePermissionTo($request->permission);
-        return back()->with('message', 'Permission added');
-    }
-
-    public function revokePermission(Role $role, Permission $permission,Request $request){
-        if($role->hasPermissionTo($request->permission)){
-            $role->revokePermissionTo($request->permission);
-            return back()->with('message', 'Permission revoked');
-        }
-        return back()->with('message', 'Permission not exists');
-    }
-
      //Export Role to Excel
      public function exportroleexcel(){
         return Excel::download(new RoleExport,'roles.xlsx');

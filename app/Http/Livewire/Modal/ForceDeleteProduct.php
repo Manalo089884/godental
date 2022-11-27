@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 class ForceDeleteProduct extends Component
 {
     public $modelId;
@@ -42,8 +43,8 @@ class ForceDeleteProduct extends Component
         $image = ProductImage::where('product_id', '=' , $product->id )->get();
 
        foreach ($image as $item) {
-            unlink(public_path('product_images/'.$item->images));
-      }
+            Storage::delete('public/product_photos/'.$item->images);
+         }
         $product->forcedelete();
         $this->dispatchBrowserEvent('SuccessAlert',[
             'name' => $product->name.' was successfully deleted!',

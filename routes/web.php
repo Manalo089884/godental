@@ -18,7 +18,6 @@ use App\Http\Controllers\Frontend\Transaction\CheckoutController;
 //Import Customer Account Controller
 use App\Http\Controllers\Frontend\Auth\CustomerProfileController;
 use App\Http\Controllers\Frontend\Auth\CustomerResetController;
-use App\Http\Controllers\Frontend\Auth\CustomerDataController;
 use App\Http\Controllers\Frontend\Auth\CustomerLoginController;
 use App\Http\Controllers\Frontend\Auth\CustomerRegisterController;
 use App\Http\Controllers\Frontend\Auth\CustomerLogoutController;
@@ -26,6 +25,12 @@ use App\Http\Controllers\Frontend\Auth\CustomerLogoutController;
 //Import Customer Product and Cart ShippingController
 use App\Http\Controllers\Frontend\Cart\CartController;
 use App\Http\Controllers\Frontend\Cart\ProductCatalogController;
+//Import Order History
+use App\Http\Controllers\Frontend\Account\CustomerOrdersController;
+use App\Http\Controllers\Frontend\Account\CustomerCancellationController;
+use App\Http\Controllers\Frontend\Account\CustomerReturnsController;
+use App\Http\Controllers\Frontend\Account\CustomerReviewsController;
+
 
 //Dark Mode Switcher Route
 Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
@@ -47,7 +52,7 @@ Route::middleware(['PreventBackHistory'])->group(function () {
     Route::get('/shippingdelivery', [PageController::class,'shipping'])->name('shippingdelivery');
     Route::get('/returnexchanges', [PageController::class,'return'])->name('return');
     Route::get('/productcatalog', [ProductCatalogController::class,'index'])->name('product');
-    Route::get('/productcatalog/{product:name}', [ProductCatalogController::class,'show'])->name('productshow');
+    Route::get('/productcatalog/{product:id}', [ProductCatalogController::class,'show'])->name('productshow');
     Route::get('/product/cart');
     Route::get('/verify',[CustomerRegisterController::class,'verify'])->name('verify');
 
@@ -88,10 +93,13 @@ Route::middleware(['PreventBackHistory'])->group(function () {
         });
 
         Route::group(['prefix' => 'customer'],function(){
-            Route::get('/orders', [CustomerDataController::class,'index'])->name('customer.orders');
-            Route::get('/returns', [CustomerDataController::class,'returns'])->name('customer.returns');
-            Route::get('/reviews',[CustomerDataController::class,'reviews'])->name('customer.reviews');
-            Route::get('/cancellations',[CustomerDataController::class,'cancellations'])->name('customer.cancellations');
+            Route::resource('order', CustomerOrdersController::class)->only('index','show');
+            Route::resource('returns', CustomerReturnsController::class)->only('index','show');
+            Route::resource('reviews', CustomerOrdersController::class)->only('index','show');
+            Route::resource('cancellations', CustomerReviewsController::class)->only('index','show');
+
+
+
         });
     });
 });

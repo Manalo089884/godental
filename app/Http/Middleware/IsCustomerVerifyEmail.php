@@ -17,7 +17,6 @@ class IsCustomerVerifyEmail
     public function handle(Request $request, Closure $next)
     {
         if(!Auth::guard('customer')->user()->email_verified_at){
-
             return redirect()->route('customer.profile')
             ->with('fail','You need to verify your account!')
             ->withInput();

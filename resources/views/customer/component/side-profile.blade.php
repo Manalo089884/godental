@@ -30,16 +30,16 @@
 
         </div>
         <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-            <a class="flex items-center {{ (request()->is('customer/orders')) ? 'text-primary font-medium' : '' }} " href="{{ Route('customer.orders') }}">
+            <a class="flex items-center {{ (request()->is('customer/order')) || (request()->is('customer/order/*')) ? 'text-primary font-medium' : '' }} " href="{{ Route('order.index') }}">
                 <i data-lucide="activity" class="w-4 h-4 mr-2"></i> My Orders
             </a>
-            <a class="flex items-center mt-5 {{ (request()->is('customer/returns')) ? 'text-primary font-medium' : '' }}" href="{{ Route('customer.returns') }}">
+            <a class="flex items-center mt-5 {{ (request()->is('customer/returns')) ? 'text-primary font-medium' : '' }}" href="{{ Route('returns.index') }}">
                  <i data-lucide="box" class="w-4 h-4 mr-2"></i> My Returns
             </a>
-            <a class="flex items-center mt-5 {{ (request()->is('customer/reviews')) ? 'text-primary font-medium' : '' }}" href="{{ Route('customer.reviews') }}">
+            <a class="flex items-center mt-5 {{ (request()->is('customer/reviews')) ? 'text-primary font-medium' : '' }}" href="{{ Route('reviews.index') }}">
                 <i data-lucide="box" class="w-4 h-4 mr-2"></i> My Reviews
             </a>
-            <a class="flex items-center mt-5 {{ (request()->is('customer/cancellations')) ? 'text-primary font-medium' : '' }}" href="{{ Route('customer.cancellations') }}">
+            <a class="flex items-center mt-5 {{ (request()->is('customer/cancellations')) ? 'text-primary font-medium' : '' }}" href="{{ Route('cancellations.index') }}">
                 <i data-lucide="box" class="w-4 h-4 mr-2"></i> My Cancellations
             </a>
         </div>

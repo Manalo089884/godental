@@ -5,34 +5,25 @@ namespace App\Http\Livewire\Table;
 use Livewire\Component;
 use App\Models\CustomerOrder;
 use App\Models\OrderedProduct;
+use Livewire\WithPagination;
+use Illuminate\Support\Facades\Gate;
 class OrderTable extends Component
 {
+    use WithPagination;
+
+    public $perPage = 10;
+    public $search = null;
+    protected $queryString = ['search' => ['except' => '']];
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
-        $listoforders = CustomerOrder::with('customers')->get();
-        $orders = [];
-        $listofproducts = OrderedProduct::with('customer_orders')->get();
-
-        foreach($listoforders as $order){
-
-            $item = array();
-            $item['order'] = $order;
-            $item['products'] = [];
-            $item['total'] = 0;
-            foreach($listofproducts as $product){
-                if($product->customer_orders_id ==  $order->id){
-                    $item['total'] += $product->price * $product->quantity;
-                    array_push($item['products'], $product);
-                }
-            }
-            array_push($orders, $item);
-
-        }
-        //dd($orders);
+        abort_if(Gate::denies('order_access'),403);
+        $Orders = CustomerOrder::with('customers')->paginate($this->perPage);
+        $ProductsOrdered = OrderedProduct::with('customer_orders')->get();
         return view('livewire.table.order-table',[
-            'listofproducts'=>  $listofproducts,
-            'listoforders' => $listoforders,
-            'orders' => $orders,
+            'Orders' => $Orders,
+            'ProductsOrdered' =>  $ProductsOrdered,
         ]);
     }
 }

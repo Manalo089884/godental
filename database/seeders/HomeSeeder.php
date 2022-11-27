@@ -18,6 +18,13 @@ class HomeSeeder extends Seeder
     {
         DB::table('home') ->insert([
             [
+                'title' => 'Christmas Sale',
+                'status' => "Active",
+                'featured_image' => 'ChristmasSaleFinal.png',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
                 'title' => 'Featured Image One',
                 'status' => "Active",
                 'featured_image' => 'Shopping.jpg',

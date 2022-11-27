@@ -25,13 +25,12 @@ class StoreLoginRequest extends FormRequest
     {
         return [
             'email' =>'required|email|exists:customers,email',
-            'password' => 'required',
         ];
     }
 
     public function messages(){
         return [
-            'email.exists' => 'Invalid Username or Password',
+            'email.exists' => 'Your account and/or password is incorrect, please try again',
         ];
     }
 

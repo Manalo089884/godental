@@ -6,8 +6,9 @@ use App\Models\Brand;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-
-class BrandExport implements FromCollection,WithHeadings,ShouldAutoSize
+use Maatwebsite\Excel\Concerns\WithMapping;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+class BrandExport implements FromCollection,WithHeadings,ShouldAutoSize,WithMapping
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -16,13 +17,19 @@ class BrandExport implements FromCollection,WithHeadings,ShouldAutoSize
     {
         return Brand::all();
     }
+
+    public function map($brand): array
+    {
+        return [
+            $brand->name,
+        ];
+    }
+
     public function headings(): array
     {
         return [
-            '#',
             'Brand Name',
-            'Created_at',
-            'Updated_at',
         ];
     }
+
 }

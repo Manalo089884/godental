@@ -785,7 +785,7 @@ import Chart from "chart.js/auto";
                 ],
                 datasets: [
                     {
-                        label: "Html Template",
+                        label: "Income",
                         barPercentage: 0.5,
                         barThickness: 6,
                         maxBarThickness: 8,
@@ -794,7 +794,7 @@ import Chart from "chart.js/auto";
                         backgroundColor: colors.primary(),
                     },
                     {
-                        label: "VueJs Template",
+                        label: "Profit",
                         barPercentage: 0.5,
                         barThickness: 6,
                         maxBarThickness: 8,
@@ -956,7 +956,7 @@ import Chart from "chart.js/auto";
                 ],
                 datasets: [
                     {
-                        label: "Html Template",
+                        label: "This Year",
                         barPercentage: 0.5,
                         barThickness: 6,
                         maxBarThickness: 8,
@@ -965,7 +965,7 @@ import Chart from "chart.js/auto";
                         data: helper.randomNumbers(-100, 100, 12),
                     },
                     {
-                        label: "VueJs Template",
+                        label: "Previous Year",
                         barPercentage: 0.5,
                         barThickness: 6,
                         maxBarThickness: 8,
@@ -1032,7 +1032,7 @@ import Chart from "chart.js/auto";
                 labels: [...Array(16).keys()],
                 datasets: [
                     {
-                        label: "Html Template",
+                        label: "This Year",
                         barPercentage: 0.5,
                         barThickness: 6,
                         maxBarThickness: 8,
@@ -1041,7 +1041,7 @@ import Chart from "chart.js/auto";
                         data: helper.randomNumbers(-100, 100, 16),
                     },
                     {
-                        label: "VueJs Template",
+                        label: "Previous Year",
                         barPercentage: 0.5,
                         barThickness: 6,
                         maxBarThickness: 8,
@@ -1119,7 +1119,7 @@ import Chart from "chart.js/auto";
                 ],
                 datasets: [
                     {
-                        label: "Html Template",
+                        label: "This Year",
                         data: [
                             0, 200, 250, 200, 500, 450, 850, 1050, 950, 1100,
                             900, 1200,
@@ -1131,7 +1131,7 @@ import Chart from "chart.js/auto";
                         tension: 0.4,
                     },
                     {
-                        label: "VueJs Template",
+                        label: "Previous Year",
                         data: [
                             0, 300, 400, 560, 320, 600, 720, 850, 690, 805,
                             1200, 1010,
@@ -1197,19 +1197,21 @@ import Chart from "chart.js/auto";
         let myDoughnutChart = new Chart(ctx, {
             type: "doughnut",
             data: {
-                labels: ["Html", "Vuejs", "Laravel"],
+                labels: ["Regular Customers", "New Customer" , "Vip Customer"],
                 datasets: [
                     {
-                        data: [15, 10, 65],
+                        data: [65, 10, 15 ],
                         backgroundColor: [
+                            colors.primary(0.9),
                             colors.pending(0.9),
                             colors.warning(0.9),
-                            colors.primary(0.9),
+
                         ],
                         hoverBackgroundColor: [
+                            colors.primary(0.9),
                             colors.pending(0.9),
                             colors.warning(0.9),
-                            colors.primary(0.9),
+
                         ],
                         borderWidth: 5,
                         borderColor: $("html").hasClass("dark")
@@ -1237,18 +1239,16 @@ import Chart from "chart.js/auto";
         let myPieChart = new Chart(ctx, {
             type: "pie",
             data: {
-                labels: ["Html", "Vuejs", "Laravel"],
+                labels: ["Male", "Female"],
                 datasets: [
                     {
-                        data: [15, 10, 65],
+                        data: [25, 65],
                         backgroundColor: [
                             colors.pending(0.9),
-                            colors.warning(0.9),
                             colors.primary(0.9),
                         ],
                         hoverBackgroundColor: [
                             colors.pending(0.9),
-                            colors.warning(0.9),
                             colors.primary(0.9),
                         ],
                         borderWidth: 5,

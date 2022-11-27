@@ -16,30 +16,34 @@
                     <input  type="text" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
                 </div>
             </div>
+            <!-- Begin: Export Orders -->
             <div class="flex mt-5 sm:mt-0">
                 <div class="dropdown w-1/2 sm:w-auto">
-                    <button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false" data-tw-toggle="dropdown"> <i class="fa-regular fa-newspaper w-4 h-4 mr-2"></i> Export <i class="fa-solid fa-chevron-down w-4 h-4 ml-auto sm:ml-2"></i> </button>
+                    <button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false" data-tw-toggle="dropdown">
+                         <i class="fa-regular fa-newspaper w-4 h-4 mr-2"></i> Export <i class="fa-solid fa-chevron-down w-4 h-4 ml-auto sm:ml-2"></i>
+                    </button>
                     <div class="dropdown-menu w-40">
                         <ul class="dropdown-content">
                             <li>
-                                <a href="{{Route('exportproductexcel')}}" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export Excel </a>
+                                <a href="{{Route('exportbrandexcel')}}" class="dropdown-item"> <i class="fa-solid fa-file-excel mr-1"></i> Export to Excel  </a>
                             </li>
                             <li>
-                                <a  href="{{Route('exportproductcsv')}}" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export CSV </a>
+                                <a href="{{Route('exportbrandcsv')}}" class="dropdown-item"> <i class="fa-solid fa-file-csv mr-1"></i> Export to CSV </a>
                             </li>
                             <li>
-                                <a href="{{Route('exportproductpdf')}}" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export PDF </a>
+                                <a href="{{Route('exportbrandpdf')}}" class="dropdown-item"> <i class="fa-solid fa-file-pdf mr-1"></i>Export to PDF </a>
                             </li>
                             <li>
-                                <a  href="{{Route('exportproducthtml')}}" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export HTML </a>
+                                <a href="{{Route('exportbrandhtml')}}" class="dropdown-item"> <i class="fa-brands fa-html5 mr-1"></i> Export to HTML </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <!-- End: Export Orders -->
         </div>
-       <div class="overflow-x-auto scrollbar-hidden">
-
+        <!-- Begin: Orders Table -->
+        <div class="overflow-x-auto scrollbar-hidden">
            <div class="overflow-x-auto">
                <table class="table mt-5" >
                    <thead class="table-dark">
@@ -51,56 +55,50 @@
                        </tr>
                    </thead>
                    <tbody>
-                    @foreach ($orders as $order)
-                        <tr class="bg-slate-300">
-                            <td colspan="3">{{ $order['order']->customers->name }}</td>
-                            <td colspan="1" class="whitespace-nowrap text-center">
-
-                                        Order ID: {{ $order['order']->id }}
-                            </td>
+                    @forelse ($Orders as $order)
+                        <tr >
+                             <td colspan="3" class="whitespace-nowrap bg-gray-200"><a href="{{ Route('customer.show',$order->customers) }}">{{ $order->customers->name }}</a> </td>
+                             <td colspan="1" class="whitespace-nowrap text-center bg-gray-200">Order ID:{{ $order->id }}</td>
                         </tr>
-                        @foreach ($order['products'] as $index => $item)
-                            @if($item->customer_orders_id == $order['order']->id)
-                            <tr>
-                                <td>{{ $item->product_name }}</td>
-                                @if($index == 0)
-                                <td class="whitespace-nowrap text-center" rowspan="{{count($order['products']) }}">
-                                    <div>₱{{$order['total']}}</div>
-                                    <div>{{ $item->customer_orders->mode_of_payment }}</div>
-                                </td>
-
-                                    <td class="whitespace-nowrap text-center" rowspan="{{count($order['products']) }}">{{ $item->customer_orders->status }}</td>
-                                    <td class="whitespace-nowrap text-center" rowspan="{{count($order['products']) }}">Check Details</td>
-                                @endif
-                            </tr>
-                            @endif
-                        @endforeach
-                    @endforeach
+                        <tr>
+                            <td class="whitespace-nowrap truncate">
+                                @foreach($ProductsOrdered as $index => $item)
+                                    @if($item->customer_orders_id == $order->id)
+                                        {{ $item->product_name }},
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td class="whitespace-nowrap text-center">
+                              <div>₱{{ $order->total }}</div>
+                               <div>{{ $order->mode_of_payment }}</div>
+                            </td>
+                            <td class="whitespace-nowrap text-center">
+                                {{ $order->status }}
+                            </td>
+                            <td class="whitespace-nowrap text-center"> <a href="{{ Route('orders.show',$order->id ) }}"> <i class="fa-solid fa-eye w-4 h-4 mr-1"></i> Show Details</td></a>
+                        </tr>
+                    @empty
+                    <tr>
+                        <td colspan="5" class="font-medium">No Orders Found</td>
+                    </tr>
+                    @endforelse
                    </tbody>
                </table>
            </div>
-           <!-- No Result -->
-           <!-- To Be Applied Once Their is orders table
-           <h2 class="intro-y text-lg font-medium mt-10">
-               No Results found <strong></strong>
-           </h2>
-        -->
+
 
        </div>
-
-       <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center mt-5">
-           <nav class="w-full sm:w-auto sm:mr-auto">
-
-           </nav>
-           <div class="mx-auto text-slate-500">
-            Showing 0 to 0 of 100 entries
+        <!-- End: Orders Table -->
+        <div class="intro-y mt-5 col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+            <nav class="w-full sm:w-auto sm:mr-auto">
+                {!! $Orders->onEachSide(1)->links() !!}
+            </nav>
+            <select wire:model="perPage" class="w-20 form-select box mt-3 sm:mt-0">
+                <option>10</option>
+                <option>25</option>
+                <option>35</option>
+                <option>50</option>
+            </select>
         </div>
-           <select wire:model="perPage" class="w-20 form-select box mt-3 sm:mt-0">
-               <option>10</option>
-               <option>25</option>
-               <option>35</option>
-               <option>50</option>
-           </select>
-       </div>
     </div>
 </div>

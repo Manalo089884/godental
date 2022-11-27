@@ -19,6 +19,11 @@ class ProductTable extends Component
     public $selectedItem;
 
 
+    public function updatingSearch(){
+        $this->resetPage();
+    }
+
+
     protected $listeners = [
         'refreshParent' => '$refresh'
     ];

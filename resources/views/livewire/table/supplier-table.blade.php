@@ -18,19 +18,11 @@
                     <input type="search" wire:model.lazy="search" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
                 </div>
                 <div class="mt-2 xl:mt-0">
-
-                    @can('supplier_create')
-                        <a href="{{Route('supplier.create')}}">
-                            <button  type="button" class="btn btn-primary w-full sm:w-32" > </i> Add Supplier</button>
-                        </a>
-                    @endcan
-
                     @can('supplier_archive_access')
                         <a href="{{Route('SupplierArchiveIndex')}}">
                             <button  type="button" class="btn btn-secondary w-full sm:w-32 mt-2 sm:mt-0 sm:ml-1" >  <i class="fa-solid fa-file-zipper w-4 h-4 mr-2"></i>Archive</button>
                         </a>
                     @endcan
-
                 </div>
             </div>
             @can('supplier_export')
@@ -77,7 +69,7 @@
                    <tbody>
                         @foreach($suppliers as $supplier)
                             <tr class="intro-x">
-                                <td class="whitespace-nowrap font-medium"><a href="">{{$supplier->name}}</td>
+                                <td class="whitespace-nowrap hover:underline"><a href="{{ Route('supplier.show',$supplier) }}">{{$supplier->name}}</td>
                                 <td class="whitespace-nowrap text-center">{{$supplier->contact_name}}</td>
                                 <td class="whitespace-nowrap text-center">{{$supplier->email}}</td>
                                 <td class="whitespace-nowrap text-center">{{$supplier->contact_number}}</td>

@@ -80,13 +80,13 @@
                         <a href="{{ Route('customer.profile') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="user" class="w-4 h-4 mr-2"></i> Manage Account </a>
                     </li>
                     <li>
-                        <a href="{{ Route('customer.orders') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> My Orders </a>
+                        <a href="{{ Route('order.index') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> My Orders </a>
                     </li>
                     <li>
-                        <a href="{{ Route('customer.returns') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> My Returns </a>
+                        <a href="{{ Route('returns.index') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> My Returns </a>
                     </li>
                     <li>
-                        <a href="{{ Route('customer.reviews') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="help-circle" class="w-4 h-4 mr-2"></i> My Reviews </a>
+                        <a href="{{ Route('reviews.index') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="help-circle" class="w-4 h-4 mr-2"></i> My Reviews </a>
                     </li>
                     <li>
                         <hr class="dropdown-divider border-white/[0.08]">

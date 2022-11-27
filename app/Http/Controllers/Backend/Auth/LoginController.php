@@ -28,7 +28,7 @@ class LoginController extends Controller
             if(Auth::guard('web')->attempt($request->only('email','password'),$request->remember)){
                 return redirect()->route('dashboard.index');
             }else{
-                return back()->with('fail', 'Incorrect credentials');
+                return back()->with('fail', 'Incorrect credentials')->withInput();
             }
         }else{
             Alert::error('Account Restricted','Contact the Administrator to unlift the restriction' );

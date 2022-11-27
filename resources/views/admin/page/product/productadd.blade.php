@@ -3,7 +3,7 @@
 @section('title', 'Add Product')
 <div class="intro-y flex items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        Add Product
+        <a href="{{ url()->previous() }}" class="mr-2 btn">←</a> Add Product
     </h2>
 </div>
 <livewire:form.product-add-form/>

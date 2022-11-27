@@ -38,6 +38,9 @@ class CheckoutForm extends Component
         foreach($this->address as $info){
             $order_id = CustomerOrder::create([
                 'customers_id' => $this->customer_id,
+                'subtotal' => $this->subtotal,
+                'shippingfee' => $this->shippingfee,
+                'total' => $this->total,
                 'mode_of_payment' => $this->modeofpayment,
                 'payment_id'=> $payment_id,
                 'status' => $this->status,
@@ -87,10 +90,13 @@ class CheckoutForm extends Component
     }
 
     public function StoreCustomerOrder(){
-        //dd($this->address);
+        $this->modeofpayment = "Cash On Delivery";
         foreach($this->address as $info){
             $order_id = CustomerOrder::create([
                 'customers_id' => $this->customer_id,
+                'subtotal' => $this->subtotal,
+                'shippingfee' => $this->shippingfee,
+                'total' => $this->total,
                 'mode_of_payment' => $this->modeofpayment,
                 'status' => $this->status,
                 'received_by' => $info->name,
@@ -124,7 +130,7 @@ class CheckoutForm extends Component
         foreach($this->address as $pickaddress){
             $this->updateAddress = $pickaddress->id;
         }
-        $this->modeofpayment = "Cash On Delivery";
+
     }
 
 

@@ -4,7 +4,7 @@
 <div class="intro-y flex justify-between  items-center mt-8">
     <div>
         <h2 class="text-lg font-medium mr-auto">
-            <a href="{{ Route('customer.index') }}" class="mr-2 btn">←</a> Customer Information
+            <a href="{{ url()->previous() }}" class="mr-2 btn">←</a>  Customer Information
          </h2>
     </div>
 </div>

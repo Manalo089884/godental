@@ -8,7 +8,7 @@
                 @if(count($products) != 0)
                     <div class="search-result__content__title">List of Products</div>
                      @foreach($products as $product)
-                        <a href="{{ Route('productshow',$product->name) }}" class="flex items-center h-full p-1">
+                        <a href="{{ Route('productshow',$product->id) }}" class="flex items-center h-full p-1">
                             <div class="w-8 h-8  text-success flex items-center justify-center rounded-full">
                                 @if(count($product->images) == 0)
                                     <img src="{{ asset('dist/images/logo.png') }}"  class="rounded-full" alt="">

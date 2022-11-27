@@ -1,6 +1,6 @@
 @extends('customer.layout.base')
 @section('content')
-@section('title', 'Displaying Product Info')
+@section('title', 'Product Info')
 <div class="items-center justify-center flex">
     <div style="width: 60rem">
         <!-- Begin Header of Product -->

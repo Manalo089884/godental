@@ -40,6 +40,7 @@
             </div>
         </div>
         <!-- BEGIN: JS Assets-->
+        @include('sweetalert::alert')
         @livewireScripts
         <script src="{{ asset('dist/js/app.js') }}"></script>
         @stack('scripts')

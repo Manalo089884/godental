@@ -5,7 +5,7 @@
 <div class="intro-y box mt-2 lg:mt-5">
     <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
         <h2 class="font-medium text-base mr-auto">
-            Supplier Information
+            <a href="{{ url()->previous() }}" class="mr-2 btn">←</a> Supplier Information
         </h2>
     </div>
     <div class="p-5">
@@ -36,9 +36,6 @@
                     <input type="text" placeholder="Please Enter Supplier Address" class="form-control" value="{{ $supplier->address }}" disabled>
                 </div>
             </div>
-        </div>
-        <div class="text-right mt-5">
-            <a href="{{Route('supplier.index')}}" class="btn btn-outline-secondary w-24 mr-1">Return</a>
         </div>
     </div>
 </div>
