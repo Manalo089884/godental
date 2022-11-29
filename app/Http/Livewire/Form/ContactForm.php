@@ -5,15 +5,11 @@ namespace App\Http\Livewire\Form;
 use Livewire\Component;
 use Alert;
 use App\Jobs\ContactJob;
-
+use Http;
 class ContactForm extends Component
 {
     public $name,$email,$phone,$subject,$message;
-
-    public function render()
-    {
-        return view('livewire.form.contact-form');
-    }
+    public $captcha = 0;
 
     protected $validationAttributes = [
         'name' => 'Full Name',
@@ -33,6 +29,7 @@ class ContactForm extends Component
         ];
     }
 
+
     public function updated($fields){
         $this->validateOnly($fields,[
             'name'=> 'required|max:50',
@@ -42,7 +39,22 @@ class ContactForm extends Component
             'message' => 'required|max:255',
         ]);
     }
-    public function SendContactEmail(){
+
+    public function updatedCaptcha($token)
+    {
+        $response = Http::post('https://www.google.com/recaptcha/api/siteverify?secret=' . env('CAPTCHA_SECRET_KEY') . '&response=' . $token);
+        $this->captcha = $response->json()['score'];
+
+        if ($this->captcha > .3) {
+            $this->store();
+        } else {
+            Alert::error('Message Successfully Sent','' );
+            return redirect()->route('contact');
+        }
+    }
+
+    public function store()
+    {
         $this->validate();
         $contact = [
             'name' => $this->name,
@@ -54,5 +66,10 @@ class ContactForm extends Component
         dispatch(new ContactJob($contact));
         Alert::success('Message Successfully Sent','' );
         return redirect()->route('contact');
+
+    }
+    public function render()
+    {
+        return view('livewire.form.contact-form');
     }
 }

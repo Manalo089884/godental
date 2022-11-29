@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="SendContactEmail">
+    <form wire:submit.prevent="store" id="test">
         @csrf
         <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
 
@@ -31,9 +31,32 @@
                     </div>
                     <div class="text-danger mt-2">@error('message'){{$message}}@enderror</div>
                 </div>
+                <div wire:ignore class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                    <button type="submit"
+                    data-sitekey="{{env('CAPTCHA_SITE_KEY')}}"
+                    data-callback='handle'
+                    data-action='submit'
+                     class="g-recaptcha btn btn-primary w-24 ml-2">
+                     Submit
+                    </button>
+                </div>
+
+                <script src="https://www.google.com/recaptcha/api.js?render={{env('CAPTCHA_SITE_KEY')}}"></script>
+                <script>
+                    function handle(e) {
+                        grecaptcha.ready(function () {
+                            grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'submit'})
+                                .then(function (token) {
+                                    @this.set('captcha', token);
+                                });
+                        })
+                    }
+                </script>
+                <!--
                 <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
                     <button type="submit" class="btn btn-primary w-24 ml-2">Send</button>
                 </div>
+            -->
             </div>
         </div>
     </form>

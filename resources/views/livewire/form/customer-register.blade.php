@@ -10,22 +10,34 @@
                     @csrf
                     <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
                         <div class="intro-y col-span-12 sm:col-span-6">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Full Name" wire:model.lazy="name">
+                            <label class="form-label w-full flex flex-col sm:flex-row">
+                                Full Name
+                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required</span>
+                            </label>
+                            <input type="text" name="name" class="form-control" placeholder="Please Enter Your Name" wire:model.lazy="name">
                             <div class="text-danger mt-2">@error('name'){{$message}}@enderror</div>
                         </div>
                         <div class="intro-y col-span-12 sm:col-span-6">
-                            <label class="form-label">Email</label>
+                            <label class="form-label w-full flex flex-col sm:flex-row">
+                                Email
+                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, Email</span>
+                            </label>
                             <input type="email" name="email" class="form-control" placeholder="Enter Your Email" wire:model.lazy="email">
                             <div class="text-danger mt-2">@error('email'){{$message}}@enderror</div>
                         </div>
                         <div class="intro-y col-span-12 sm:col-span-6">
-                            <label class="form-label">Phone Number</label>
+                            <label class="form-label w-full flex flex-col sm:flex-row">
+                                Phone Number
+                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, PH</span>
+                            </label>
                             <input type="tel"  class="form-control" placeholder="Phone Number" wire:model.lazy="phone">
                             <div class="text-danger mt-2">@error('phone'){{$message}}@enderror</div>
                         </div>
                         <div class="intro-y col-span-12 sm:col-span-6">
-                            <label class="form-label">Gender</label>
+                            <label class="form-label w-full flex flex-col sm:flex-row">
+                                Gender
+                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required</span>
+                            </label>
                             <select name="gender" class="form-select" wire:model.lazy="gender">
                                 <option value="">Select Gender</option>
                                 <option value="Male" >Male</option>
@@ -34,7 +46,10 @@
                             <div class="text-danger mt-2">@error('gender'){{$message}}@enderror</div>
                         </div>
                         <div class="intro-y col-span-12 sm:col-span-6">
-                            <label class="form-label">Password</label>
+                            <label class="form-label w-full flex flex-col sm:flex-row">
+                                Password
+                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, min: 8</span>
+                            </label>
                             <input type="password" wire:model.lazy="password" class="form-control" placeholder="Password" >
                             <div class="text-danger mt-2">@error('password'){{$message}}@enderror</div>
                         </div>
@@ -44,7 +59,10 @@
                             <div class="text-danger mt-2">@error('password_confirmation'){{$message}}@enderror</div>
                         </div>
                         <div class="intro-y col-span-12 sm:col-span-6">
-                            <label class="form-label">Birthday</label>
+                            <label class="form-label w-full flex flex-col sm:flex-row">
+                                Birthday
+                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required</span>
+                            </label>
                             <input type="date" class="form-control" wire:model.lazy="birthday">
                             <div class="text-danger mt-2">@error('birthday'){{$message}}@enderror</div>
                         </div>

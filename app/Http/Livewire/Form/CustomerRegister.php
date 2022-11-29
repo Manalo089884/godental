@@ -68,8 +68,6 @@ class CustomerRegister extends Component
             'password' => Hash::make($this->password),
         ]);
 
-
-
         $token = $customer->id.hash('sha256', \Str::random(120));
         $verifyURL = route('verify',['token'=>$token,'service'=>'Email_verification']);
 
