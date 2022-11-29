@@ -41,18 +41,51 @@ class ProductCatalogTable extends Component
         $categories = Category::orderby('name')->get();
         $brands = Brand::orderby('name')->get();
 
-        $products = Product::where('status',1)
-        ->where('name','like','%'.$this->search.'%')
-        ->where('category_id','like','%'.$this->filterbycategory.'%')
-        ->where('brand_id','like','%'.$this->filterbybrand.'%')
-        ->with('images','category','brand')
-        ->orderby('name', 'asc')
-        ->paginate($this->perPage);
+        if($this->filterbybrand == null && $this->filterbycategory == null){
+            $products = Product::where('status',1)
+            ->where('name','like','%'.$this->search.'%')
+            ->with('images','category','brand')
+            ->orderby('name', 'asc')
+            ->paginate($this->perPage);
+        }elseif($this->filterbybrand != null && $this->filterbycategory != null){
+            $products = Product::where('status',1)
+            ->where('name','like','%'.$this->search.'%')
+            ->where('category_id', $this->filterbycategory)
+            ->where('brand_id', '=' , $this->filterbybrand)
+            ->with('images','category','brand')
+            ->orderby('name', 'asc')
+            ->paginate($this->perPage);
+        }elseif($this->filterbybrand == null && $this->filterbycategory != null){
+            $products = Product::where('status',1)
+            ->where('name','like','%'.$this->search.'%')
+            ->where('category_id', $this->filterbycategory)
+            //->where('brand_id', '=' , $this->filterbybrand)
+            ->with('images','category','brand')
+            ->orderby('name', 'asc')
+            ->paginate($this->perPage);
+        }elseif($this->filterbybrand != null && $this->filterbycategory == null){
+            $products = Product::where('status',1)
+            ->where('name','like','%'.$this->search.'%')
+            //->where('category_id', $this->filterbycategory)
+            ->where('brand_id', '=' , $this->filterbybrand)
+            ->with('images','category','brand')
+            ->orderby('name', 'asc')
+            ->paginate($this->perPage);
+        }else{
+            $products = Product::where('status',1)
+            ->where('name','like','%'.$this->search.'%')
+            ->where('category_id', $this->filterbycategory)
+            ->where('brand_id', '=' , $this->filterbybrand)
+            ->with('images','category','brand')
+            ->orderby('name', 'asc')
+            ->paginate($this->perPage);
+        }
 
         return view('livewire.table.product-catalog-table',[
             'products' => $products,
             'categories' => $categories,
             'brands' => $brands
+
         ]);
     }
 }
