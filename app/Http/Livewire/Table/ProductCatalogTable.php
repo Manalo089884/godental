@@ -49,7 +49,6 @@ class ProductCatalogTable extends Component
         ->orderby('name', 'asc')
         ->paginate($this->perPage);
 
-
         return view('livewire.table.product-catalog-table',[
             'products' => $products,
             'categories' => $categories,
