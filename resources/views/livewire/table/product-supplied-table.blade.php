@@ -9,18 +9,17 @@
                 <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
                     <div class="xl:flex sm:mr-auto" >
                         <div class="sm:flex items-center sm:mr-4">
-                            <label class="flex-none xl:w-auto xl:flex-initial mr-2">Sort</label>
+                            <label class="flex-none xl:w-auto xl:flex-initial mr-2">Sort:</label>
                             <select wire:model="sorting" class="form-select w-full sm:w-32 2xl:w-full mt-2 sm:mt-0 sm:w-auto">
                                 <option value="nameaz" >Product Name A-Z</option>
                                 <option value="nameza">Product Name Z-A</option>
                                 <option value="lowinventory">Low inventory</option>
                                 <option value="highinventory">High inventory</option>
-
                             </select>
                         </div>
 
                         <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
-                            <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
+                            <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Search:</label>
                             <input type="search" wire:model.lazy="search" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
                         </div>
 
@@ -41,7 +40,7 @@
                         <tbody>
                             @foreach($products as $product)
                                 <tr class="intro-x">
-                                    <td class="whitespace-nowrap"><a href="{{ Route('product.show',$product) }}">{{ $product->name }}</a></td>
+                                    <td class="whitespace-nowrap"><a href="{{ Route('product.show',$product) }}" class="hover:underline">{{ $product->name }}</a></td>
                                     <td class="whitespace-nowrap text-center">{{ $product->category->name}}</td>
                                     <td class="whitespace-nowrap text-center">
                                      @if($product->stock_warning <= $product->stock)

@@ -2,7 +2,6 @@
     <form wire:submit.prevent="store" id="test">
         @csrf
         <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
-
             <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
                 <div class="intro-y col-span-12 sm:col-span-6">
                     <label class="form-label">Full Name</label>
@@ -35,28 +34,11 @@
                     <button type="submit"
                     data-sitekey="{{env('CAPTCHA_SITE_KEY')}}"
                     data-callback='handle'
-                    data-action='submit'
+                    data-action='contact'
                      class="g-recaptcha btn btn-primary w-24 ml-2">
                      Submit
                     </button>
                 </div>
-
-                <script src="https://www.google.com/recaptcha/api.js?render={{env('CAPTCHA_SITE_KEY')}}"></script>
-                <script>
-                    function handle(e) {
-                        grecaptcha.ready(function () {
-                            grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'submit'})
-                                .then(function (token) {
-                                    @this.set('captcha', token);
-                                });
-                        })
-                    }
-                </script>
-                <!--
-                <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
-                    <button type="submit" class="btn btn-primary w-24 ml-2">Send</button>
-                </div>
-            -->
             </div>
         </div>
     </form>
@@ -73,6 +55,17 @@
             .catch( error => {
                 console.error( error );
             });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{env('CAPTCHA_SITE_KEY')}}"></script>
+    <script>
+        function handle(e) {
+            grecaptcha.ready(function () {
+                grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'contact'})
+                    .then(function (token) {
+                        @this.set('captcha', token);
+                    });
+            });
+        }
     </script>
     @endpush
 </div>

@@ -3,7 +3,7 @@
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
             <div class="xl:flex sm:mr-auto" >
                 <div class="sm:flex items-center sm:mr-4">
-                    <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Sort By:</label>
+                    <label class="w-14 flex-none xl:w-auto xl:flex-initial mr-2">Sort:</label>
                     <select  wire:model="sorting" class="form-select w-full sm:w-32 2xl:w-full mt-2 sm:mt-0 sm:w-auto">
                         <option value="nameaz" >Product Title A-Z</option>
                         <option value="nameza">Product Title Z-A</option>
@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
-                    <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
+                    <label class="w-14 flex-none xl:w-auto xl:flex-initial mr-2">Search:</label>
                     <input wire:model="search" type="text" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
                 </div>
             </div>
@@ -41,7 +41,8 @@
                     @foreach($products as $product)
                         <tr>
                             <td class="whitespace-nowrap font-medium">
-                                <a href="{{ Route('productshow', $product) }}" target="_blank">{{$product->name}}
+                                <a href="{{ Route('productshow', $product) }}" target="_blank">
+                                    <div class="hover:underline">{{$product->name}}</div>
                                     <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{$product->brand->name}}</div>
                                 </a>
                             </td>

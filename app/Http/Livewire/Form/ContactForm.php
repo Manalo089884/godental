@@ -23,18 +23,17 @@ class ContactForm extends Component
         return [
             'name'=> 'required|max:50',
             'email' => 'required|email',
-            'phone' => 'required',
+            'phone' => 'required|phone:ph',
             'subject' => 'required|max:50',
             'message' => 'required|max:255',
         ];
     }
 
-
     public function updated($fields){
         $this->validateOnly($fields,[
             'name'=> 'required|max:50',
             'email' => 'required|email',
-            'phone' => 'required',
+            'phone' => 'required|phone:ph',
             'subject' => 'required|max:50',
             'message' => 'required|max:255',
         ]);

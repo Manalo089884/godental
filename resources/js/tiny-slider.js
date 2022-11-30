@@ -52,6 +52,123 @@ import { tns } from "tiny-slider/src/tiny-slider";
         });
     }
 
+    if ($(".featured-products").length) {
+        $(".featured-products").each(function () {
+            tns({
+                container: this,
+                slideBy: "page",
+                mouseDrag: true,
+                autoplay: false,
+                controls: true,
+                items: 1,
+                nav: false,
+                speed: 500,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
+                responsive: {
+                    1000: {
+                        items:6
+                    },
+                    600: {
+                        items: 4,
+                    },
+                    480: {
+                        items: 2,
+                    },
+                },
+            });
+        });
+    }
+
+    if ($(".top-selling-products").length) {
+        $(".top-selling-products").each(function () {
+            tns({
+                container: this,
+                slideBy: "page",
+                mouseDrag: true,
+                autoplay: false,
+                controls: true,
+                items: 1,
+                nav: false,
+                speed: 500,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
+                responsive: {
+                    1000:{
+                        items: 6,
+                    },
+                    600: {
+                        items: 4,
+                    },
+                    480: {
+                        items: 2,
+                    },
+                },
+            });
+        });
+    }
+
+
+    if ($(".categories").length) {
+        $(".categories").each(function () {
+            tns({
+                container: this,
+                slideBy: "page",
+                mouseDrag: true,
+                autoplay: false,
+                controls: true,
+                items: 1,
+                nav: false,
+                speed: 500,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
+                responsive: {
+                    1000:{
+                        items: 6,
+                    },
+                    600: {
+                        items: 4,
+                    },
+                    480: {
+                        items: 2,
+                    },
+                },
+            });
+        });
+    }
+
+    if ($(".brands").length) {
+        $(".brands").each(function () {
+            tns({
+                container: this,
+                slideBy: "page",
+                mouseDrag: true,
+                autoplay: false,
+                controls: true,
+                items: 1,
+                nav: false,
+                speed: 500,
+                arrowKeys:false,
+                prevButton:false,
+                nextButton:false,
+                responsive: {
+                    1000:{
+                        items: 6,
+                    },
+                    600: {
+                        items: 4,
+                    },
+                    480: {
+                        items: 2,
+                    },
+                },
+            });
+        });
+    }
+
     if ($(".multiple-items").length) {
         $(".multiple-items").each(function () {
             tns({

@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="px-2 pt-3 pb-2 border-t border-slate-200/60 dark:border-darkmode-400">
                                         <div class="flex w-full text-xs text-slate-500">
-                                            <div class="mr-auto"> Price: <span class="">₱{{$product->sprice }}</span> </div>
+                                            <div class="mr-auto"> Price: <span class="">₱{{ number_format($product->sprice,2) }}</span> </div>
                                             <div class="text-xs">{{$product->brand->name }}</div>
                                         </div>
                                     </div>
@@ -88,12 +88,15 @@
                     </div>
                 </div>
             </div>
-            <div class=" col-span-12  mt-2 w-full">
-                <div class="flex justify-start mt-4 w-full sm:justify-start md:justify-start lg:justify:-end xl:justify-end 2xl:justify-end" >
-                    {!! $products->onEachSide(1)->links() !!}
-                </div>
-            </div>
+
         </div>
     </div>
+    <script type="text/javascript">
+        window.onscroll = function (ev) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                window.livewire.emit('load-more');
+            }
+        }
 
+    </script>
 </div>

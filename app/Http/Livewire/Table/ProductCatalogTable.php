@@ -15,8 +15,24 @@ class ProductCatalogTable extends Component
     public $filterbybrand;
 
     public $perPage = 24;
-    protected $queryString = ['search' => ['except' => '']];
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'filterbycategory' => ['except' => ''],
+        'filterbybrand' => ['except' => ''],
+    ];
+
     protected $paginationTheme = 'bootstrap';
+
+
+    protected $listeners = [
+        'refreshParent' => '$refresh',
+        'load-more' => 'loadMore'
+    ];
+
+    public function loadMore()
+    {
+        $this->perPage = $this->perPage + 24;
+    }
 
     public function updatingSearch()
     {
@@ -32,9 +48,6 @@ class ProductCatalogTable extends Component
         $this->resetPage();
     }
 
-    protected $listeners = [
-        'refreshParent' => '$refresh'
-    ];
 
     public function render()
     {

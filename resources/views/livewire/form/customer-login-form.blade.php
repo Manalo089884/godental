@@ -15,13 +15,11 @@
             <div class="p-5">
                 <form wire:submit.prevent="login">
                     @csrf
-
                     @if(session('fail'))
                         <div class="alert alert-danger show flex items-center mb-2" role="alert">
                             <i class="fa-solid  fa-2x fa-circle-exclamation mr-2"></i> {{ session('fail') }}
                         </div>
                     @endif
-
                     @if(session('info'))
                         <div class="intro-x alert alert-dark show mb-2 mt-2" role="alert">{{session('info')}}</div>
                     @endif
@@ -47,8 +45,12 @@
                             </div>
                             <a href="{{ Route('resetcustomer.index') }}" class="text-slate-400" >Forgot Password?</a>
                         </div>
-
-                        <button type="submit" class="intro-x btn btn-primary mt-5 w-full" >Login</button>
+                        <div wire:ignore class="intro-x">
+                            <button type="submit" class="g-recaptcha btn btn-primary mt-5 w-full"
+                            data-sitekey="{{env('CAPTCHA_SITE_KEY')}}"
+                            data-callback='handle'
+                            data-action='login' >Login</button>
+                        </div>
                         <div class="pt-5 text-center intro-x" >
                             <a class="text-primary font-normal" href="{{Route('CRegister.index')}}">New to Go Dental? Click here.</a>
                         </div>
@@ -57,4 +59,17 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script src="https://www.google.com/recaptcha/api.js?render={{env('CAPTCHA_SITE_KEY')}}"></script>
+        <script>
+            function handle(e) {
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'login'})
+                        .then(function (token) {
+                            @this.set('captcha', token);
+                        });
+                });
+            }
+        </script>
+    @endpush
 </div>

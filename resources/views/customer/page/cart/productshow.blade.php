@@ -1,6 +1,6 @@
 @extends('customer.layout.base')
 @section('content')
-@section('title', 'Product Info')
+@section('title', 'Displaying Product Info')
 <div class="items-center justify-center flex">
     <div style="width: 60rem">
         <!-- Begin Header of Product -->
@@ -114,7 +114,7 @@
         </div>
     </div>
 </div>
-<!-- Begin Product Review -->
+<!-- Begin Product Description -->
 <div class="items-center justify-center flex">
     <div class="intro-y box px-1 pt-1 mt-7 " style="width: 60rem">
         <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
@@ -125,6 +125,156 @@
         <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
             <div class="text-slate-500 text-base	 mt-0.5">{!! $product->description !!}</div>
         </div>
+    </div>
+</div>
+<!-- END Product Description -->
+
+
+<!-- Begin Product Rating -->
+<div class="items-center justify-center flex">
+    <div style="width: 60rem">
+        <div class="intro-y box px-1 mt-7 pb-3">
+            <div class="flex items-center px-5 py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                <h2 class="font-medium text-base mr-auto">
+                    Product Ratings
+                </h2>
+            </div>
+            <div class="flex flex-col lg:flex-row ">
+                <div class="mt-5 ">
+                    <div class="flex items-center px-5">
+                        <h1 class=" text-5xl font-medium">4.55</h1>
+                        <h1 class=" text-3xl font-medium">/5</span>
+                    </div>
+                    <div class="flex items-center px-5">
+                        <div class="star">
+                            <div class="star-bg">
+                                @for($i=1; $i<6; $i++)
+                                    <i class="fa fa-star"> </i>
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center px-5 py-2">
+                        <div class="text-slate-500 text-base">350 Ratings</div>
+                    </div>
+                </div>
+
+                <div class="mt-5 ml-5 md:ml-10" >
+                    <div class="star">
+                        <div class="star-bg">
+                            <div class="mt-1">
+                                @for($i=1; $i<6; $i++)
+                                    <i class="fa fa-star"> </i>
+                                @endfor
+                                <div class="progress h-3 mt-3 md:hidden w-1/2">
+                                    <div class="progress-bar w-5/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">100</div>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                @for($i=1; $i<5; $i++)
+                                    <i class="fa fa-star"> </i>
+                                @endfor
+                                <div class="progress h-3 mt-3 md:hidden w-1/2">
+                                    <div class="progress-bar w-4/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">80</div>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                @for($i=1; $i<4; $i++)
+                                    <i class="fa fa-star"> </i>
+                                @endfor
+                                <div class="progress h-3 mt-3 md:hidden w-1/2">
+                                    <div class="progress-bar w-3/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">70</div>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                @for($i=1; $i<3; $i++)
+                                    <i class="fa fa-star"> </i>
+                                @endfor
+                                <div class="progress h-3 mt-3 md:hidden w-1/2">
+                                    <div class="progress-bar w-2/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">60</div>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                @for($i=1; $i<2; $i++)
+                                    <i class="fa fa-star"> </i>
+                                @endfor
+                                <div class="progress h-3 mt-3 md:hidden w-1/2">
+                                    <div class="progress-bar w-1/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">50</div>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                @for($i=1; $i<1; $i++)
+                                    <i class="fa fa-star"> </i>
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 mx-3 md:flex flex-1 hidden">
+                    <div class="progress h-3 mt-2  w-1/2">
+                        <div class="progress-bar w-5/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">100</div>
+                        <div class="progress h-3 mt-3">
+                            <div class="progress-bar w-4/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">90</div>
+                        </div>
+                        <div class="progress h-3 mt-3 ">
+                            <div class="progress-bar w-3/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">70</div>
+                        </div>
+                        <div class="progress h-3 mt-3 ">
+                            <div class="progress-bar w-2/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">60</div>
+                        </div>
+                        <div class="progress h-3 mt-3 ">
+                            <div class="progress-bar w-1/5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">30</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Product Rating -->
+
+<!-- Begin Product Review -->
+<div class="items-center justify-center flex">
+    <div class="intro-y box px-1 pt-1 mt-7 " style="width: 60rem">
+        <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+            <h2 class="font-medium text-base mr-auto">
+                Product Reviews
+            </h2>
+        </div>
+        @for($i=1; $i<3; $i++)
+            <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400">
+                <div class="mt-5 ">
+                    <div class="flex items-center px-5">
+                            <div class="star">
+                                <div class="star-bg">
+                                    @for($x=1; $x<6; $x++)
+                                        <i class="fa fa-star"> </i>
+                                    @endfor
+                                </div>
+                            </div>
+                        </div>
+                    <div class="flex justify-start gap-2">
+                        <div class="pl-5 pt-3 w-12 h-12 image-fit">
+                            <img class="rounded-full" src="{{ asset('dist/images/undraw_pic.svg') }}" alt=""  >
+                        </div>
+                        <div>
+                            <div class="flex pt-3 items-center px-5">
+                                <div class="text-base">Paul Reyes <span class="  text-primary  text-xs rounded-md">Verified Purchase</span></div>
+                            </div>
+                            <div class="flex items-center px-5">
+                                <div class="text-slate-500 text-base">10/22/25</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="flex items-center px-5 py-4">
+                        <div class="text-black text-base">I love it I always forget to drive water but this a great help tormenting me to drink water hahaha I can't leave with this jug so happy with the sticker thank you so much</div>
+                    </div>
+                </div>
+            </div>
+        @endfor
+
     </div>
 </div>
 <!-- END Product Review -->
