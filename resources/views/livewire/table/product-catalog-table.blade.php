@@ -97,6 +97,5 @@
                 window.livewire.emit('load-more');
             }
         }
-
     </script>
 </div>
